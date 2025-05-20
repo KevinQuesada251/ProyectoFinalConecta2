@@ -1,14 +1,15 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 #Modelo de los Roles
 class Roles(models.Model):
     nombre = models.CharField(max_length=50)
     
 #Modelo de los Usuarios
-class Usuarios(models.Model):
-    nombre = models.CharField(max_length=100)
-    apellido = models.CharField(max_length=100)
-    edad = models.IntegerField
+class UsuariosModelo(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    edad = models.IntegerField()
+    nacionalidad = models.CharField(max_length=50)
+    
     
 #Modelo de las Ubicaciones
 class Ubicaciones(models.Model):
@@ -26,7 +27,7 @@ class Respuestas(models.Model):
 #Modelo de la tabla intermedia de Ubicaciones y Usuarios
 class CrearUbicacion(models.Model):
     fecha_creacion = models.DateField
-    usuario = models.ForeignKey(Usuarios,on_delete=models.CASCADE)
+    usuario = models.ForeignKey(UsuariosModelo,on_delete=models.CASCADE)
     ubicacion = models.ForeignKey(Ubicaciones, on_delete=models.CASCADE)
     
 #Modelo de la tabla intermedia de Comentarios y Respuestas
