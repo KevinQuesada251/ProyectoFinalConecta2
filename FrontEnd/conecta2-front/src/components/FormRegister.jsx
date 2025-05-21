@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { PostRegister } from '../services/UsersServices'
+import '../styles/formRegister.css'
 
 function FormRegister() {
-  const [NombreUsuario,SetNombreUsuario] = useState("")
-  const [Nombre,SetNombre] = useState("")
-  const [Apellido,SetApellido] = useState("")
-  const [Edad,SetEdad] = useState("")
-  const [Email,SetEmail] = useState("")
-  const [Pass,SetPass] = useState("")
-  const [Nacionalidad,SetNacionalidad] = useState("")
+  const [NombreUsuario, SetNombreUsuario] = useState("")
+  const [Nombre, SetNombre] = useState("")
+  const [Apellido, SetApellido] = useState("")
+  const [Edad, SetEdad] = useState("")
+  const [Email, SetEmail] = useState("")
+  const [Pass, SetPass] = useState("")
+  const [Nacionalidad, SetNacionalidad] = useState("")
 
 
   function Usuario() {
@@ -24,26 +25,24 @@ function FormRegister() {
 
     const RespuestaServer = PostRegister(obj)
     console.log(obj);
-    
-    
+
+
   }
   return (
-    <div>
-        <label htmlFor="">Nombre de Usuario</label>
-        <input  onChange={(e)=>SetNombreUsuario(e.target.value)} type="text" />
-        <label htmlFor="">Nombre</label>
-        <input onChange={(e)=>SetNombre(e.target.value)} type="text" name="" id="" />
-        <label htmlFor="">Apellido</label>
-        <input onChange={(e)=>SetApellido(e.target.value)}  type="text" />
-        <label htmlFor="">Edad</label>
-        <input onChange={(e)=>SetEdad(e.target.value)}  type="number" />
-        <label htmlFor="">Email</label>
-        <input onChange={(e)=>SetEmail(e.target.value)}  type="text" name="" id="" />
-        <label htmlFor="">Nacionalidad</label>
-        <input onChange={(e)=>SetNacionalidad(e.target.value)}  type="text" name="" id="" />
-        <label htmlFor="">Contraseña</label>
-        <input onChange={(e)=>SetPass(e.target.value)}  type="password" name="" id="" />
-        <button onClick={Usuario}>Registrarse</button>
+    <div className='FondoRegister'>
+      <div className='formLogin'>
+        <h2>Registrarse</h2>
+        <input placeholder='Nombre de Usuario' className='inputRegister' onChange={(e) => SetNombreUsuario(e.target.value)} type="text" />
+        <input placeholder='Nombre' className='inputRegister' onChange={(e) => SetNombre(e.target.value)} type="text" />
+        <input placeholder='Apellido' className='inputRegister' onChange={(e) => SetApellido(e.target.value)} type="text" />
+        <input placeholder='Edad' className='inputRegister' onChange={(e) => SetEdad(e.target.value)} type="number" />
+        <input placeholder='Correo Electronico' className='inputRegister' onChange={(e) => SetEmail(e.target.value)} type="text" />
+        <input placeholder='Nacionalidad' className='inputRegister' onChange={(e) => SetNacionalidad(e.target.value)} type="text" />
+        <input placeholder='Contraseña' className='inputRegister' onChange={(e) => SetPass(e.target.value)} type="password" />
+        <button onClick={Usuario} className='btn-register'>Registrarse</button>
+
+
+      </div>
     </div>
   )
 }

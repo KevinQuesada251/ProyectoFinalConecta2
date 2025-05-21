@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 from rest_framework.views import APIView
 from .models import UsuariosModelo
 from rest_framework.response import Response
+from rest_framework import status
+from django.contrib.auth import authenticate,login
 
 class RolesListCreateView(ListCreateAPIView):
     queryset = Roles.objects.all()
@@ -43,6 +45,7 @@ class RespuestasDetailView(RetrieveUpdateDestroyAPIView):
 
 class CrearUsuarioView(APIView):
     def post(self,request):
+        print(request.data)
         username = request.data.get("username")
         first_name = request.data.get("first_name")
         last_name = request.data.get("last_name")
@@ -50,6 +53,24 @@ class CrearUsuarioView(APIView):
         email = request.data.get("email")
         edad = request.data.get("edad")
         nacionalidad = request.data.get("nacionalidad")
+        
+        #Validaciones
+        
+        if User.objects.filter(username=username).exists():
+            return Response({'error':'El nombre de usuario ya existe'},status=400)
+        
+        if User.objects.filter(email=email).exists():
+            return Response({'error':'El email ya existe'},status=400)
+        
+        if not email or not password:
+            return Response({'error':'El email y la contraseña son obligatorios'},status=400)
+        
+        if len(password) < 7:
+            return Response({'error':'La contraseña debe tener al menos 8 caracteres'},status=400)
+        
+        if not edad or not nacionalidad:
+            return Response({'error':'La edad y la nacionalidad son obligatorios'},status=400)
+        
         
         user = User.objects.create_user(
             username=username,
@@ -76,11 +97,7 @@ class DesactivarUsuarioView(APIView):
         
         return Response({'mensaje':'Usuario desactivado correctamente'}, status=204)
        
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-from django.contrib.auth.models import User
-from .models import UsuariosModelo  # Asegúrate de importar tu modelo extra
+
 
 class EditarUsuarioView(APIView):
     def patch(self, request, id):
@@ -118,7 +135,22 @@ class EditarUsuarioView(APIView):
         extras.save()
 
         return Response({'mensaje': 'Usuario actualizado correctamente'}, status=status.HTTP_200_OK)
+    
 
+class LoginView(APIView):
+    def post(self, request):
+         username = request.data.get("username")
+         password = request.data.get("password")
+         
+         user = authenticate(request, username=username, password = password)
+         if user is not None:
+             login(request, user) #crea una sesion activa
+             return Response({"mensaje":"Inicio exitoso"}, status=200)
+         else:
+             return Response({"error":"Invalido"},status=401)
+    
+    
+    
          
         
         
