@@ -1,8 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
-#Modelo de los Roles
-class Roles(models.Model):
-    nombre = models.CharField(max_length=50)
+from django.contrib.auth.models import User,Group
     
 #Modelo de los Usuarios
 class UsuariosModelo(models.Model):

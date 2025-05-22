@@ -1,11 +1,8 @@
 from rest_framework import serializers
-from .models import Roles,Ubicaciones,Comentarios,Respuestas
+from .models import Ubicaciones,Comentarios,Respuestas
 from django.contrib.auth.models import User
 
-class RolesSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Roles
-        fields = '__all__'
+
         
         
 class UbicacionesSerializer(serializers.ModelSerializer):

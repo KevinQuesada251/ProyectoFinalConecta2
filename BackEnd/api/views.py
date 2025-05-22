@@ -1,20 +1,13 @@
 from rest_framework.generics import RetrieveUpdateDestroyAPIView, ListCreateAPIView
-from .models import Roles,Ubicaciones,Comentarios,Respuestas
-from .serializers import RolesSerializer,UbicacionesSerializer,ComentariosSerializer,RespuestasSerializer
-from django.contrib.auth.models import User
+from .models import Ubicaciones,Comentarios,Respuestas
+from .serializers import UbicacionesSerializer,ComentariosSerializer,RespuestasSerializer
+from django.contrib.auth.models import User,Group
 from rest_framework.views import APIView
 from .models import UsuariosModelo
 from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth import authenticate,login
 
-class RolesListCreateView(ListCreateAPIView):
-    queryset = Roles.objects.all()
-    serializer_class = RolesSerializer
-    
-class RolesDetailView(RetrieveUpdateDestroyAPIView):
-    queryset = Roles.objects.all()
-    serializer_class = RolesSerializer
     
     
 class UbicacionesListCreateView(ListCreateAPIView):
@@ -79,6 +72,8 @@ class CrearUsuarioView(APIView):
             password=password,
             email=email,
         )
+        group = Group.objects.get(name='Usuario')
+        user.groups.add(group)
         
         UsuariosModelo.objects.create(
             user=user,

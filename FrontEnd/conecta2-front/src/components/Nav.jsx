@@ -1,8 +1,9 @@
 import React from 'react'
-
+import '../styles/nav.css'
 function Nav() {
   return (
-    <div>
+    <div className='navBar'>
+      <img src="" alt="" />
         <ul>
             <li>Inicio</li>
             <li>Mapa</li>

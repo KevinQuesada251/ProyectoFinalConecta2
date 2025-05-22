@@ -1,0 +1,60 @@
+.footer-container{
+    width: 100%;
+    height: 150px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    background-color: black;
+    color: white;
+    float: right;
+}
+.bloque0 {
+    display: grid;
+}
+.bloque1 {
+    display: grid;
+}
+
+.bloque2{
+    display: grid;
+}
+.bloque3{
+    display: grid;
+}
+.bloque4{
+    display: grid;
+}
+
+.lista1{
+    display: flex;
+    flex-direction: column;
+}
+.lista2{
+    display: flex;
+    flex-direction: column;
+}
+.lista3{
+    display: flex;
+    flex-direction: column;
+}
+
+.face{
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    
+}
+.insta{
+    width: 80px;
+    height: 80px;
+    border-radius: 0px;
+
+}
+.x{
+    width: 80px;
+    height: 80px;
+    border-radius: 30px;
+
+}
+.copy{
+   
+}
