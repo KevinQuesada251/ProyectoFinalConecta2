@@ -4,7 +4,7 @@ function Nav() {
   return (
     <div className='navBar'>
       <img src="" alt="" />
-        <ul>
+        <ul className='menu'>
             <li>Inicio</li>
             <li>Mapa</li>
             <li>Perfil</li>

@@ -1,5 +1,6 @@
 import React from 'react'
-import '../styles/footer.css'
+import '../styles/footer.css' 
+import {Link} from "react-router-dom"
 function Footer() {
   return (
     <div className='footer-container'>
@@ -17,7 +18,7 @@ function Footer() {
       <div className='bloque2'>
         <ul className='lista2'>
           <li>Ayuda</li>
-          <li>Hay un bug?</li>
+          <Link>Hay un bug?</Link>
         </ul>
       </div>
 

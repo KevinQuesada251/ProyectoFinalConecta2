@@ -1,0 +1,47 @@
+.img{
+    width: 260px;
+    border-radius: 20px;
+}
+.container-card{
+    background-color: #12229d;
+    width: 250px;
+    height: 300px;
+    margin-left: 50px;
+    border-radius: 20px;
+    color: white;
+    margin-top: 30px;
+    margin-left: 70px;
+    align-content: center;
+    text-align: center
+}
+.titulo2{
+    width: 100%;
+    background-color: blue;
+    text-align: center;
+    color: white;
+}
+
+.texto{
+    display: grid;
+    width: 300px;
+    height: 140px;
+    background-color: blue;
+    border-radius: 20px;
+    color: white;
+}
+
+.section1{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    height: 250px;
+}
+.imagen{
+    display: grid;
+    width: 200px;
+}
+.section2{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    height: 400px;
+    background-color: red;
+}
