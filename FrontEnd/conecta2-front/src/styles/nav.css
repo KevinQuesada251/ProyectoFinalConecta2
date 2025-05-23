@@ -5,7 +5,7 @@
     padding-left: 180px;
     padding-top: 30px;
 }
-li:hover{
+.opciones:hover{
     background-color: white;
     color: #12229d;
 }
@@ -18,4 +18,8 @@ li:hover{
     color: white;
     font-size: 30px;
 
+}
+.opciones{
+    text-decoration: none;
+    color: white;
 }
