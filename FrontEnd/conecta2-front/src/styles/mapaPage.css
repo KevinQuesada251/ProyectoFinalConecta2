@@ -1,0 +1,9 @@
+.Container-Map-Page{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+.mapita{
+    width: auto;
+    position: relative;
+    right: 200px;
+}

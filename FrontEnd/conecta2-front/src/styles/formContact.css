@@ -1,0 +1,12 @@
+.container-form-contacto{
+    width: 30vw;
+    height: 60vh;
+    background-color: #12229d;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+}
+textarea{
+    width: 80%;
+    height: 200px;
+}

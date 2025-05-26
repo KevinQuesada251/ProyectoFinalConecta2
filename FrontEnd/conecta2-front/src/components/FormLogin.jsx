@@ -2,19 +2,29 @@ import React, { useState } from 'react'
 import { PostLogin } from '../services/UsersServices'
 import '../styles/formLogin.css'
 
+
 function FormLogin() {
     const [NombreUsuario, SetNombreUsuario] = useState("")
     const [PassUsuario, SetPassUsuario] = useState("")
 
 
 
-    function cargar() {
+   async function cargar() {
         const obj = {
             username: NombreUsuario,
             password: PassUsuario
         }
         console.log(obj);
-        const ServerResponse = PostLogin(obj)
+
+
+        const ServerResponse = await PostLogin(obj)
+        console.log(ServerResponse);
+        
+        if(ServerResponse.mensaje){
+            alert("Que guaoa está la macha")
+        }else{
+            alert("La de la oficina de en frente, también xd")
+        }
     }
     return (
         <div className='FondoRegister'>

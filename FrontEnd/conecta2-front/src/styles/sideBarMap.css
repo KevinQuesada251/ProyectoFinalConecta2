@@ -1,0 +1,11 @@
+.sidebarMap-container{
+    display: grid;
+    width: 40%;
+    height: 85vh;
+    background-color: #12229d;
+    color: white;
+    border-radius: 20px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+

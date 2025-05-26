@@ -1,1 +1,7 @@
-#map { height: 180px; }
+.btn-map{
+    width: 100px;
+    height: 50px;
+    border-radius: 20px;
+    color: white;
+    background-color: #12229d;
+}

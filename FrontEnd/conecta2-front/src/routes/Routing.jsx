@@ -4,6 +4,8 @@ import Home from '../pages/Home';
 import Register from '../pages/Register';
 import Login from '../pages/Login';
 import MapPage from '../pages/MapPage';
+import Contacto from '../pages/Contacto';
+import Perfil from '../pages/Perfil';
 
 function Routing() {
   return (
@@ -13,7 +15,9 @@ function Routing() {
                 <Route path='/' element={<Login/>}></Route>
                 <Route path='/register' element={<Register/>}></Route>
                 <Route path='/home' element={<Home/>}></Route>
-                 <Route path='/map' element={<MapPage/>}></Route>
+                <Route path='/map' element={<MapPage/>}></Route>
+                <Route path='/contact' element={<Contacto/>}></Route>
+                <Route path='/profile' element={<Perfil/>}></Route>
             </Routes>
         </Router>
     </div>

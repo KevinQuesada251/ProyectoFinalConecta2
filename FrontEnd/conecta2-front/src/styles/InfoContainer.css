@@ -1,0 +1,11 @@
+.InfoContainer{
+    width: 30vw;
+    height: 40vh;
+    background-color: #12229d;
+    border-radius: 20px;
+}
+p{
+    color: white;
+    padding: 30px 10px;
+
+}

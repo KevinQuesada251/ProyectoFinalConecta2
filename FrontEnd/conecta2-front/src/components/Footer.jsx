@@ -5,7 +5,7 @@ function Footer() {
   return (
     <div className='footer-container'>
       <div className='bloque0'>
-    
+          <img className='logo' src="src/assets/img/logo.png" alt="" />
       </div>
       <div className='bloque1'>
         <ul className='lista1'>
@@ -34,7 +34,7 @@ function Footer() {
         <ul>
           <li><img className='insta' src="src/assets/img/x.png" alt="Instagram logo" /></li>
           <li><img className='x' src="src/assets/img/instagram-nuevo-icono.png" alt="Instagram Logo" /></li>
-          <li> <img className='face' src="src/assets/img/facebook.png" alt="Facebook Logo" /></li>
+          <li><img className='face' src="src/assets/img/facebook.png" alt="Facebook Logo" /></li>
 
         </ul>
       </div>
