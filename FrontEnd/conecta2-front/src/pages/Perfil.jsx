@@ -1,8 +1,14 @@
 import React from 'react'
-
+import MainProfile from '../components/MainProfile'
+import Nav from '../components/Nav'
+import Footer from '../components/Footer'
 function Perfil() {
   return (
-    <div>Perfil</div>
+    <div>
+      <Nav/>
+       <MainProfile/>
+       <Footer/>
+    </div>
   )
 }
 

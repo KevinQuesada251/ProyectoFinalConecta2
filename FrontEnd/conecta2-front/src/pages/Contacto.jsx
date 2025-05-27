@@ -3,6 +3,7 @@ import Nav from '../components/Nav'
 import FormContacto from '../components/FormContacto'
 import InfoContacto from '../components/InfoContacto'
 import Footer from '../components/Footer'
+import '../styles/contactmain.css'
 function Contacto() {
 
     return (
