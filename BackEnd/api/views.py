@@ -58,7 +58,7 @@ class CrearUsuarioView(APIView):
         if not email or not password:
             return Response({'error':'El email y la contraseña son obligatorios'},status=400)
         
-        if len(password) < 7:
+        if len(password) < 8:
             return Response({'error':'La contraseña debe tener al menos 8 caracteres'},status=400)
         
         if not edad or not nacionalidad:

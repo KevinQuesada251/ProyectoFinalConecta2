@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { PostLogin } from '../services/UsersServices'
 import '../styles/formLogin.css'
+import Swal from 'sweetalert2'
 
 
 function FormLogin() {
@@ -9,7 +10,7 @@ function FormLogin() {
 
 
 
-   async function cargar() {
+    async function cargar() {
         const obj = {
             username: NombreUsuario,
             password: PassUsuario
@@ -19,10 +20,14 @@ function FormLogin() {
 
         const ServerResponse = await PostLogin(obj)
         console.log(ServerResponse);
-        
-        if(ServerResponse.mensaje){
-            alert("Que guaoa está la macha")
-        }else{
+
+        if (ServerResponse.mensaje) {
+            Swal.fire({
+                title: 'Usuario creado con existoso',
+                text: 'Bienvenido disfruta la aplicacion',
+                icon: 'success',
+            })
+        } else {
             alert("La de la oficina de en frente, también xd")
         }
     }
@@ -31,7 +36,7 @@ function FormLogin() {
             <div className='FormLogin'>
                 <h1>Inicio Sesion</h1>
                 <input className='inputLogin' onChange={(e) => SetNombreUsuario(e.target.value)} placeholder='Nombre de Usuario' type="text" />
-                <input  className='inputLogin' onChange={(e) => SetPassUsuario(e.target.value)} placeholder='Contraseña' type="password" />
+                <input className='inputLogin' onChange={(e) => SetPassUsuario(e.target.value)} placeholder='Contraseña' type="password" />
                 <button className='btn-login' onClick={cargar}>Iniciar</button>
             </div>
         </div>

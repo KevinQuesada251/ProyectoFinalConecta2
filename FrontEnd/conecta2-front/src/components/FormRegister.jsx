@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { PostRegister } from '../services/UsersServices'
 import '../styles/formRegister.css'
+import Swal from 'sweetalert2'
 
 function FormRegister() {
   const [NombreUsuario, SetNombreUsuario] = useState("")
@@ -12,7 +13,7 @@ function FormRegister() {
   const [Nacionalidad, SetNacionalidad] = useState("")
 
 
-  function Usuario() {
+  async function Usuario() {
     const obj = {
       "username": NombreUsuario,
       "first_name": Nombre,
@@ -23,10 +24,17 @@ function FormRegister() {
       "nacionalidad": Nacionalidad
     }
 
-    const RespuestaServer = PostRegister(obj)
+    const RespuestaServer = await PostRegister(obj)
     console.log(obj);
-
-
+     if (RespuestaServer.mensaje) {
+                Swal.fire({
+                    title: 'Usuario creado con exitoso',
+                    text: 'Disfruta la aplicacion',
+                    icon: 'success',
+                })
+            } else {
+                alert("La de la oficina de en frente, también xd")
+            }
   }
   return (
     <div className='FondoRegister'>

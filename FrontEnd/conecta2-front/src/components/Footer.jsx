@@ -31,7 +31,7 @@ function Footer() {
       </div>
 
       <div className='bloque4'>
-        <ul>
+        <ul className='lista4'>
           <li><img className='insta' src="src/assets/img/x.png" alt="Instagram logo" /></li>
           <li><img className='x' src="src/assets/img/instagram-nuevo-icono.png" alt="Instagram Logo" /></li>
           <li><img className='face' src="src/assets/img/facebook.png" alt="Facebook Logo" /></li>
