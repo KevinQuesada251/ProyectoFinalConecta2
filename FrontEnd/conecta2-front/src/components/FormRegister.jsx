@@ -33,7 +33,11 @@ function FormRegister() {
                     icon: 'success',
                 })
             } else {
-                alert("La de la oficina de en frente, también xd")
+                Swal.fire({
+                    title: 'Vuelva a intentarlo',
+                    text: 'Inserte los datos de nuevo',
+                    icon: 'Error',
+                })
             }
   }
   return (

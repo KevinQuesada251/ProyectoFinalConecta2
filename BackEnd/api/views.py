@@ -34,7 +34,22 @@ class RespuestasDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Respuestas.objects.all()
     serializer_class = RespuestasSerializer
     
-
+class ListarUsuariosView(APIView):
+    def get(self,request):
+        usuarios = UsuariosModelo.objects.select_related('user').all()
+        data = []
+        for usuario in usuarios:
+             data.append({
+                 "username":usuario.user.username,
+                 "firstname": usuario.user.first_name,
+                 "las_name": usuario.user.last_name,
+                 "password": usuario.user.password,
+                 "email": usuario.user.email,
+                 "edad": usuario.edad,
+                 "nacionalidad": usuario.nacionalidad
+        })
+        return Response(data, status=200)
+        
 
 class CrearUsuarioView(APIView):
     def post(self,request):

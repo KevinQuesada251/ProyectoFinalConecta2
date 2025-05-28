@@ -23,12 +23,16 @@ function FormLogin() {
 
         if (ServerResponse.mensaje) {
             Swal.fire({
-                title: 'Usuario creado con existoso',
+                title: 'Inicio de sesion exitoso',
                 text: 'Bienvenido disfruta la aplicacion',
                 icon: 'success',
             })
         } else {
-            alert("La de la oficina de en frente, también xd")
+               Swal.fire({
+                title: 'Credenciales Invalidas',
+                text: 'Vuelva a intentarlo',
+                icon: 'error',
+            })
         }
     }
     return (

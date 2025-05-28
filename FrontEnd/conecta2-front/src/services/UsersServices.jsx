@@ -47,4 +47,27 @@ async function PostLogin(obj) {
 
 }
 
-export { PostRegister, PostLogin }
+async function GetUsuarios() {
+    try {
+        const response = await fetch("http://127.0.0.1:8000/api/users/listar", {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.error || 'Error obteniendo usuarios');
+        }
+
+        return data;
+
+    } catch (error) {
+        console.error('Error al obtener usuarios:', error.message);
+        throw error;
+    }
+}
+
+export { PostRegister, PostLogin, GetUsuarios }
