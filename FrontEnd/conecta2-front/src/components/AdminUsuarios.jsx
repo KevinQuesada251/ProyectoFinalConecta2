@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import '../styles/adminUsuarios.css'
-import { GetUsuarios } from '../services/UsersServices'
+import { GetUsuarios, DeleteUser, PathData } from '../services/UsersServices'
 import '../styles/adminusers.css'
 import ModalAdmin from './ModalAdmin'
 
@@ -20,6 +20,20 @@ function AdminUsuarios() {
     obtenerInfo()
   }, [])
 
+
+  async function eliminar(id) {
+    const objDesactivar = { id };
+    const serverResponse = await PathData(objDesactivar);
+    console.log(id);
+    console.log(serverResponse);
+    setUsuarios(prev =>
+      prev.map(user =>
+        user.user_id === id ? { ...user, activo: !user.activo } : user //Operador de propagacion ...
+      )
+    );
+    setActivar(prev => !prev);
+  }
+
   return (
     <div className='container-users'>
       <h1 className='tituloAdmin'>Administracion</h1>
@@ -34,7 +48,7 @@ function AdminUsuarios() {
             <th scope="col">Correo</th>
             <th scope="col">Nacionalidad</th>
             <th scope="col">Editar</th>
-            <th scope="col">Eliminar</th>
+            <th scope="col">Desactivar o Activar</th>
           </tr>
         </thead>
         <tbody>
@@ -50,8 +64,16 @@ function AdminUsuarios() {
                   <td>{usuario.nacionalidad}</td>
                   <td><button class="btn btn-success" onClick={() => {
                     setShowModal(true);
+                    localStorage.setItem("usuario_id",usuario.user_id)
                   }}>Editar</button></td>
-                  <td><button class="btn btn-danger">Eliminar</button></td>
+                  <td>
+                    <button
+                      onClick={() => eliminar(usuario.user_id)}
+                      className={usuario.activo ? 'btn btn-danger' : 'btn btn-success'}
+                    >
+                      {usuario.activo ? 'Desactivar' : 'Activar'}
+                    </button>
+                  </td>
                 </tr>
               </>
             )

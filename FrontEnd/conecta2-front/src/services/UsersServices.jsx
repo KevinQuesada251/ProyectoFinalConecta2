@@ -44,7 +44,6 @@ async function PostLogin(obj) {
         console.error('Error en la peticion', error);
         throw error;
     }
-
 }
 
 async function GetUsuarios() {
@@ -69,5 +68,74 @@ async function GetUsuarios() {
         throw error;
     }
 }
+async function DeleteUser(id) {
+    try {
+        const response = await fetch(`http://127.0.0.1:8000/api/users/${id}/`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        if (!response.ok) {
+            throw new Error(`Error deleting user with id`);
+        }
+        return { message: `User with id ${id} deleted successfully` };
+    } catch (error) {
+        console.error('Error deleting user:', error);
+        throw error;
+    }
+}
 
-export { PostRegister, PostLogin, GetUsuarios }
+async function PathData(obj) {
+
+
+    try {
+        const response = await fetch(`http://127.0.0.1:8000/api/users/desactivar/`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(obj)
+        });
+
+        if (!response.ok) {
+            throw new Error('Error al hacer el Login');
+        }
+        const respuesta = await response.json()
+        console.log(respuesta);
+        return respuesta
+
+    } catch (error) {
+        console.error('Error en la peticion', error);
+        throw error;
+    }
+
+}
+
+async function PatchUser(obj,id) {
+
+
+    try {
+        const response = await fetch(`http://127.0.0.1:8000/api/users/${id}/editar/`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(obj)
+        });
+
+        if (!response.ok) {
+            throw new Error('Error al hacer el Login');
+        }
+        const respuesta = await response.json()
+        console.log(respuesta);
+        return respuesta
+
+    } catch (error) {
+        console.error('Error en la peticion', error);
+        throw error;
+    }
+
+}
+
+export { PostRegister, PostLogin, GetUsuarios,DeleteUser,PathData,PatchUser }

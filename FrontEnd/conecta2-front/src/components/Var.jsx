@@ -2,7 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
-const Var = () => {
+const Var = ({ubicaciones,usuarios}) => {
   return (
     <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-wit">
       <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
@@ -17,7 +17,7 @@ const Var = () => {
           </li>
           <li>
             <a href="#submenu1" data-bs-toggle="collapse" className="nav-link px-0 align-middle">
-              <i className="fs-4 bi-people"></i> <span className="ms-1 d-none d-sm-inline">Usuarios</span>
+              <i className="fs-4 bi-people"></i> <span className="ms-1 d-none d-sm-inline" onClick={usuarios}>Usuarios</span>
             </a>
             <ul className="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
 
@@ -25,7 +25,7 @@ const Var = () => {
           </li>
           <li>
             <a href="#" className="nav-link px-0 align-middle">
-              <i className="bi bi-geo-alt-fill"></i> <span className="ms-1 d-none d-sm-inline">Ubicaciones</span>
+              <i className="bi bi-geo-alt-fill"></i> <span className="ms-1 d-none d-sm-inline" onClick={ubicaciones}>Ubicaciones</span>
             </a>
           </li>
           <li>
