@@ -49,7 +49,7 @@ async function PostLogin(obj) {
 
 async function GetUsuarios() {
     try {
-        const response = await fetch("http://127.0.0.1:8000/api/users/listar", {
+        const response = await fetch("http://127.0.0.1:8000/api/users/listar/", {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

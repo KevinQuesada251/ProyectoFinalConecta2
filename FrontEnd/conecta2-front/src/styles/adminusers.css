@@ -1,0 +1,11 @@
+.container-users{
+    background-color: blue;
+    width: 100vw;
+}
+.tituloAdmin{
+    color: white;
+    font-weight: bold;
+}
+.tituloUsuarios{
+    font-weight: bold;
+}

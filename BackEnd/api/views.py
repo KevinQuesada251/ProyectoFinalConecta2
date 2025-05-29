@@ -1,6 +1,6 @@
-from rest_framework.generics import RetrieveUpdateDestroyAPIView, ListCreateAPIView
-from .models import Ubicaciones,Comentarios,Respuestas
-from .serializers import UbicacionesSerializer,ComentariosSerializer,RespuestasSerializer
+from rest_framework.generics import RetrieveUpdateDestroyAPIView, ListCreateAPIView, ListAPIView
+from .models import Ubicaciones,Comentarios,Respuestas, UsuariosModelo
+from .serializers import UbicacionesSerializer,ComentariosSerializer,RespuestasSerializer,UsuarioModeloSerializer
 from django.contrib.auth.models import User,Group
 from rest_framework.views import APIView
 from .models import UsuariosModelo
@@ -33,22 +33,20 @@ class RespuestasListCreateView(ListCreateAPIView):
 class RespuestasDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Respuestas.objects.all()
     serializer_class = RespuestasSerializer
+
+class UsuariosModeloListView(ListAPIView):
+    queryset = UsuariosModelo.objects.all()
+    serializer_class = UbicacionesSerializer
     
-class ListarUsuariosView(APIView):
-    def get(self,request):
-        usuarios = UsuariosModelo.objects.select_related('user').all()
-        data = []
-        for usuario in usuarios:
-             data.append({
-                 "username":usuario.user.username,
-                 "firstname": usuario.user.first_name,
-                 "las_name": usuario.user.last_name,
-                 "password": usuario.user.password,
-                 "email": usuario.user.email,
-                 "edad": usuario.edad,
-                 "nacionalidad": usuario.nacionalidad
-        })
-        return Response(data, status=200)
+class ListarUsuariosView(ListAPIView):
+    queryset = UsuariosModelo.objects.select_related('user').all()
+    serializer_class = UsuarioModeloSerializer
+    
+class UsuariosDetailView(RetrieveUpdateDestroyAPIView):
+    queryset = UsuariosModelo.objects.select_related('user').all()
+    serializer_class = UsuarioModeloSerializer
+    
+# Vista con APIView
         
 
 class CrearUsuarioView(APIView):
