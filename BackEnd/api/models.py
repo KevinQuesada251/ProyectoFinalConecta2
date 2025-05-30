@@ -12,6 +12,8 @@ class UsuariosModelo(models.Model):
 class Ubicaciones(models.Model):
     nombre_ubicacion = models.CharField(max_length=100)
     descripcion = models.CharField(max_length=150)
+    latitud = models.TextField()
+    longitud = models.TextField()
     
 #Modelo de los Comentarios
 class Comentarios(models.Model):
