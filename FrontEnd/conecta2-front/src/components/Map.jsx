@@ -5,8 +5,10 @@ import L from 'leaflet';
 import "../styles/Map.css";
 import ModalMap from './ModalMap';
 import Swal from 'sweetalert2'
+import { useEffect } from 'react';
+import Llamados from '../services/Llamados';
 
-// Arreglar ícono de Leaflet porque funcional mal con react
+// Arreglar ícono de Leaflet porque funciona mal con react
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
@@ -14,7 +16,7 @@ L.Icon.Default.mergeOptions({
   shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
 });
 
-// manejar clics en el mapa
+// evento click en el mapa
 function LocationMarker({ onMapClick }) {
   useMapEvents({
     click(e) {
@@ -28,6 +30,15 @@ function LocationMarker({ onMapClick }) {
 function Map() {
   const [markerPosition, setMarkerPosition] = useState(null); // Guarda lat/lng
   const [showModal, setShowModal] = useState(false); // control del modal
+  const [ubicaciones, setUbicaciones] = useState([])
+
+  useEffect (()=>{
+    async function infoUbi() {
+      const traerUbi = await Llamados.getData('ubicaciones')
+      setUbicaciones(traerUbi)
+    }
+    infoUbi()
+  },[])
 
   // Manejar  clicks en el mapa
   const handleMapClick = (latlng) => {
@@ -57,6 +68,13 @@ function Map() {
           </Marker>
         )}
 
+        {ubicaciones.map(ubicacion=>(
+          <Marker key={ubicacion.id}
+          position={[ubicacion.latitud,ubicacion.longitud]}>
+            <Popup>{ubicacion.nombre_ubicacion}</Popup>
+          </Marker>
+          
+        ))}
         <LocationMarker onMapClick={handleMapClick} />
       </MapContainer>
 
