@@ -1,17 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal, Button } from 'react-bootstrap';
+import Llamados from '../services/Llamados';
 
-function ModalMap({ show, onClose }) {
+function ModalMap({ show, onClose, latitud, longitud }) {
   const [nombreUbicacion, setNombreUbicacion] = useState("");
   const [descripcion, setDescripcion] = useState("");
 
-  function cargarInfo() {
+  useEffect(() => {
+    if (!show) {
+      // Limpiar campos al cerrar
+      setNombreUbicacion("");
+      setDescripcion("");
+    }
+  }, [show]);
+
+   async function cargarInfo() {
+    if (!nombreUbicacion.trim() || !descripcion.trim()) {
+      alert("Por favor completa todos los campos.");
+      return;
+    }
+
     const obj = {
       nombre_ubicacion: nombreUbicacion,
-      descripcion: descripcion
+      descripcion: descripcion,
+      latitud: latitud,
+      longitud: longitud,
     };
-    console.log(obj);
-    // Aquí podrías enviar `obj` a una API o backend
+
+    const serverResponse =  await Llamados.postData(obj,'ubicaciones')
+    onClose(); // Cierra el modal después de guardar
   }
 
   return (
@@ -25,7 +42,7 @@ function ModalMap({ show, onClose }) {
           <input
             type="text"
             className="form-control"
-            value="Coordenadas aquí si las necesitas"
+            value={`Lat: ${latitud}, Lng: ${longitud}`}
             readOnly
           />
         </div>
@@ -34,6 +51,7 @@ function ModalMap({ show, onClose }) {
           <input
             type="text"
             className="form-control"
+            value={nombreUbicacion}
             onChange={(e) => setNombreUbicacion(e.target.value)}
           />
         </div>
@@ -42,6 +60,7 @@ function ModalMap({ show, onClose }) {
           <input
             type="text"
             className="form-control"
+            value={descripcion}
             onChange={(e) => setDescripcion(e.target.value)}
           />
         </div>

@@ -1,12 +1,12 @@
-// Map.jsx
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import L, { latLng } from 'leaflet';
+import L from 'leaflet';
 import "../styles/Map.css";
 import ModalMap from './ModalMap';
+import Swal from 'sweetalert2'
 
-// Arreglar icono de Leaflet
+// Arreglar ícono de Leaflet porque funcional mal con react
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
@@ -14,7 +14,7 @@ L.Icon.Default.mergeOptions({
   shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
 });
 
-// Componente que maneja clics en el mapa
+// manejar clics en el mapa
 function LocationMarker({ onMapClick }) {
   useMapEvents({
     click(e) {
@@ -26,50 +26,23 @@ function LocationMarker({ onMapClick }) {
 }
 
 function Map() {
-  const [markerPosition, setMarkerPosition] = useState(null);
-  const [marcado, setMarcado] = useState(false)
-  const [showModal, setShowModal] = useState(false);
+  const [markerPosition, setMarkerPosition] = useState(null); // Guarda lat/lng
+  const [showModal, setShowModal] = useState(false); // control del modal
 
-  // const [nombreUbicacion, setNombreUbicacion] = useState("")
-  // const [latitud,setLatitud] = useState("")
-  // const [longitud,setLongitud] = useState("")
+  // Manejar  clicks en el mapa
+  const handleMapClick = (latlng) => {
+    const position = [latlng.lat, latlng.lng];
+    setMarkerPosition(position);
 
-
-
-
-  const handleMapClick = (latlng = '') => {
-    setMarkerPosition([latlng.lat, latlng.lng]);
-    const posiciones = [latlng.lat, latlng.lng]
-    setMarkerPosition(posiciones)
-
-    const objCoordenadas = {
-      'latitud': latlng.lat,
-      'longitud': latlng.lng
-    }
-    try {
-      console.log(objCoordenadas);
-
-      console.log(`Latitud: ${objCoordenadas.latitud}`);
-      console.log(`Longitud: ${objCoordenadas.longitud}`);
-    } catch (error) {
-
-    }
-
+    console.log(`Latitud: ${latlng.lat}, Longitud: ${latlng.lng}`);
   };
 
-  // function cargar() {
-  //   const obj = {
-  //     nombre_ubicacion :  ,
-  //     l
-  //   }
-  //}
-
   return (
-    <div className='contenedor-map'>
+    <div className="contenedor-map">
       <MapContainer
         center={[9.9281, -84.0907]}
         zoom={13}
-        scrollWheelZoom={false}
+        scrollWheelZoom={true}
         style={{ height: '400px', width: '100%' }}
       >
         <TileLayer
@@ -77,10 +50,7 @@ function Map() {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-
-
-
-
+        {/* Marcador si se seleccionó una posición */}
         {markerPosition && (
           <Marker position={markerPosition}>
             <Popup>¡Hiciste clic aquí!</Popup>
@@ -90,22 +60,35 @@ function Map() {
         <LocationMarker onMapClick={handleMapClick} />
       </MapContainer>
 
-      <button className="btn-map" onClick={() => {
-        console.log("Botón Agregar presionado");
-                    setShowModal(true);
-                  }}>Agregar</button>
+      {/* Botón para abrir el modal */}
+      <button
+        className="btn-map"
+        onClick={() => {
+          if (!markerPosition) {
+            Swal.fire({
+              title: "Ubicacion Vacia",
+              text: "Primero debes hacer click en el mapa",
+              icon: "error"
+            });
+            return;
+          }
+          setShowModal(true);
+        }}
+      >
+        Agregar
+      </button>
 
-      {showModal && (
+      {/* Mostrar el modal solo si hay posición y se pidió mostrar */}
+      {markerPosition && (
         <ModalMap
-          latitud={markerPosition ? markerPosition[0] : null}
-          longitud={markerPosition ? markerPosition[1] : null}
+          show={showModal}
           onClose={() => setShowModal(false)}
+          latitud={markerPosition[0]}
+          longitud={markerPosition[1]}
         />
       )}
     </div>
-    
   );
-  
 }
 
 export default Map;

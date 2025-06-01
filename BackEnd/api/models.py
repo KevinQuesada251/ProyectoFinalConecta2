@@ -12,7 +12,7 @@ class UsuariosModelo(models.Model):
 class Ubicaciones(models.Model):
     nombre_ubicacion = models.CharField(max_length=100)
     descripcion = models.CharField(max_length=150)
-    latitud = models.TextField()
+    latitud = models.TextField(default="0")
     longitud = models.TextField()
     
 #Modelo de los Comentarios

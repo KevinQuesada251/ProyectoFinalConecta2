@@ -1,35 +1,30 @@
-import React, { useState } from 'react'
-import SideBarAdmin from '../components/SideBarAdmin'
+import React, { useState } from 'react' 
 import AdminUsuarios from '../components/AdminUsuarios'
 import '../styles/adminPage.css'
 import Var from '../components/var'
 import AdminUbicaciones from './AdminUbicaciones'
-
+import AdminRoles from '../components/AdminRoles'
+import AdminComentarios from '../components/AdminComentarios'
+import AdminRespuestas from '../components/AdminRespuestas'
 
 function Admin() {
-  const [ubicaciones,setUbicaciones]=useState(false)
-  const [usuarios,setUsuarios]=useState(true)
-  
-  const mostrarUbicaciones =()=>{
-    setUbicaciones(!ubicaciones)
-    setUsuarios(false)
-  }
-  const mostrarUsuarios =()=>{
-    setUsuarios(!usuarios)
-    setUbicaciones(false)
-  }
+  const [seccionActiva, setSeccionActiva] = useState('usuarios')
 
   return (
     <div className='container-admin'>
-        <Var ubicaciones={mostrarUbicaciones} usuarios={mostrarUsuarios}/>
-        {usuarios &&
-          <AdminUsuarios/>
-        }
+      <Var 
+        ubicaciones={() => setSeccionActiva('ubicaciones')} 
+        usuarios={() => setSeccionActiva('usuarios')}
+        roles={() => setSeccionActiva('roles')}
+        comentarios={() => setSeccionActiva('comentarios')}
+        respuestas={() => setSeccionActiva('respuestas')}
+      />
 
-        {ubicaciones &&
-        <AdminUbicaciones/> 
-        }
-
+      {seccionActiva === 'usuarios' && <AdminUsuarios />}
+      {seccionActiva === 'ubicaciones' && <AdminUbicaciones />}
+      {seccionActiva === 'roles' && <AdminRoles />}
+      {seccionActiva === 'comentarios' && <AdminComentarios />}
+      {seccionActiva === 'respuestas' && <AdminRespuestas />}
     </div>
   )
 }

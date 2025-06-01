@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import  CrearUsuarioView, DesactivarUsuarioView, EditarUsuarioView, LoginView, ListarUsuariosView,UsuariosDetailView
+from .views import  CrearUsuarioView, DesactivarUsuarioView, EditarUsuarioView, LoginView, ListarUsuariosView,UsuariosDetailView, UbicacionesListCreateView
 
 urlpatterns = [
     path('users/',CrearUsuarioView.as_view(), name='user-crear'),
@@ -8,4 +8,5 @@ urlpatterns = [
     path('users/desactivar/',DesactivarUsuarioView.as_view(), name='users-desactivar'),
     path('users/<int:id>/editar/',EditarUsuarioView.as_view(), name='users-editar'),
     path('users/login/',LoginView.as_view(), name='users-listar-crear'),
+    path('ubicaciones/',UbicacionesListCreateView.as_view(), name='ubicaciones-crear-listar'),
 ]
