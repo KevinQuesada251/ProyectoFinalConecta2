@@ -42,6 +42,7 @@ function AdminUsuarios() {
         <thead>
           <tr>
             <th scope="col">#</th>
+            <th scope="col">Usuario</th>
             <th scope="col">Nombre</th>
             <th scope="col">Apellido</th>
             <th scope="col">Edad</th>
@@ -55,10 +56,11 @@ function AdminUsuarios() {
           {usuarios.map((usuario) => {
             return (
               <>
-                <tr>
+                <tr key={usuario.id}>
                   <td>{usuario.user_id}</td>
                   <td>{usuario.username}</td>
                   <td>{usuario.first_name}</td>
+                  <td>{usuario.last_name}</td>
                   <td>{usuario.edad}</td>
                   <td>{usuario.email}</td>
                   <td>{usuario.nacionalidad}</td>
@@ -75,12 +77,12 @@ function AdminUsuarios() {
                     </button>
                   </td>
                 </tr>
-              </>
+                <ModalAdmin show={showModal} onClose={() => setShowModal(false)} nombreM={usuario.first_name} nombreUsuarioM={usuario.username} apellidoM={usuario.last_name} edadM={usuario.edad} emailM={usuario.email} nacionalidadM={usuario.nacionalidad} />
+              </> 
             )
           })}
         </tbody>
       </table>
-      <ModalAdmin show={showModal} onClose={() => setShowModal(false)} />
     </div>
   )
 }

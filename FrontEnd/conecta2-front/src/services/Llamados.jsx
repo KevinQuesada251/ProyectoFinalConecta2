@@ -39,7 +39,7 @@ async function patchData(obj,endpoint,id)
 {
 
     try {
-        const response = await fetch(`http://127.0.0.1:8000/api/${endpoint}/${id}`,{
+        const response = await fetch(`http://127.0.0.1:8000/api/${endpoint}/${id}/`,{
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -58,7 +58,7 @@ async function patchData(obj,endpoint,id)
 //////////////LLAMADO DELETE/////////////
 async function deleteData(endpoint,id) {
     try {
-        const response = await fetch(`http://127.0.0.1:8000/api/${endpoint}/${id}`, {
+        const response = await fetch(`http://127.0.0.1:8000/api/${endpoint}/${id}/`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'

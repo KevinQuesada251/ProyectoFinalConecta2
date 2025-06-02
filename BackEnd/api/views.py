@@ -43,6 +43,11 @@ class ListarUsuariosView(ListAPIView):
     queryset = UsuariosModelo.objects.select_related('user').all()
     serializer_class = UsuarioModeloSerializer
     
+class ListarUsuarioUnicoView(RetrieveUpdateDestroyAPIView):
+    lookup_field = "user_id"
+    queryset = UsuariosModelo.objects.select_related('user').all()
+    serializer_class = UsuarioModeloSerializer
+    
 class UsuariosDetailView(RetrieveUpdateDestroyAPIView):
     queryset = UsuariosModelo.objects.select_related('user').all()
     serializer_class = UsuarioModeloSerializer

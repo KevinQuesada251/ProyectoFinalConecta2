@@ -4,14 +4,14 @@ import Modal from 'react-bootstrap/Modal';
 import { PatchUser,GetUsuarios } from '../services/UsersServices';
 
 
-function ModalAdmin({ show, onClose }) {
+function ModalAdmin({ show, onClose,nombreUsuarioM,nombreM, apellidoM, edadM,emailM ,nacionalidadM }) {
   const [todosUsuario, setTodosUsuarios] = useState([])
-  const [nombreUsuario, setNombreUsuario] = useState("")
-  const [nombre, setNombre] = useState("")
-  const [apellido, setApellido] = useState("")
-  const [edad, setEdad] = useState(0)
-  const [email, setEmail] = useState("")
-  const [nacionalidad, setNacionalidad] = useState("")
+  const [nombreUsuario, setNombreUsuario] = useState(nombreUsuarioM)
+  const [nombre, setNombre] = useState(nombreM)
+  const [apellido, setApellido] = useState(apellidoM)
+  const [edad, setEdad] = useState(edadM)
+  const [email, setEmail] = useState(emailM)
+  const [nacionalidad, setNacionalidad] = useState(nacionalidadM)
 
   useEffect(() => {
     async function obtenerInfo() {
@@ -46,7 +46,9 @@ function ModalAdmin({ show, onClose }) {
           <label>Nombre de usuario:</label>
           <input
             type="text"
-            className="form-control" onChange={(e) => setNombreUsuario(e.target.value)}
+            className="form-control" 
+            value={nombreUsuario}
+            onChange={(e)=>setNombreUsuario(e.target.value)}
           />
         </div>
         <div className="mb-3">
@@ -54,13 +56,15 @@ function ModalAdmin({ show, onClose }) {
           <input
             type="text"
             className="form-control"
-            onChange={(e) => setNombre(e.target.value)}
+            value={nombre}
+            onChange={(e)=>setNombre(e.target.value)}
           />
         </div>
         <div className="mb-3">
           <label>Apellido:</label>
           <input
             type="text"
+            value={apellido}
             className="form-control"
             onChange={(e) => setApellido(e.target.value)}
           />
@@ -69,6 +73,7 @@ function ModalAdmin({ show, onClose }) {
           <label>Edad:</label>
           <input
             type="text"
+            value={edad}
             className="form-control"
             onChange={(e) => setEdad(e.target.value)}
           />
@@ -77,6 +82,7 @@ function ModalAdmin({ show, onClose }) {
           <label>Correo:</label>
           <input
             type="email"
+            value={email}
             className="form-control"
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -85,6 +91,7 @@ function ModalAdmin({ show, onClose }) {
           <label>Nacionalidad:</label>
           <input
             type="text"
+            value={nacionalidad}
             className="form-control"
             onChange={(e) =>setNacionalidad(e.target.value)}
           />
