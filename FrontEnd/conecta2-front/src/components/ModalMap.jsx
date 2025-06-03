@@ -14,20 +14,27 @@ function ModalMap({ show, onClose, latitud, longitud }) {
     }
   }, [show]);
 
-   async function cargarInfo() {
+  async function cargarInfo() {
     if (!nombreUbicacion.trim() || !descripcion.trim()) {
       alert("Por favor completa todos los campos.");
       return;
     }
 
+    const id = parseInt(localStorage.getItem('id_usuario'));
+    console.log(id);
+    
     const obj = {
       nombre_ubicacion: nombreUbicacion,
       descripcion: descripcion,
       latitud: latitud,
       longitud: longitud,
+      usuario: id
     };
+    console.log(obj);
 
-    const serverResponse =  await Llamados.postData(obj,'ubicaciones')
+    const serverResponse = await Llamados.postData(obj,'ubicaciones')
+    console.log(serverResponse);
+    
     onClose(); // Cierra el modal después de guardar
   }
 

@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import  CrearUsuarioView, DesactivarUsuarioView, EditarUsuarioView, LoginView, ListarUsuariosView,UsuariosDetailView, UbicacionesListCreateView, UbicacionesDetailView,ListarUsuarioUnicoView
+from .views import  CrearUsuarioView, DesactivarUsuarioView, EditarUsuarioView, LoginView, ListarUsuariosView,UsuariosDetailView, UbicacionesListCreateView, UbicacionesDetailView,ListarUsuarioUnicoView,ListarUnicaUbicacion
 
 urlpatterns = [
     path('users/',CrearUsuarioView.as_view(), name='user-crear'),
@@ -11,4 +11,5 @@ urlpatterns = [
     path('users/login/',LoginView.as_view(), name='users-listar-crear'),
     path('ubicaciones/',UbicacionesListCreateView.as_view(), name='ubicaciones-crear-listar'),
     path('ubicaciones/<int:pk>/',UbicacionesDetailView.as_view(), name='users-editar-eliminar'),
+    path('ubicaciones/unica/<int:id>/',ListarUnicaUbicacion.as_view()),
 ]

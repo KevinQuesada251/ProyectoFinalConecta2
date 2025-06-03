@@ -14,6 +14,7 @@ class Ubicaciones(models.Model):
     descripcion = models.CharField(max_length=150)
     latitud = models.TextField(default="0")
     longitud = models.TextField()
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     
 #Modelo de los Comentarios
 class Comentarios(models.Model):

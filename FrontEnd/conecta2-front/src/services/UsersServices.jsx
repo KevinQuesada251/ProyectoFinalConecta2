@@ -24,8 +24,6 @@ async function PostRegister(obj) {
 }
 
 async function PostLogin(obj) {
-
-
     try {
         const response = await fetch("http://127.0.0.1:8000/api/users/login/", {
             method: 'POST',
@@ -35,16 +33,20 @@ async function PostLogin(obj) {
             body: JSON.stringify(obj)
         });
 
+        const data = await response.json(); //  leer siempre el JSON
+
         if (!response.ok) {
-            throw new Error('Error al hacer el Login');
+            // Retornar el error como parte de la respuesta, no lanzar excepción
+            return { error: data.detail || 'Error al hacer login' };
         }
 
-        return await response.json();
+        return data;
     } catch (error) {
-        console.error('Error en la peticion', error);
-        throw error;
+        console.error('Error en la petición:', error);
+        return { error: 'Error inesperado al conectar con el servidor' };
     }
 }
+
 
 async function GetUsuarios() {
     try {
@@ -69,9 +71,9 @@ async function GetUsuarios() {
     }
 }
 
-async function GetUsuariosUnico() {
+async function GetUsuariosUnico(id) {
     try {
-        const response = await fetch("http://127.0.0.1:8000/api/users/unico/", {
+        const response = await fetch(`http://127.0.0.1:8000/api/users/unico/${id}/`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -162,4 +164,4 @@ async function PatchUser(obj,id) {
 
 }
 
-export { PostRegister, PostLogin, GetUsuarios,DeleteUser,PathData,PatchUser }
+export { PostRegister, PostLogin, GetUsuarios,DeleteUser,PathData,PatchUser, GetUsuariosUnico }

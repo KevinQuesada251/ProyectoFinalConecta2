@@ -10,7 +10,7 @@ function ModalAdmin({ show, onClose,nombreUsuarioM,nombreM, apellidoM, edadM,ema
   const [nombre, setNombre] = useState(nombreM)
   const [apellido, setApellido] = useState(apellidoM)
   const [edad, setEdad] = useState(edadM)
-  const [email, setEmail] = useState(emailM)
+  const [emailE, setEmailE] = useState(emailM)
   const [nacionalidad, setNacionalidad] = useState(nacionalidadM)
 
   useEffect(() => {
@@ -27,7 +27,7 @@ function ModalAdmin({ show, onClose,nombreUsuarioM,nombreM, apellidoM, edadM,ema
       first_name: nombre,
       last_name: apellido,
       edad: edad,
-      email, email,
+      email: emailE,
       nacionalidad: nacionalidad
     }
     const serverResponse = await PatchUser(obj,id)
@@ -82,9 +82,9 @@ function ModalAdmin({ show, onClose,nombreUsuarioM,nombreM, apellidoM, edadM,ema
           <label>Correo:</label>
           <input
             type="email"
-            value={email}
+            value={emailE}
             className="form-control"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setEmailE(e.target.value)}
           />
         </div>
         <div className="mb-3">

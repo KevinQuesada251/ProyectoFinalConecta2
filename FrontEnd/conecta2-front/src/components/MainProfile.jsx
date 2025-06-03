@@ -1,16 +1,30 @@
 import React, { useEffect, useState } from 'react'
 import '../styles/userprofile.css'
-import { GetUsuarios } from '../services/UsersServices'
+import { GetUsuariosUnico } from '../services/UsersServices'
 
 function MainProfile() {
-    const [usuarios, setUsuario] = useState([])
+    const [usuario, setUsuario] = useState({})
+    const [ubicaciones, setUbicaciones] = useState([])
     useEffect(() => {
         async function traerInfo() {
-            const todosUsuarios = await GetUsuarios()
+            const todosUsuarios = await GetUsuariosUnico(localStorage.getItem("id_usuario"))
             setUsuario(todosUsuarios)
+            
         }
         traerInfo()
+        console.log(usuario);
+        
     }, [])
+
+    useEffect(() => {
+        async function traerUbicaciones() {
+            const ubicacionesUsuario = await GetUsuariosUnico(localStorage.getItem("id_usuario"))
+            setUbicaciones(ubicacionesUsuario.ubicaciones || [])
+        }
+        traerUbicaciones()
+        console.log(ubicaciones);
+    }, [])
+
     return (
         <div>
 
@@ -24,33 +38,33 @@ function MainProfile() {
 
                 {/* Contenido */}
 
-                {usuarios.map((usuario)=>(
+                
                 <div className="perfil-info">
                     {/* Columna izquierda */}
                     <div className="info-usuario">
-                        <h2><strong>{usuario.first_name}</strong> {usuario.last_name}</h2>
-                        <p><strong>Edad:</strong>{usuario.edad}</p>
+                        <h2><strong>{usuario.first_name} {usuario.last_name}</strong></h2>
+                        <p><strong>Edad:{usuario.edad}</strong></p>
+                        <p><strong>Nacionalidad:{usuario.nacionalidad}</strong></p>
                         <p className="descripcion">Pequeña descripcion de la persona</p>
                     </div>
 
 
                     {/* Columna derecha */}
-                    <div className="ubicaciones">
-                        <h3>Ubicaciones creadas</h3>
-                        <div className="ubicaciones-grid">
-                            {['Fatima', 'Fatima', 'Fatima', 'Escazu'].map((ubicacion, idx) => (
-                                <div key={idx} className="ubicacion-card">
-                                    <img
-                                        src="https://cdn-icons-png.flaticon.com/512/854/854878.png"
-                                        alt="Mapa"
-                                    />
-                                    <p>{ubicacion}</p>
-                                </div>
+                    <div className='info-ubicaciones'>
+                        <h3>Ubicaciones</h3>
+                        <ul>
+                            {ubicaciones.map((ubicacion, index) => (
+                                <li key={index}>
+                                    <strong>{ubicacion.nombre_ubicacion}</strong> - {ubicacion.descripcion}
+                                    <br />
+                                    <span>Latitud: {ubicacion.latitud}, Longitud: {ubicacion.longitud}</span>
+                                </li>
                             ))}
-                        </div>
+                        </ul>
                     </div>
+                    
                 </div>
-                ))}
+                
             </div>
         </div>
     )

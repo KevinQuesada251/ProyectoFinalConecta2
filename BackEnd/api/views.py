@@ -19,6 +19,13 @@ class UbicacionesDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Ubicaciones.objects.all()
     serializer_class = UbicacionesSerializer
     
+class ListarUnicaUbicacion(APIView):
+   def get(self, request, id):
+        ubicaciones_usuario = Ubicaciones.objects.filter(usuario=id)
+        serializer = UbicacionesSerializer(ubicaciones_usuario, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    
 class ComentariosListCreateView(ListCreateAPIView):
     queryset = Comentarios.objects.all()
     serializer_class = ComentariosSerializer
@@ -160,7 +167,8 @@ class LoginView(APIView):
          user = authenticate(request, username=username, password = password)
          if user is not None:
              login(request, user) #crea una sesion activa
-             return Response({"mensaje":"Inicio exitoso"}, status=200)
+             id = user.id
+             return Response({"mensaje":"Inicio exitoso","id":id}, status=200)
          else:
              return Response({"error":"Invalido"},status=401)
     

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate, Link } from 'react-router-dom'
 import { PostRegister } from '../services/UsersServices'
 import '../styles/formRegister.css'
 import Swal from 'sweetalert2'
@@ -11,6 +12,7 @@ function FormRegister() {
   const [Email, SetEmail] = useState("")
   const [Pass, SetPass] = useState("")
   const [Nacionalidad, SetNacionalidad] = useState("")
+  const navigate = useNavigate()
 
 
   async function Usuario() {
@@ -32,6 +34,7 @@ function FormRegister() {
                     text: 'Disfruta la aplicacion',
                     icon: 'success',
                 })
+                navigate('/')
             } else {
                 Swal.fire({
                     title: 'Vuelva a intentarlo',
@@ -51,6 +54,7 @@ function FormRegister() {
         <input placeholder='Correo Electronico' className='inputRegister' onChange={(e) => SetEmail(e.target.value)} type="text" />
         <input placeholder='Nacionalidad' className='inputRegister' onChange={(e) => SetNacionalidad(e.target.value)} type="text" />
         <input placeholder='Contraseña' className='inputRegister' onChange={(e) => SetPass(e.target.value)} type="password" />
+        <Link to={'/'}>Ya tienes cuenta inicia sesion aquí</Link>
         <button onClick={Usuario} className='btn-register'>Registrarse</button>
 
 
