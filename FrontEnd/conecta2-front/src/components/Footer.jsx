@@ -6,7 +6,7 @@ function Footer() {
   return (
    <>
   {/* Footer */}
-  <footer className="text-center text-lg-start bg-dark text-white">
+  <footer className="text-center text-lg-start text-white" style={{background:"black"}}>
     {/* Section: Social media */}
     <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
       {/* Left */}
