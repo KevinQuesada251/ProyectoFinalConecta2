@@ -5,12 +5,20 @@ function Nav() {
   return (
     <div className='navBar'>
       <img className='logo' src="src/assets/img/logo.png" alt="" />
-        <ul className='menu'>
-            <Link className='opciones' to='/home'>Inicio</Link>
-            <Link className='opciones' to='/map'>Mapa</Link>
-            <Link className='opciones' to='/profile'>Perfil</Link>
-            <Link className='opciones' to='/contact'>Contacto</Link>
-        </ul>
+      <ul class="nav justify-content-end">
+        <li class="nav-item">
+          <Link to={'/home'} className="nav-link active" >Home</Link>
+        </li>
+        <li class="nav-item">
+          <Link to={'/profile'} className="nav-link">Perfil</Link>
+        </li>
+        <li class="nav-item">
+          <Link to={'/map'} className="nav-link" >Map</Link>
+        </li>
+        <li class="nav-item">
+          <Link to={'/contact'} className="nav-link" >Contacto</Link>
+        </li>
+      </ul>
     </div>
   )
 }
