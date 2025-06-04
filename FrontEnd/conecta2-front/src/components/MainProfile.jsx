@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../styles/userprofile.css'
+import Llamados from '../services/Llamados'
 import { GetUsuariosUnico } from '../services/UsersServices'
 
 function MainProfile() {
@@ -18,8 +19,8 @@ function MainProfile() {
 
     useEffect(() => {
         async function traerUbicaciones() {
-            const ubicacionesUsuario = await GetUsuariosUnico(localStorage.getItem("id_usuario"))
-            setUbicaciones(ubicacionesUsuario.ubicaciones || [])
+            const ubicacionesUsuario = await Llamados.GetUbicacionesUnica(localStorage.getItem("id_usuario"))
+            setUbicaciones(ubicacionesUsuario)
         }
         traerUbicaciones()
         console.log(ubicaciones);

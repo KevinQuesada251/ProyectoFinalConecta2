@@ -73,4 +73,28 @@ async function deleteData(endpoint,id) {
         throw error;
     }
 }
-export default { postData,deleteData,getData,patchData };
+
+async function GetUbicacionesUnica(id) {
+    try {
+        const response = await fetch(`http://127.0.0.1:8000/api/ubicaciones/unica/${id}/`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.error || 'Error obteniendo usuarios');
+        }
+
+        return data;
+
+    } catch (error) {
+        console.error('Error al obtener usuarios:', error.message);
+        throw error;
+    }
+}
+
+export default { postData,deleteData,getData,patchData, GetUbicacionesUnica };
