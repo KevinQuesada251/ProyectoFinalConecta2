@@ -5,13 +5,15 @@ import SideBarMap from '../components/SideBarMap'
 import '../styles/mapaPage.css'
 function MapPage() {
   return (
-    <div>
-      <Nav/>
-      <div className='Container-Map-Page'>
-        <SideBarMap />
-        <section className='mapita'>
+    <div style={{background:'#CAE8FF'}}>
+      <Nav />
+      <div className='row'>
+        <div className='col'>
+          <SideBarMap />
+        </div>
+        <div className='col'>
           <Map />
-        </section>
+        </div>
       </div>
     </div>
   )

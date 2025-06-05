@@ -7,7 +7,7 @@ import '../styles/contactmain.css'
 
 function Contacto() {
   return (
-    <div>
+    <div style={{background:'#CAE8FF'}}>
       <Nav />
       <div className='container-fluid text-center mt-4'>
         <div className='row'>

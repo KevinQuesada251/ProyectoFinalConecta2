@@ -7,6 +7,7 @@ import MapPage from '../pages/MapPage';
 import Contacto from '../pages/Contacto';
 import Perfil from '../pages/Perfil';
 import Admin from '../pages/Admin';
+import Foro from '../pages/Foro';
 
 function Routing() {
   return (
@@ -20,6 +21,7 @@ function Routing() {
                 <Route path='/contact' element={<Contacto/>}></Route>
                 <Route path='/profile' element={<Perfil/>}></Route>
                 <Route path='/admin' element={<Admin/>}></Route>
+                <Route path='/foro' element={<Foro/>}></Route>
             </Routes>
         </Router>
     </div>
