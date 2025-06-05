@@ -1,31 +1,50 @@
 import React from 'react';
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar, Nav, Container, Offcanvas } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import '../styles/nav.css'
 
 function Navigation() {
   return (
-    <Navbar variant="light" expand="lg" style={{background:'#12229d'}}>
-      <Container>
-        {/* Logo o título */}
-        <Navbar.Brand >Conecta2</Navbar.Brand>
+    <Navbar
+      expand="md"
+      variant="light"
+      className="mb-4"
+      style={{
+        background: '#12229D',
+        minHeight: '100px',
+        display: 'flex',
+        alignItems: 'center'
+      }}
+    >
+      <Container fluid>
+        <Navbar.Brand href="#" className="text-white">Conectado2</Navbar.Brand>
+        <Navbar.Toggle aria-controls="offcanvasNavbar" className="border-0" style={{ filter: 'invert(1)' }} />
 
-        {/* Botón de hamburguesa */}
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-
-        {/* Enlaces del menú */}
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
-            <Nav.Link ><Link className='text-white' to={'/home'}>Inicio</Link></Nav.Link>
-            <Nav.Link ><Link className='text-white' to={'/map'}>Mapa</Link></Nav.Link>
-            <Nav.Link ><Link className='text-white' to={'/profile'}>Perfil</Link></Nav.Link>
-            <Nav.Link ><Link className='text-white' to={'/contact'}>Contacto</Link></Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
+        <Navbar.Offcanvas
+          id="offcanvasNavbar"
+          aria-labelledby="offcanvasNavbarLabel"
+          placement="start"
+          style={{  color: '#12229D' }}
+        >
+          <Offcanvas.Header closeButton>
+            <Offcanvas.Title id="offcanvasNavbarLabel">
+              Menú
+            </Offcanvas.Title>
+          </Offcanvas.Header>
+          <Offcanvas.Body>
+            <Nav className="justify-content-end flex-grow-1 pe-3">
+              <Nav.Link className="desktop-white sidebar-text" as={Link} to="/home">Inicio</Nav.Link>
+              <Nav.Link className="desktop-white sidebar-text" as={Link} to="/map">Mapa</Nav.Link>
+              <Nav.Link className="desktop-white sidebar-text" as={Link} to="/profile">Perfil</Nav.Link>
+              <Nav.Link className="desktop-white sidebar-text" as={Link} to="/contact">Contacto</Nav.Link>
+            </Nav>
+          </Offcanvas.Body>
+        </Navbar.Offcanvas>
       </Container>
     </Navbar>
   );
 }
 
 export default Navigation;
-  
+
+

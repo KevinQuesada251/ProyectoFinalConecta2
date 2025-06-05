@@ -14,7 +14,7 @@ function Contacto() {
           <div className='col-12 col-md-6 mb-3'>
             <FormContacto />
           </div>
-          <div className='col-12 col-md-6 mb-3'>
+          <div className='col-12 col-md-6 mb-3 mx-auto'>
             <InfoContacto />
           </div>
         </div>
