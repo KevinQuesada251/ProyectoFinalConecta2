@@ -1,13 +1,31 @@
-import React from 'react'
-import '../styles/formContact.css'
 function FormContacto() {
   return (
-    <div className='container-form-contacto'>
-        <h1>Contacto</h1>
-        <input  type="text" />
-        <textarea  name="" id=""></textarea>
+    <div className="w-100 px-3 rounded" style={{background:'#12229D'}}>
+      <h1 className="text-white">Contacto</h1>
+      <form>
+        <div className="mb-3">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Tu nombre"
+            required
+          />
+        </div>
+        <div className="mb-3">
+          <textarea
+            className="form-control"
+            rows="4"
+            placeholder="Tu mensaje"
+            required
+          ></textarea>
+        </div>
+        <button type="submit" className="btn btn-info w-100 p-10" >
+          Enviar
+        </button>
+      </form>
     </div>
-  )
+  );
 }
+
 
 export default FormContacto

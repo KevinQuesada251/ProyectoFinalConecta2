@@ -4,18 +4,24 @@ import FormContacto from '../components/FormContacto'
 import InfoContacto from '../components/InfoContacto'
 import Footer from '../components/Footer'
 import '../styles/contactmain.css'
-function Contacto() {
 
-    return (
-        <div>
-            <Nav />
-            <div className='container-main'>
-                <FormContacto />
-                <InfoContacto />
-            </div>
-            <Footer />
+function Contacto() {
+  return (
+    <div>
+      <Nav />
+      <div className='container-fluid text-center mt-4'>
+        <div className='row'>
+          <div className='col-12 col-md-6 mb-3'>
+            <FormContacto />
+          </div>
+          <div className='col-12 col-md-6 mb-3'>
+            <InfoContacto />
+          </div>
         </div>
-    )
+      </div>
+      <Footer />
+    </div>
+  );
 }
 
-export default Contacto
+export default Contacto;

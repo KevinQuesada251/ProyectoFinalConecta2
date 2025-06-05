@@ -1,5 +1,4 @@
 import React from 'react'
-import '../styles/footer.css' 
 import {Link} from "react-router-dom"
 import { FaFacebookF, FaTwitter, FaInstagram, FaGithub } from 'react-icons/fa';
 function Footer() {
