@@ -8,14 +8,43 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth import authenticate,login
 from django.shortcuts import get_object_or_404
+from rest_framework_simplejwt.tokens import RefreshToken,AccessToken
+from rest_framework.permissions import BasePermission,SAFE_METHODS
 
+class Permisos(BasePermission):
+    def has_object_permission(self, request, view, obj):
+        usuario = request.user
+        
+        if not usuario.is_authenticated:
+            return False
+        
+        metodo = request.method
+        grupos_usuarios = usuario.groups.values_list('name', flat=True)
+        
+        if metodo in SAFE_METHODS:
+            return True
+        
+        if "usuario" in grupos_usuarios:
+            if metodo in ['POST', 'GET'] or metodo in SAFE_METHODS:
+                return True
+        
+        if "admin" in grupos_usuarios:
+            if metodo in ['POST', 'PUT', 'PATCH', 'DELETE', 'GET'] or metodo in SAFE_METHODS:
+                return True
+            
+        if "moderador" in grupos_usuarios:
+            if metodo in ['POST', 'PUT', 'PATCH', 'GET'] or metodo in SAFE_METHODS:
+                return True
+        return False
     
     
 class UbicacionesListCreateView(ListCreateAPIView):
+    permission_classes = [Permisos]
     queryset = Ubicaciones.objects.all()
     serializer_class = UbicacionesSerializer
     
 class UbicacionesDetailView(RetrieveUpdateDestroyAPIView):
+    permission_classes = [Permisos]
     queryset = Ubicaciones.objects.all()
     serializer_class = UbicacionesSerializer
     
@@ -27,35 +56,43 @@ class ListarUnicaUbicacion(APIView):
     
     
 class ComentariosListCreateView(ListCreateAPIView):
+    permission_classes = [Permisos]
     queryset = Comentarios.objects.all()
     serializer_class = ComentariosSerializer
     
 class ComentariosDetailView(RetrieveUpdateDestroyAPIView):
+    permission_classes = [Permisos]
     queryset = Comentarios.objects.all()
     serializer_class = ComentariosSerializer
     
 class RespuestasListCreateView(ListCreateAPIView):
+    permission_classes = [Permisos]
     queryset = Respuestas.objects.all()
     serializer_class = RespuestasSerializer
     
 class RespuestasDetailView(RetrieveUpdateDestroyAPIView):
+    permission_classes = [Permisos]
     queryset = Respuestas.objects.all()
     serializer_class = RespuestasSerializer
 
 class UsuariosModeloListView(ListAPIView):
+    permission_classes = [Permisos]
     queryset = UsuariosModelo.objects.all()
     serializer_class = UbicacionesSerializer
     
 class ListarUsuariosView(ListAPIView):
+    permission_classes = [Permisos]
     queryset = UsuariosModelo.objects.select_related('user').all()
     serializer_class = UsuarioModeloSerializer
     
 class ListarUsuarioUnicoView(RetrieveUpdateDestroyAPIView):
+    permission_classes = [Permisos]
     lookup_field = "user_id"
     queryset = UsuariosModelo.objects.select_related('user').all()
     serializer_class = UsuarioModeloSerializer
     
 class UsuariosDetailView(RetrieveUpdateDestroyAPIView):
+    permission_classes = [Permisos]
     queryset = UsuariosModelo.objects.select_related('user').all()
     serializer_class = UsuarioModeloSerializer
     
@@ -168,10 +205,18 @@ class LoginView(APIView):
          if user is not None:
              login(request, user) #crea una sesion activa
              id = user.id
-             return Response({"mensaje":"Inicio exitoso","id":id}, status=200)
+             token = str(AccessToken.for_user(user))
+             refresh = str(RefreshToken.for_user(user)) 
+                       
+             return Response({"mensaje":"Inicio exitoso",
+                              "id":id,
+                              "token":token,
+                              "refresh": refresh
+                              }, status=200)
          else:
              return Response({"error":"Invalido"},status=401)
-    
+
+        
     
     
          

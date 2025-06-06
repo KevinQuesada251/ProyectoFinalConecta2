@@ -1,8 +1,11 @@
+const token = localStorage.getItem('token')
+
 async function getData(endpoint) {
     try {
         const response = await fetch(`http://127.0.0.1:8000/api/${endpoint}/`, {
             method: 'GET',
             headers: {
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             }
         });
@@ -23,6 +26,7 @@ async function postData(obj,endpoint) {
         const response = await fetch(`http://127.0.0.1:8000/api/${endpoint}/`, {
             method: 'POST',
             headers: {
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(obj)
@@ -42,6 +46,7 @@ async function patchData(obj,endpoint,id)
         const response = await fetch(`http://127.0.0.1:8000/api/${endpoint}/${id}/`,{
             method: 'PATCH',
             headers: {
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(obj)
@@ -61,6 +66,7 @@ async function deleteData(endpoint,id) {
         const response = await fetch(`http://127.0.0.1:8000/api/${endpoint}/${id}/`, {
             method: 'DELETE',
             headers: {
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             }
         });
@@ -79,6 +85,7 @@ async function GetUbicacionesUnica(id) {
         const response = await fetch(`http://127.0.0.1:8000/api/ubicaciones/unica/${id}/`, {
             method: 'GET',
             headers: {
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',
             }
         });

@@ -30,6 +30,7 @@ function FormLogin() {
                 text: 'Bienvenido disfruta la aplicacion',
                 icon: 'success',
             })
+            localStorage.setItem('token',ServerResponse.token)
             localStorage.setItem('id_usuario',ServerResponse.id)
             navigate('/profile')
         } else if(ServerResponse.error) {
