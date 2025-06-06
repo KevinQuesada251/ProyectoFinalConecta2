@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Children } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from '../pages/Home';
 import Register from '../pages/Register';
@@ -8,6 +8,7 @@ import Contacto from '../pages/Contacto';
 import Perfil from '../pages/Perfil';
 import Admin from '../pages/Admin';
 import Foro from '../pages/Foro';
+import Private from '../components/Private';
 
 function Routing() {
   return (
@@ -20,7 +21,7 @@ function Routing() {
                 <Route path='/map' element={<MapPage/>}></Route>
                 <Route path='/contact' element={<Contacto/>}></Route>
                 <Route path='/profile' element={<Perfil/>}></Route>
-                <Route path='/admin' element={<Admin/>}></Route>
+                <Route path='/admin' element={<Private children={<Admin/>}/>}></Route>
                 <Route path='/foro' element={<Foro/>}></Route>
             </Routes>
         </Router>

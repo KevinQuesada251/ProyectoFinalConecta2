@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate,Link } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { PostLogin } from '../services/UsersServices'
 import '../styles/formLogin.css'
 import Swal from 'sweetalert2'
@@ -23,18 +23,29 @@ function FormLogin() {
         const ServerResponse = await PostLogin(obj)
         console.log(ServerResponse);
 
-        if (ServerResponse.mensaje) {
-            
+        if (ServerResponse.mensaje && ServerResponse.rol === "usuario") {
+
             Swal.fire({
                 title: 'Inicio de sesion exitoso',
                 text: 'Bienvenido disfruta la aplicacion',
                 icon: 'success',
             })
-            localStorage.setItem('token',ServerResponse.token)
-            localStorage.setItem('id_usuario',ServerResponse.id)
+            localStorage.setItem('token', ServerResponse.token)
+            localStorage.setItem('id_usuario', ServerResponse.id)
             navigate('/profile')
-        } else if(ServerResponse.error) {
-               Swal.fire({
+        } else if (ServerResponse.mensaje && ServerResponse.rol === "admin") {
+            Swal.fire({
+                title: 'Inicio de sesion exitoso',
+                text: 'Bienvenido administrador',
+                icon: 'success',
+            })
+            localStorage.setItem('token', ServerResponse.token)
+            localStorage.setItem('id_usuario', ServerResponse.id)
+            localStorage.setItem('rol',ServerResponse.rol)
+            navigate('/admin')
+        }
+        else if (ServerResponse.error) {
+            Swal.fire({
                 title: 'Credenciales Invalidas',
                 text: 'Vuelva a intentarlo',
                 icon: 'error',

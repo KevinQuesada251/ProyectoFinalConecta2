@@ -50,6 +50,7 @@ class UbicacionesDetailView(RetrieveUpdateDestroyAPIView):
     
 class ListarUnicaUbicacion(APIView):
    def get(self, request, id):
+        
         ubicaciones_usuario = Ubicaciones.objects.filter(usuario=id)
         serializer = UbicacionesSerializer(ubicaciones_usuario, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
@@ -207,11 +208,13 @@ class LoginView(APIView):
              id = user.id
              token = str(AccessToken.for_user(user))
              refresh = str(RefreshToken.for_user(user)) 
+             rol = str(user.groups.first()) #firts es un método de Django que se usa sobre QuerySets para obtener el primer elemento del resultado.
                        
              return Response({"mensaje":"Inicio exitoso",
                               "id":id,
                               "token":token,
-                              "refresh": refresh
+                              "refresh": refresh,
+                              "rol": rol
                               }, status=200)
          else:
              return Response({"error":"Invalido"},status=401)
