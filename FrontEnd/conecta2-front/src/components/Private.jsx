@@ -1,14 +1,19 @@
-import React from 'react'
 import { Navigate } from "react-router-dom";
 
-const Private = ({ element }) => {
+const validarInicio=()=>{
   const estasautenticado = localStorage.getItem("rol");
 
   if (estasautenticado === "admin") {
-    return element;
+    return true;
   } else {
-    return <Navigate to="/"/>;
+    return false;
   }
-};
+}
+
+const Private = ({ element }) => {
+  return(
+      validarInicio() ? element : <h1>NO ESTA AUTENTICADO</h1>
+    )
+}
 
 export default Private

@@ -6,6 +6,8 @@ class UsuariosModelo(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
     edad = models.IntegerField()
     nacionalidad = models.CharField(max_length=50)
+    img = models.CharField(max_length=300, default="")
+    banner = models.CharField(max_length=300, default="")
     
     
 #Modelo de las Ubicaciones

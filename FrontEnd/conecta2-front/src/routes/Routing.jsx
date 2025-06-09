@@ -21,7 +21,7 @@ function Routing() {
                 <Route path='/map' element={<MapPage/>}></Route>
                 <Route path='/contact' element={<Contacto/>}></Route>
                 <Route path='/profile' element={<Perfil/>}></Route>
-                <Route path='/admin' element={<Private children={<Admin/>}/>}></Route>
+                <Route path='/admin' element={<Private element={<Admin/>}/>}/>
                 <Route path='/foro' element={<Foro/>}></Route>
             </Routes>
         </Router>

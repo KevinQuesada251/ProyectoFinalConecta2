@@ -1,7 +1,4 @@
-
 async function PostRegister(obj) {
-
-
     try {
         const response = await fetch("http://127.0.0.1:8000/api/users/", {
             method: 'POST',
@@ -49,10 +46,12 @@ async function PostLogin(obj) {
 
 
 async function GetUsuarios() {
+    const TOKEN = localStorage.getItem('token');
     try {
         const response = await fetch("http://127.0.0.1:8000/api/users/listar/", {
             method: 'GET',
             headers: {
+                "Authorization": `Bearer ${TOKEN}`,
                 'Content-Type': 'application/json',
             }
         });
@@ -72,10 +71,13 @@ async function GetUsuarios() {
 }
 
 async function GetUsuariosUnico(id) {
+    const TOKEN = localStorage.getItem('token');
+    console.log(TOKEN);
     try {
         const response = await fetch(`http://127.0.0.1:8000/api/users/unico/${id}/`, {
             method: 'GET',
             headers: {
+                "Authorization": `Bearer ${TOKEN}`,
                 'Content-Type': 'application/json',
             }
         });

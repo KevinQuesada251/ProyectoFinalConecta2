@@ -11,6 +11,7 @@ function Admin() {
   const [seccionActiva, setSeccionActiva] = useState('usuarios')
 
   return (
+    <>
     <div className='container-admin'>
       <Var 
         ubicaciones={() => setSeccionActiva('ubicaciones')} 
@@ -26,6 +27,7 @@ function Admin() {
       {seccionActiva === 'comentarios' && <AdminComentarios />}
       {seccionActiva === 'respuestas' && <AdminRespuestas />}
     </div>
+    </>
   )
 }
 

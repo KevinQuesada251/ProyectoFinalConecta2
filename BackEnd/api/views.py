@@ -8,11 +8,11 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth import authenticate,login
 from django.shortcuts import get_object_or_404
-from rest_framework_simplejwt.tokens import RefreshToken,AccessToken
+from rest_framework_simplejwt.tokens import RefreshToken,AccessToken    
 from rest_framework.permissions import BasePermission,SAFE_METHODS
 
 class Permisos(BasePermission):
-    def has_object_permission(self, request, view, obj):
+    def has_permission(self, request,view):
         usuario = request.user
         
         if not usuario.is_authenticated:
@@ -35,6 +35,7 @@ class Permisos(BasePermission):
         if "moderador" in grupos_usuarios:
             if metodo in ['POST', 'PUT', 'PATCH', 'GET'] or metodo in SAFE_METHODS:
                 return True
+            
         return False
     
     

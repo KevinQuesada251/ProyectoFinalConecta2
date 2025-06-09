@@ -33,7 +33,7 @@ function MainProfile() {
                 {/* Imagen de portada */}
                 <div className="portada">
                     <div className="avatar">
-                        <span>👤</span>
+                        <span><img style={{height:'100px', width:'100px'}} src="https://res.cloudinary.com/doaeh7hcj/image/upload/v1749486367/qrtfsufpiogeu4i5wsxw.png" alt="" /></span>
                     </div>
                 </div>
 
