@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react'
 import '../styles/userprofile.css'
 import Llamados from '../services/Llamados'
 import { GetUsuariosUnico } from '../services/UsersServices'
+import ModalPerfillUsuario from './ModalPerfilUsuario'
 
 function MainProfile() {
     const [usuario, setUsuario] = useState({})
     const [ubicaciones, setUbicaciones] = useState([])
+    const [mostrar,setMostrar] = useState(false)
+    const [showModal, setShowModal] = useState(false);
     useEffect(() => {
         async function traerInfo() {
             const todosUsuarios = await GetUsuariosUnico(localStorage.getItem("id_usuario"))
@@ -31,12 +34,22 @@ function MainProfile() {
 
             <div className="perfil-container">
                 {/* Imagen de portada */}
+                <img className='w-100 h-25' src={usuario.banner} alt="" />
                 <div className="portada">
-                    <div className="avatar">
-                        <span><img style={{height:'100px', width:'100px'}} src="https://res.cloudinary.com/doaeh7hcj/image/upload/v1749486367/qrtfsufpiogeu4i5wsxw.png" alt="" /></span>
+                    <div className="avatar"
+                     onClick={() => {
+                    setShowModal(true);
+                    localStorage.setItem("usuario_id",usuario.user_id)
+                  }}
+                     onMouseOver={()=>setMostrar(true)} 
+                     onMouseLeave={()=>setMostrar(false)}>
+                        {mostrar &&
+                        <i className="bi bi-pencil-square"></i>
+                        }
+                        <img src={usuario.img} alt="" />
                     </div>
                 </div>
-
+                <ModalPerfillUsuario show={showModal} onClose={() => setShowModal(false)}  />
                 {/* Contenido */}
 
                 

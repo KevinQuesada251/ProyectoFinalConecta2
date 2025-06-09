@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 
-const Cloudinary = () => {
+const Cloudinary = ({}) => {
 
     const preset_name = "usuario";                        
     const cloud_name = "doaeh7hcj"                          
@@ -55,12 +55,7 @@ const Cloudinary = () => {
         {/* ------------------------------------------------------------------------------------ */}
 
 
-        {/* 9 - Si loading true, Mostramos Loading, si no mostramos la imagen la cual su url deberia estar cargada en un estado local */}
-        {loading ? (
-            <h3>Loading...</h3>
-        ) : (
-        <img src={image} alt="imagen subida"/>
-        )}
+      
         {/* ------------------------------------------------------------------------------------ */}
 
     </div>
