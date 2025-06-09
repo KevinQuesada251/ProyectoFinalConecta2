@@ -8,7 +8,6 @@ function Perfil() {
     <div>
       <Nav/>
        <MainProfile/>
-       <Cloudinary/>
        <Footer/>
     </div>
   )

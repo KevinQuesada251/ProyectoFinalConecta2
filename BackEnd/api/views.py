@@ -192,6 +192,10 @@ class EditarUsuarioView(APIView):
             extras.edad = data["edad"]
         if data.get("nacionalidad"):
             extras.nacionalidad = data["nacionalidad"]
+        if data.get("img"):
+            extras.img = data["img"]
+        if data.get("banner"):
+            extras.banner = data["banner"]
 
         extras.save()
 
