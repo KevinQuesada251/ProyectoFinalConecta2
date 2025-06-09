@@ -13,13 +13,15 @@ function MainProfile() {
         async function traerInfo() {
             const todosUsuarios = await GetUsuariosUnico(localStorage.getItem("id_usuario"))
             setUsuario(todosUsuarios)
+            console.log(todosUsuarios);
+            
             
         }
         traerInfo()
-        console.log(usuario);
+        
         
     }, [])
-
+    
     useEffect(() => {
         async function traerUbicaciones() {
             const ubicacionesUsuario = await Llamados.GetUbicacionesUnica(localStorage.getItem("id_usuario"))
@@ -34,7 +36,7 @@ function MainProfile() {
 
             <div className="perfil-container">
                 {/* Imagen de portada */}
-                <img className='w-100 h-25' src={usuario.banner} alt="" />
+                <img className='w-25 h-25' src={usuario.banner} alt="" />
                 <div className="portada">
                     <div className="avatar"
                      onClick={() => {
@@ -46,7 +48,7 @@ function MainProfile() {
                         {mostrar &&
                         <i className="bi bi-pencil-square"></i>
                         }
-                        <img src={usuario.img} alt="" />
+                        <img className='h-25 w-25' src={usuario.img} alt="" />
                     </div>
                 </div>
                 <ModalPerfillUsuario show={showModal} onClose={() => setShowModal(false)}  />
