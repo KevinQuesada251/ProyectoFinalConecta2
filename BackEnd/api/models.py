@@ -36,3 +36,4 @@ class CrearUbicacion(models.Model):
 class Comentarios_Respuestas(models.Model):
     comentario = models.ForeignKey(Comentarios, on_delete=models.CASCADE)
     respuesta = models.ForeignKey(Respuestas, on_delete=models.CASCADE) 
+    

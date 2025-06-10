@@ -11,6 +11,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework_simplejwt.tokens import RefreshToken,AccessToken    
 from rest_framework.permissions import BasePermission,SAFE_METHODS
 
+# Permisos
 class Permisos(BasePermission):
     def has_permission(self, request,view):
         usuario = request.user
@@ -38,7 +39,7 @@ class Permisos(BasePermission):
             
         return False
     
-    
+# Ubicaciones 
 class UbicacionesListCreateView(ListCreateAPIView):
     permission_classes = [Permisos]
     queryset = Ubicaciones.objects.all()
@@ -56,7 +57,8 @@ class ListarUnicaUbicacion(APIView):
         serializer = UbicacionesSerializer(ubicaciones_usuario, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
     
-    
+ 
+# Comentarios    
 class ComentariosListCreateView(ListCreateAPIView):
     permission_classes = [Permisos]
     queryset = Comentarios.objects.all()
@@ -66,7 +68,9 @@ class ComentariosDetailView(RetrieveUpdateDestroyAPIView):
     permission_classes = [Permisos]
     queryset = Comentarios.objects.all()
     serializer_class = ComentariosSerializer
-    
+   
+   
+ # Respuestas
 class RespuestasListCreateView(ListCreateAPIView):
     permission_classes = [Permisos]
     queryset = Respuestas.objects.all()
@@ -77,6 +81,51 @@ class RespuestasDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Respuestas.objects.all()
     serializer_class = RespuestasSerializer
 
+#Roles
+class RolesView(APIView):
+    permission_classes = [Permisos]
+    def get(self,request):
+        users = User.objects.all()
+        
+        data = []
+        for user in users:
+            data.append({
+                "username": user.username,
+                "groups": [group.name for group in user.groups.all()]
+
+            })
+        return Response(data)   
+    
+    
+
+        
+class EditarRolesView(APIView):
+      def patch(self,request,username):
+        rol = request.data.get('name')
+        lookup_field = 'username'
+        
+        if not username or not rol:
+            return Response({'error': 'Se requiere username y name (grupo)'}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            user = User.objects.get(username=username)
+        except User.DoesNotExist:
+            return Response({'error': 'Usuario no encontrado'}, status=status.HTTP_404_NOT_FOUND)
+
+        try:
+            group = Group.objects.get(name=rol)
+        except Group.DoesNotExist:
+            return Response({'error': 'Grupo no encontrado'}, status=status.HTTP_404_NOT_FOUND)
+     
+        user.groups.add(group)
+        user.save()
+
+        return Response({
+            'message': f'Se asignó el grupo "{rol}" al usuario "{username}" correctamente.'
+        }, status=status.HTTP_200_OK)
+    
+
+#Usuario
 class UsuariosModeloListView(ListAPIView):
     permission_classes = [Permisos]
     queryset = UsuariosModelo.objects.all()
@@ -89,7 +138,7 @@ class ListarUsuariosView(ListAPIView):
     
 class ListarUsuarioUnicoView(RetrieveUpdateDestroyAPIView):
     permission_classes = [Permisos]
-    lookup_field = "user_id"
+    lookup_field = "pk"
     queryset = UsuariosModelo.objects.select_related('user').all()
     serializer_class = UsuarioModeloSerializer
     
@@ -97,6 +146,7 @@ class UsuariosDetailView(RetrieveUpdateDestroyAPIView):
     permission_classes = [Permisos]
     queryset = UsuariosModelo.objects.select_related('user').all()
     serializer_class = UsuarioModeloSerializer
+    
     
 # Vista con APIView
         

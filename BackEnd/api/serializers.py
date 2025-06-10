@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import Ubicaciones,Comentarios,Respuestas,UsuariosModelo
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
  
 class UbicacionesSerializer(serializers.ModelSerializer):
     class Meta:
@@ -22,6 +22,8 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ['id','username','password','email']
         
+    
+        
 class UsuarioModeloSerializer(serializers.ModelSerializer):
     user_id = serializers.IntegerField(source='user.id', read_only=True)
     username = serializers.CharField(source='user.username', read_only=True)
@@ -31,3 +33,4 @@ class UsuarioModeloSerializer(serializers.ModelSerializer):
     class Meta:
         model = UsuariosModelo
         fields = ["id",'user_id','username', 'first_name', 'last_name', 'email', 'edad', 'nacionalidad','img','banner']
+        
