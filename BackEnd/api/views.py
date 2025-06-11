@@ -1,6 +1,6 @@
-from rest_framework.generics import RetrieveUpdateDestroyAPIView, ListCreateAPIView, ListAPIView
-from .models import Ubicaciones,Comentarios,Respuestas, UsuariosModelo
-from .serializers import UbicacionesSerializer,ComentariosSerializer,RespuestasSerializer,UsuarioModeloSerializer
+from rest_framework.generics import RetrieveUpdateDestroyAPIView, ListCreateAPIView, ListAPIView,DestroyAPIView,UpdateAPIView
+from .models import Ubicaciones,Comentarios,Respuestas, UsuariosModelo,Anuncios
+from .serializers import UbicacionesSerializer,ComentariosSerializer,RespuestasSerializer,UsuarioModeloSerializer,AnunciosSerializer
 from django.contrib.auth.models import User,Group
 from rest_framework.views import APIView
 from .models import UsuariosModelo
@@ -275,8 +275,19 @@ class LoginView(APIView):
              return Response({"error":"Invalido"},status=401)
 
         
-    
+class AnunciosListCreateView(ListCreateAPIView):
+    queryset = Anuncios.objects.all()
+    serializer_class = AnunciosSerializer
     
          
-        
+class AnunciosUpdateView(UpdateAPIView):
+    lookup_field = "id"
+    queryset = Anuncios.objects.all()
+    serializer_class = AnunciosSerializer
+    
+class AnunciosDeleteView(DestroyAPIView):
+    lookup_field = "id"
+    queryset = Anuncios.objects.all()
+    serializer_class = AnunciosSerializer
+    
         

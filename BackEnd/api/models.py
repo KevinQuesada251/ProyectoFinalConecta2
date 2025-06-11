@@ -37,3 +37,13 @@ class Comentarios_Respuestas(models.Model):
     comentario = models.ForeignKey(Comentarios, on_delete=models.CASCADE)
     respuesta = models.ForeignKey(Respuestas, on_delete=models.CASCADE) 
     
+class Anuncios(models.Model):
+    GRAVEDAD_CHOICES = [
+        ("leve","LEVE"),
+        ("grave","GRAVE"),
+        ("muy grave", "MUY GRAVE")
+    ]
+    texto_anuncio = models.TextField()
+    hora_anuncio = models.TimeField(auto_now_add=True)
+    fecha_anuncio = models.DateField(auto_now_add=True)
+    gravedad_anuncio = models.CharField(choices=GRAVEDAD_CHOICES,max_length=50)

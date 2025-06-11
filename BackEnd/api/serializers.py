@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Ubicaciones,Comentarios,Respuestas,UsuariosModelo
+from .models import Ubicaciones,Comentarios,Respuestas,UsuariosModelo,Anuncios
 from django.contrib.auth.models import User, Group
  
 class UbicacionesSerializer(serializers.ModelSerializer):
@@ -33,4 +33,9 @@ class UsuarioModeloSerializer(serializers.ModelSerializer):
     class Meta:
         model = UsuariosModelo
         fields = ["id",'user_id','username', 'first_name', 'last_name', 'email', 'edad', 'nacionalidad','img','banner']
+        
+class AnunciosSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Anuncios
+        fields = "__all__"
         

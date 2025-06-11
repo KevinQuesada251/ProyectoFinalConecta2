@@ -17,6 +17,7 @@ function MainProfile() {
         Llamados.GetUbicacionesUnica(idUsuario),
       ]);
       setUsuario(usuarioData);
+      console.log(usuarioData)
       setUbicaciones(ubicacionesData);
     }
     traerDatos();
@@ -27,7 +28,7 @@ return (
     {/* Banner con imagen de perfil */}
     <div className="position-relative">
       <img
-        src={usuario.banner || 'https://via.placeholder.com/1200x300'}
+        src={usuario.banner}
         alt="Banner"
         className="img-fluid w-100"
         style={{ height: '300px', objectFit: 'cover' }}
@@ -46,7 +47,7 @@ return (
       >
         <div className="position-relative">
           <img
-            src={usuario.img || 'https://via.placeholder.com/150'}
+            src={usuario.img}
             className="rounded-circle border border-white"
             style={{ width: '150px', height: '150px', objectFit: 'cover' }}
             alt="Avatar"

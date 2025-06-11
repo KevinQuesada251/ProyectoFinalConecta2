@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Comentario from './Comentario'
 function MainForo() {
   return (
     <div>
@@ -7,6 +7,7 @@ function MainForo() {
         <thead className="thead-dark">
           <tr>
             <th scope="col" className="w-50">Foro</th> {/* 50% ancho */}
+            <th scope="col"><Comentario /></th>
             <th scope="col">Publicaciones</th>
             <th scope="col">Ultima Publicacion</th>
           </tr>
