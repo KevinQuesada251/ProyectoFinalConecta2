@@ -1,8 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Comentario from './Comentario'
 import { Link } from 'react-router-dom'
+import Llamados from '../services/Llamados'
 
 function MainAnunciosForo() {
+    const [anuncios, setAnuncios] = useState([])
+
+    useEffect(()=>{
+        async function traerData() {
+            const data = await Llamados.getData('anuncios')
+            setAnuncios(data)
+        }
+        traerData()
+    },[])
   return (
     <div>
         <div className='col'>
@@ -15,13 +25,20 @@ function MainAnunciosForo() {
                 </div>
             </div>
              <div className='row'>
-                <button className='btn-primary'>Crear anuncio</button>
             </div>
             <div className='row'>
-                <Comentario/>
+                {anuncios.map((anuncio)=>(
+                    <Comentario
+                        key={anuncio.id}
+                        hora={anuncio.hora}
+                        fecha={anuncio.fecha_anuncio}
+                        anuncio={anuncio.texto_anuncio}
+                        gravedad={anuncio.gravedad_anuncio}
+                    />
+                ))}
             </div>
         </div>
-        <div className=''></div>
+        
     </div>
   )
 }

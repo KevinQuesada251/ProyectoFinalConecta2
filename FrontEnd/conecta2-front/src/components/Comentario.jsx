@@ -1,16 +1,16 @@
 import React from 'react'
 
-function Comentario({img, nombre, hora, comentario}) {
+function Comentario({ gravedad, fecha, hora, anuncio}) {
   return (
     <div>
         <div className='w-100 h-25 b-black' >
+
               <div className='row'>
-                <div className='col'>{img}</div>
-                <div className='col'>{nombre}</div>
-                <div className='col'>{hora}</div>
+                <div className='col'>{fecha} {hora}</div>
+                <div className='col'>{gravedad}</div>
               </div>
               <div className='row'>
-                <div className='col'>{comentario}</div>
+                <div className='col'>{anuncio}</div>
               </div>
         </div>
     </div>
