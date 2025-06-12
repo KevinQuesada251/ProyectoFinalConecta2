@@ -18,5 +18,4 @@ urlpatterns = [
     path('anuncios_eliminar/<int:id>/',AnunciosDeleteView.as_view(), name='users-eliminar-actualizar'),
     path('anuncios_actualizar/<int:id>/',AnunciosUpdateView.as_view(), name='users-eliminar-actualizar'),
     
-    
 ]

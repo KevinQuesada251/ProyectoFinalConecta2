@@ -8,6 +8,7 @@ import Contacto from '../pages/Contacto';
 import Perfil from '../pages/Perfil';
 import Admin from '../pages/Admin';
 import Foro from '../pages/Foro';
+import MainAnunciosForo from '../components/MainAnunciosForo';
 import Private from '../components/Private';
 
 function Routing() {
@@ -23,6 +24,7 @@ function Routing() {
                 <Route path='/profile' element={<Perfil/>}></Route>
                 <Route path='/admin' element={<Private element={<Admin/>}/>}/>
                 <Route path='/foro' element={<Foro/>}></Route>
+                <Route path='/anuncios' element={<MainAnunciosForo/>}></Route>
             </Routes>
         </Router>
     </div>

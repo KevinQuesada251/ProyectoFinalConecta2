@@ -41,7 +41,7 @@ class Permisos(BasePermission):
     
 # Ubicaciones 
 class UbicacionesListCreateView(ListCreateAPIView):
-    permission_classes = [Permisos]
+    
     queryset = Ubicaciones.objects.all()
     serializer_class = UbicacionesSerializer
     
@@ -276,6 +276,7 @@ class LoginView(APIView):
 
         
 class AnunciosListCreateView(ListCreateAPIView):
+    permission_classes=[Permisos]
     queryset = Anuncios.objects.all()
     serializer_class = AnunciosSerializer
     

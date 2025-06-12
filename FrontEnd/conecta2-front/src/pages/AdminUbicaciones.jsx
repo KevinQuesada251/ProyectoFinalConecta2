@@ -8,7 +8,7 @@ function AdminUbicaciones() {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    async function traerInfo() {
+    async function traerInfo() {  
       const todasUbicaciones = await Llamados.getData('ubicaciones')
       setUbicaciones(todasUbicaciones)
     }
