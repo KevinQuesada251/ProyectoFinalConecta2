@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Comentario({ gravedad, fecha, hora, anuncio}) {
+function Comentario({ gravedad, fecha, hora, anuncio, responder}) {
   return (
     <div>
         <div className='w-75 h-100 border border-dark' >
@@ -12,6 +12,7 @@ function Comentario({ gravedad, fecha, hora, anuncio}) {
               <div className='row'>
                 <div className='col'>{anuncio}</div>
               </div>
+              <div className='row'><button onClick={responder}>Responder</button></div>
         </div>
     </div>
   )

@@ -8,9 +8,10 @@ class UbicacionesSerializer(serializers.ModelSerializer):
         fields = '__all__'
         
 class ComentariosSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(source = 'usuario.username', read_only = True)
     class Meta:
         model = Comentarios
-        fields = '__all__'
+        fields = ['id','mensaje','username']
         
 class RespuestasSerializer(serializers.ModelSerializer):
     class Meta:

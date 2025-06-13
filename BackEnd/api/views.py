@@ -60,7 +60,7 @@ class ListarUnicaUbicacion(APIView):
  
 # Comentarios    
 class ComentariosListCreateView(ListCreateAPIView):
-    permission_classes = [Permisos]
+    # permission_classes = [Permisos]
     queryset = Comentarios.objects.all()
     serializer_class = ComentariosSerializer
     
