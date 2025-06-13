@@ -10,6 +10,7 @@ import Admin from '../pages/Admin';
 import Foro from '../pages/Foro';
 import MainAnunciosForo from '../components/MainAnunciosForo';
 import Private from '../components/Private';
+import MainComunidad from '../components/MainComunidad';
 
 function Routing() {
   return (
@@ -25,6 +26,7 @@ function Routing() {
                 <Route path='/admin' element={<Private element={<Admin/>}/>}/>
                 <Route path='/foro' element={<Foro/>}></Route>
                 <Route path='/anuncios' element={<MainAnunciosForo/>}></Route>
+                <Route path='/comunidad' element={<MainComunidad/>}></Route>
             </Routes>
         </Router>
     </div>

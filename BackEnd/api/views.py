@@ -138,7 +138,7 @@ class ListarUsuariosView(ListAPIView):
     
 class ListarUsuarioUnicoView(RetrieveUpdateDestroyAPIView):
     permission_classes = [Permisos]
-    lookup_field = "pk"
+    lookup_field = "user_id"
     queryset = UsuariosModelo.objects.select_related('user').all()
     serializer_class = UsuarioModeloSerializer
     

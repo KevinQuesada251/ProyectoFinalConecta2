@@ -8,12 +8,12 @@ class UbicacionesSerializer(serializers.ModelSerializer):
         fields = '__all__'
         
 class ComentariosSerializer(serializers.ModelSerializer):
-    class Metas:
+    class Meta:
         model = Comentarios
         fields = '__all__'
         
-class RespuestasSerializer(serializers.ModelField):
-    class Metas:
+class RespuestasSerializer(serializers.ModelSerializer):
+    class Meta:
         model = Respuestas
         fields = '__all__'
         

@@ -20,13 +20,8 @@ function MainForo() {
           </tr>
           <tr>
             <th scope="row" className="py-3 px-3">Comunidad</th>
-            <td className="py-3 px-3">Jacob</td>
+            <td className="py-3 px-3"><Link to={'/comunidad'}>Entrar</Link></td>
             <td className="py-3 px-3">Thornton</td>
-          </tr>
-          <tr>
-            <th scope="row" className="py-3 px-3">Sugerencias</th>
-            <td className="py-3 px-3">Larry</td>
-            <td className="py-3 px-3">the Bird</td>
           </tr>
         </tbody>
       </table>

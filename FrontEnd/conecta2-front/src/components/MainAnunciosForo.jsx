@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Comentario from './Comentario'
 import { Link } from 'react-router-dom'
 import Llamados from '../services/Llamados'
+import '../styles/Anuncios.css'
 
 function MainAnunciosForo() {
     const [anuncios, setAnuncios] = useState([])
@@ -16,11 +17,11 @@ function MainAnunciosForo() {
   return (
     <div>
         <div className='col'>
-            <div className='row'>
+            <div className='row' style={{background:'#12229D'}}>
                 <h1>Nombre del foro: "Anuncios Oficial"</h1>
             </div>
-            <div className='col'>
-                <div className='row'>
+            <div className='col' >
+                <div className='row' style={{background:'black'}}>
                     <Link to={'/foro'} >Volver a la principal</Link>
                 </div>
             </div>

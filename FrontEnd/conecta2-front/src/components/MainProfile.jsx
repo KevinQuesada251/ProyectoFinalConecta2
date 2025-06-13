@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import Llamados from '../services/Llamados';
 import { GetUsuariosUnico } from '../services/UsersServices';
 import ModalPerfillUsuario from './ModalPerfilUsuario';
+import { useNavigate } from 'react-router-dom';
 
 function MainProfile() {
   const [usuario, setUsuario] = useState({});
   const [ubicaciones, setUbicaciones] = useState([]);
   const [mostrar, setMostrar] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate()
 
   useEffect(() => {
     async function traerDatos() {
@@ -23,10 +25,16 @@ function MainProfile() {
     traerDatos();
   }, []);
 
+  function cerrar() {
+    localStorage.clear
+    navigate('/')
+  }
+
 return (
   <div className="container-fluid p-0">
     {/* Banner con imagen de perfil */}
     <div className="position-relative">
+      <button onClick={cerrar}>Cerrar Session</button>
       <img
         src={usuario.banner}
         alt="Banner"

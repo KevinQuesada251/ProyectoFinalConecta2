@@ -23,7 +23,7 @@ function FormLogin() {
         const ServerResponse = await PostLogin(obj)
         console.log(ServerResponse);
 
-        if (ServerResponse.mensaje && ServerResponse.rol === "usuario") {
+        if (ServerResponse.mensaje && ServerResponse.rol === "Usuario") {
 
             Swal.fire({
                 title: 'Inicio de sesion exitoso',

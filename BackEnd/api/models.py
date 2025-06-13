@@ -12,30 +12,26 @@ class UsuariosModelo(models.Model):
     
 #Modelo de las Ubicaciones
 class Ubicaciones(models.Model):
+    fecha_creacion = models.DateField(auto_now_add=True)
     nombre_ubicacion = models.CharField(max_length=100)
     descripcion = models.CharField(max_length=150)
-    latitud = models.TextField(default="0")
+    latitud = models.TextField(default="")
     longitud = models.TextField()
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     
 #Modelo de los Comentarios
 class Comentarios(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comentarios')
     mensaje = models.CharField(max_length=250)
     
 #Modelo de las Respuestas
 class Respuestas(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name='respuestas')
+    comentario = models.ForeignKey(Comentarios, on_delete=models.CASCADE, related_name='respuestas')
     mensaje_respuesta = models.CharField(max_length=250)
+    fecha = models.DateTimeField(auto_now_add=True)
     
-#Modelo de la tabla intermedia de Ubicaciones y Usuarios
-class CrearUbicacion(models.Model):
-    fecha_creacion = models.DateField
-    usuario = models.ForeignKey(UsuariosModelo,on_delete=models.CASCADE)
-    ubicacion = models.ForeignKey(Ubicaciones, on_delete=models.CASCADE)
     
-#Modelo de la tabla intermedia de Comentarios y Respuestas
-class Comentarios_Respuestas(models.Model):
-    comentario = models.ForeignKey(Comentarios, on_delete=models.CASCADE)
-    respuesta = models.ForeignKey(Respuestas, on_delete=models.CASCADE) 
     
 class Anuncios(models.Model):
     GRAVEDAD_CHOICES = [
