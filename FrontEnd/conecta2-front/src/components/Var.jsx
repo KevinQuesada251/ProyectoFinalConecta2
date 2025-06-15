@@ -1,6 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import { Link } from 'react-router-dom';
 
 const Var = ({ ubicaciones, usuarios, roles, comentarios, respuestas, anuncios }) => {
   return (
@@ -10,11 +11,11 @@ const Var = ({ ubicaciones, usuarios, roles, comentarios, respuestas, anuncios }
           <span className="fs-5 d-none d-sm-inline">Menu</span>
         </a>
         <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-          <li className="nav-item">
+           <Link to={'/home'} ><li className="nav-item">
             <a className="nav-link align-middle px-0">
-              <i className="fs-4 bi-house"></i> <span className="ms-1 d-none d-sm-inline">Home</span>
+             <i className="fs-4 bi-house"></i> <span className="ms-1 d-none d-sm-inline">Home</span>
             </a>
-          </li>
+          </li></Link>
 
           <li>
             <a  className="nav-link px-0 align-middle" onClick={usuarios}>

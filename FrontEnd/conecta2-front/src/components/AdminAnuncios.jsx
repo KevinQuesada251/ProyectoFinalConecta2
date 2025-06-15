@@ -24,7 +24,6 @@ function AdminAnuncios() {
     }
     const serverResponse = await Llamados.postData(obj,'anuncios')
   }
-  console.log(setGravedad);
   
 
   return (
@@ -48,7 +47,7 @@ function AdminAnuncios() {
                 <tr>
                   <td>{anuncio.id}</td>
                   <td>{anuncio.texto_anuncio}</td>
-                  <td>{anuncio.gravedad_anuncio}</td>
+                  <td>{anuncio.gravedad_anuncio }</td>
                   <td><button>Editar</button></td>
                   <td><button>Eliminar</button></td>
                 </tr>
@@ -61,9 +60,10 @@ function AdminAnuncios() {
         <div className='col'><label>Nuevo anuncio</label></div>
         <div className='col'>
             <select name="" id="" onClick={(e)=>setGravedad(e.target.value)}>
-                <option value="level">Level</option>
+                <option value="l
+                Level">Level</option>
                 <option value="grave">Grave</option>
-                <option value="muy grave">Muy grave</option>
+                <option value="Muy grave">Muy grave</option>
             </select>
         </div>
         <div className='col'><input onChange={(e)=>setNuevoAnuncio(e.target.value)} type="text" /></div>

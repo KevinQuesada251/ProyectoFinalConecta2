@@ -14,9 +14,11 @@ class ComentariosSerializer(serializers.ModelSerializer):
         fields = ['id','mensaje','username']
         
 class RespuestasSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(source='usuario.username', read_only=True)
+    
     class Meta:
         model = Respuestas
-        fields = '__all__'
+        fields = ['id', 'mensaje_respuesta', 'username', 'fecha' ,'comentario','usuario']
         
 class UserSerializer(serializers.ModelSerializer):
     class Meta:

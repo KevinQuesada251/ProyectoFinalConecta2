@@ -16,12 +16,10 @@ function MainForo() {
           <tr>
             <th scope="row" className="py-3 px-3">Anuncios Oficiales</th>
             <td className="py-3 px-3"><Link to={'/anuncios'}>Entrar</Link></td>
-            <td className="py-3 px-3">Otto</td>
           </tr>
           <tr>
             <th scope="row" className="py-3 px-3">Comunidad</th>
             <td className="py-3 px-3"><Link to={'/comunidad'}>Entrar</Link></td>
-            <td className="py-3 px-3">Thornton</td>
           </tr>
         </tbody>
       </table>

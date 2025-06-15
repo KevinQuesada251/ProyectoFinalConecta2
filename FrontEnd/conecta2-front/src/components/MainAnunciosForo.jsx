@@ -3,6 +3,7 @@ import Comentario from './Comentario'
 import { Link } from 'react-router-dom'
 import Llamados from '../services/Llamados'
 import '../styles/Anuncios.css'
+import Anuncio from './Anuncio'
 
 function MainAnunciosForo() {
     const [anuncios, setAnuncios] = useState([])
@@ -18,7 +19,7 @@ function MainAnunciosForo() {
     <div>
         <div className='col'>
             <div className='row' style={{background:'#12229D'}}>
-                <h1>Nombre del foro: "Anuncios Oficial"</h1>
+                <h1>Anuncios Oficial</h1>
             </div>
             <div className='col' >
                 <div className='row' style={{background:'black'}}>
@@ -29,11 +30,11 @@ function MainAnunciosForo() {
             </div>
             <div className='row'>
                 {anuncios.map((anuncio)=>(
-                    <Comentario
+                    <Anuncio
                         key={anuncio.id}
                         hora={anuncio.hora}
                         fecha={anuncio.fecha_anuncio}
-                        anuncio={anuncio.texto_anuncio}
+                        texto={anuncio.texto_anuncio}
                         gravedad={anuncio.gravedad_anuncio}
                     />
                 ))}
