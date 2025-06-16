@@ -8,7 +8,7 @@
   function AdminUsuarios() {
     const [usuarios, setUsuarios] = useState([])
     const [showModal, setShowModal] = useState(false);
-
+    const [recarga,setRecarga] = useState(false)
 
 
 
@@ -18,7 +18,7 @@
         setUsuarios(lista)
       }
       obtenerInfo()
-    }, [])
+    }, [usuarios])
 
 
     async function eliminar(id) {
@@ -32,6 +32,7 @@
         )
       );
       setActivar(prev => !prev);
+      setRecarga(!recarga)
     }
 
     return (

@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react';
 import Llamados from '../services/Llamados';
+import ModalRespuestas from './ModalRespuestas';
 
 function AdminRespuestas() {
 
   const [respuestas, setRespuestas] = useState([])
   const [recarga, setRecarga] = useState(false)
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(()=>{
     async function getData() {
@@ -15,7 +17,7 @@ function AdminRespuestas() {
       
     }
     getData()
-  },[recarga])
+  },[recarga,respuestas])
 
    async function eliminar(id) {
       const serverResponse = await Llamados.deleteData('respuestas',id)
@@ -47,7 +49,12 @@ function AdminRespuestas() {
                   <td>{respuesta.username}</td>
                   <td>{respuesta.mensaje_respuesta}</td>
                   <td>{respuesta.fecha }</td>
-                  <td><button className="btn btn-primary">Editar</button></td>
+                  <td><button className="btn btn-primary"
+                     onClick={() => {
+                        setShowModal(true);
+                        localStorage.setItem("respuesta",respuesta.id)
+                      }}
+                  >Editar</button></td>
                   <td><button className="btn btn-danger" onClick={()=>eliminar(respuesta.id)}>Eliminar</button></td>
                 </tr>
               </> 
@@ -55,6 +62,7 @@ function AdminRespuestas() {
           })}
         </tbody>
       </table>
+      <ModalRespuestas show={showModal} onClose={() => setShowModal(false)} id={localStorage.getItem('respuesta')} />
     </div>
   )
 }

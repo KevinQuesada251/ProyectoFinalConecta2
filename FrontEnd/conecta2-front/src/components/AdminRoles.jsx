@@ -14,7 +14,7 @@ function AdminRoles() {
       
     }
     getData()
-  },[])
+  },[roles])
 
   return (
     <div className='container-users'>

@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react';
 import Llamados from '../services/Llamados';
+import ModalComentarios from './ModalComentarios';
 
 function AdminComentarios() {
 
   const [comentarios, setComentarios] = useState([])
   const [recarga, setRecarga] = useState(false)
+  const [showModal, setShowModal] = useState(false);
+
 
   useEffect(()=>{
     async function getData() {
@@ -15,7 +18,7 @@ function AdminComentarios() {
       
     }
     getData()
-  },[recarga])
+  },[recarga,comentarios])
 
   async function eliminar(id) {
     const serverResponse = await Llamados.deleteData('comentarios',id)
@@ -46,7 +49,12 @@ function AdminComentarios() {
                   <td>{comentario.id}</td>
                   <td>{comentario.username}</td>
                   <td>{comentario.mensaje}</td>
-                  <td><button className="btn btn-primary">Editar</button></td>
+                  <td><button className="btn btn-primary"
+                       onClick={() => {
+                        setShowModal(true);
+                        localStorage.setItem("comentario",comentario.id)
+                      }}
+                  >Editar</button></td>
                   <td><button className="btn btn-danger" onClick={()=>eliminar(comentario.id)}>Eliminar</button></td>
                 </tr>
               </> 
@@ -54,6 +62,7 @@ function AdminComentarios() {
           })}
         </tbody>
       </table>
+      <ModalComentarios show={showModal} onClose={() => setShowModal(false)} id={localStorage.getItem('comentario')}/>
     </div>
   )
 }

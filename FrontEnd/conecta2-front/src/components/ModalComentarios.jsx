@@ -3,14 +3,16 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Llamados from '../services/Llamados';
 
-function ModalAnuncios({show, onClose, id}) {
-    const[anuncio, setAnuncio] = useState("")
+function ModalComentarios({show, onClose, id}) {
+    const[mensaje, setMensaje] = useState("")
 
     async function editar(id) {
     const obj = {
-      texto_anuncio: anuncio
+      mensaje: mensaje
     }
-    const serverResponse = await Llamados.patchData(obj,'anuncios_actualizar',id)
+    const serverResponse = await Llamados.patchData(obj,'comentarios',id)
+  
+
     console.log(serverResponse);
     
     console.log(id);
@@ -20,15 +22,15 @@ function ModalAnuncios({show, onClose, id}) {
     <div>
         <Modal show={show} onHide={onClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Editar Anuncios</Modal.Title>
+        <Modal.Title>Editar Comentarios</Modal.Title>
       </Modal.Header>
       <Modal.Body>
          <div className="mb-3">
-          <label>Anuncio</label>
+          <label>Comentario</label>
           <input
             type="text"
             className="form-control"
-            onChange={(e) => setAnuncio(e.target.value)}
+            onChange={(e) => setMensaje(e.target.value)}
           />
         </div>
       </Modal.Body>
@@ -49,4 +51,4 @@ function ModalAnuncios({show, onClose, id}) {
   )
 }
 
-export default ModalAnuncios
+export default ModalComentarios

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react';
 import Llamados from '../services/Llamados';
+import ModalAnuncios from './ModalAnuncios';
 
 function AdminAnuncios() {
 
@@ -8,6 +9,9 @@ function AdminAnuncios() {
   const [nuevoAnuncio, setNuevoAnuncio] = useState("")
   const [gravedad, setGravedad] = useState("")
   const [recarga, setRecarga] = useState(false)
+  const [showModal, setShowModal] = useState(false);
+
+
   useEffect(() => {
     async function getData() {
       const data = await Llamados.getData("anuncios")
@@ -16,7 +20,7 @@ function AdminAnuncios() {
 
     }
     getData()
-  }, [recarga])
+  }, [recarga,anuncios])
 
   async function cargar() {
     const obj = {
@@ -59,7 +63,12 @@ function AdminAnuncios() {
                   <td>{anuncio.id}</td>
                   <td>{anuncio.texto_anuncio}</td>
                   <td>{anuncio.gravedad_anuncio}</td>
-                  <td><button className="btn btn-primary">Editar</button></td>
+                  <td><button className="btn btn-primary"
+                      onClick={() => {
+                        setShowModal(true);
+                        localStorage.setItem("anuncio_id",anuncio.id)
+                      }}
+                  >Editar</button></td>
                   <td><button className="btn btn-danger" onClick={()=>eliminar(anuncio.id)}>Eliminar</button></td>
                 </tr>
               </>
@@ -87,7 +96,7 @@ function AdminAnuncios() {
           </div>
         </div>
       </div>
-
+          <ModalAnuncios show={showModal} onClose={() => setShowModal(false)} id={localStorage.getItem('anuncio_id')} />
     </div>
   )
 }
