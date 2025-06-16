@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import  CrearUsuarioView, DesactivarUsuarioView, EditarUsuarioView, LoginView, ListarUsuariosView,UsuariosDetailView, UbicacionesListCreateView, UbicacionesDetailView,ListarUsuarioUnicoView,ListarUnicaUbicacion,RolesView, EditarRolesView,AnunciosUpdateView,AnunciosDeleteView,AnunciosListCreateView, ComentariosListCreateView, ComentariosDetailView,RespuestasListCreateView, RespuestasDetailView
+from .views import  CrearUsuarioView, DesactivarUsuarioView, EditarUsuarioView, LoginView, ListarUsuariosView,UsuariosDetailView, UbicacionesListCreateView, UbicacionesDetailView,ListarUsuarioUnicoView,ListarUnicaUbicacion,RolesView, EditarRolesView,AnunciosUpdateView,AnunciosDeleteView,AnunciosListCreateView, ComentariosListCreateView, ComentariosDetailView,RespuestasListCreateView, RespuestasDetailView, CrearRolesView
 
 urlpatterns = [
     path('users/',CrearUsuarioView.as_view(), name='user-crear'),
@@ -12,8 +12,9 @@ urlpatterns = [
     path('ubicaciones/',UbicacionesListCreateView.as_view(), name='ubicaciones-crear-listar'),
     path('ubicaciones/<int:pk>/',UbicacionesDetailView.as_view(), name='users-editar-eliminar'),
     path('ubicaciones/unica/<int:id>/',ListarUnicaUbicacion.as_view()),
-    path('roles/',RolesView.as_view(), name='roles-crear'),
+    path('roles/',RolesView.as_view(), name='roles-listar'),
     path('roles_editar/<int:id>/',EditarRolesView.as_view()),
+    path('roles_crear/',CrearRolesView.as_view(), name='roles-crear'),
     path('anuncios/',AnunciosListCreateView.as_view(), name='roles-crear'),
     path('anuncios_eliminar/<int:id>/',AnunciosDeleteView.as_view(), name='anuncios-eliminar-actualizar'),
     path('anuncios_actualizar/<int:id>/',AnunciosUpdateView.as_view(), name='anuncios-eliminar-actualizar'),

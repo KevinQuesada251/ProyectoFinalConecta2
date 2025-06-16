@@ -82,6 +82,21 @@ class RespuestasDetailView(RetrieveUpdateDestroyAPIView):
     serializer_class = RespuestasSerializer
 
 #Roles
+class CrearRolesView(APIView):
+    def post(self, request):
+        newgroup = request.data.get('newgroup')
+        
+        if not newgroup:
+            return Response({'error':'Debe dar un nombre de grupo'}, status= status.HTTP_400_BAD_REQUEST)
+        
+        group, created = Group.objects.get_or_create(name=newgroup)
+        
+        if created:
+            return Response({'message': f'Se creó el grupo "{newgroup}" correctamente.'}, status=status.HTTP_201_CREATED)
+        else:
+            return Response({'message': f'El grupo "{newgroup}" ya existe.'}, status=status.HTTP_200_OK)
+        
+        
 class RolesView(APIView):
     permission_classes = [Permisos]
     def get(self,request):
