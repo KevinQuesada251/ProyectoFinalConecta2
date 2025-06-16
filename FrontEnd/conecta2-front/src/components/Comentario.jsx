@@ -10,7 +10,7 @@ function Comentario({ gravedad, anuncio, comentarioId, responder }) {
   const enviarRespuesta = async () => {
     if (respuestaTexto.trim() === "") return
     try {
-      await responder(comentarioId, respuestaTexto) // Usas la prop que viene de MainComunidad
+      await responder(comentarioId, respuestaTexto)
       setRespuestaTexto("")
       setMostrarInput(false)
       setRecarga(!recarga)
@@ -19,51 +19,67 @@ function Comentario({ gravedad, anuncio, comentarioId, responder }) {
     }
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     async function traerInfo() {
       const dataRespuestas = await Llamados.getData('respuestas')
       setRespuestas(dataRespuestas)
-      console.log(dataRespuestas);
-      
     }
     traerInfo()
-  },[recarga])
+  }, [recarga])
 
   const respuestasFiltradas = respuestas.filter(
     (r) => r.comentario === comentarioId
   )
 
   return (
-    <div className='w-75 h-100 border border-dark p-3 mb-3'>
-      <div className='row'>
-        <div className='col'>Usuario: {gravedad}</div>
+    <div className="border rounded-4 p-3 bg-white shadow-sm">
+      <div className="mb-2">
+        <strong className="text-primary">Usuario:</strong> {gravedad}
       </div>
-      <div className='row'>
-        <div className='col'>Comentario: {anuncio}</div>
+      <div className="mb-3">
+        <strong className="text-dark">Comentario:</strong> {anuncio}
       </div>
-      <div className='row'>
-        <div className='col'>
-          <button onClick={() => setMostrarInput(!mostrarInput)}>Responder</button>
-        </div>
+      <div className="mb-2">
+        <button
+          className="btn btn-outline-secondary btn-sm rounded-pill"
+          onClick={() => setMostrarInput(!mostrarInput)}
+        >
+          {mostrarInput ? "Cancelar" : "Responder"}
+        </button>
       </div>
+
       {mostrarInput && (
-        <div className='row mt-2'>
-          <div className='col'>
+        <div className="mt-3">
+          <div className="input-group mb-2">
             <input
               type="text"
+              className="form-control"
               value={respuestaTexto}
               onChange={(e) => setRespuestaTexto(e.target.value)}
-              placeholder="Escribe tu respuesta"
+              placeholder="Escribe tu respuesta..."
             />
-            <button onClick={enviarRespuesta} className='ms-2'>Enviar</button>
-            {respuestasFiltradas.map((respuesta)=>(
-              <div key={respuesta.id}>
-                  <p>{respuesta.username}</p>
-                  <p>{respuesta.mensaje_respuesta}  {respuesta.fecha}</p>
-              </div> 
-            ))}
+            <button
+              className="btn btn-success"
+              onClick={enviarRespuesta}
+            >
+              Enviar
+            </button>
           </div>
-     
+        </div>
+      )}
+
+      {respuestasFiltradas.length > 0 && (
+        <div className="mt-3">
+          <h6 className="text-secondary">Respuestas:</h6>
+          <ul className="list-group list-group-flush">
+            {respuestasFiltradas.map((respuesta) => (
+              <li key={respuesta.id} className="list-group-item">
+                <p className="mb-1 fw-semibold">{respuesta.username}</p>
+                <p className="mb-0">{respuesta.mensaje_respuesta}</p>
+                <small className="text-muted">{respuesta.fecha}</small>
+              </li>
+            ))}
+          </ul>
         </div>
       )}
     </div>
@@ -71,4 +87,5 @@ function Comentario({ gravedad, anuncio, comentarioId, responder }) {
 }
 
 export default Comentario
+
 

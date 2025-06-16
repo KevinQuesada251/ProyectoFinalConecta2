@@ -6,41 +6,54 @@ import '../styles/Anuncios.css'
 import Anuncio from './Anuncio'
 
 function MainAnunciosForo() {
-    const [anuncios, setAnuncios] = useState([])
+  const [anuncios, setAnuncios] = useState([])
 
-    useEffect(()=>{
-        async function traerData() {
-            const data = await Llamados.getData('anuncios')
-            setAnuncios(data)
-        }
-        traerData()
-    },[])
+  useEffect(() => {
+    async function traerData() {
+      const data = await Llamados.getData('anuncios')
+      setAnuncios(data)
+    }
+    traerData()
+  }, [])
+
   return (
-    <div>
-        <div className='col'>
-            <div className='row' style={{background:'#12229D'}}>
-                <h1>Anuncios Oficial</h1>
-            </div>
-            <div className='col' >
-                <div className='row' style={{background:'black'}}>
-                    <Link to={'/foro'} >Volver a la principal</Link>
-                </div>
-            </div>
-             <div className='row'>
-            </div>
-            <div className='row'>
-                {anuncios.map((anuncio)=>(
-                    <Anuncio
-                        key={anuncio.id}
-                        hora={anuncio.hora}
-                        fecha={anuncio.fecha_anuncio}
-                        texto={anuncio.texto_anuncio}
-                        gravedad={anuncio.gravedad_anuncio}
-                    />
-                ))}
-            </div>
+    <div className="container-fluid py-5" style={{ background: '#CAE8FF' }}>
+      <div className="container">
+        {/* Encabezado */}
+        <div className="row mb-4">
+          <div className="col-12 text-center">
+            <h1 className="text-white py-3" style={{ backgroundColor: '#12229D', borderRadius: '1rem' }}>
+              Anuncios Oficiales
+            </h1>
+          </div>
         </div>
-        
+
+        {/* Botón de regreso */}
+        <div className="row mb-4">
+          <div className="col-12 text-center">
+            <Link
+              to="/foro"
+              className="btn btn-outline-dark rounded-pill px-4"
+            >
+              Volver a la principal
+            </Link>
+          </div>
+        </div>
+
+        {/* Anuncios */}
+        <div className="row g-4">
+          {anuncios.map((anuncio) => (
+            <div className="col-12" key={anuncio.id}>
+              <Anuncio
+                hora={anuncio.hora}
+                fecha={anuncio.fecha_anuncio}
+                texto={anuncio.texto_anuncio}
+                gravedad={anuncio.gravedad_anuncio}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   )
 }

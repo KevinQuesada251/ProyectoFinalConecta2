@@ -1,36 +1,69 @@
 import React from 'react';
 import { Navbar, Nav, Container, Offcanvas } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import '../styles/nav.css'
 
 function Navigation() {
+  const linkStyle = {
+    color: 'white',
+    fontFamily: "'Bungee Tint', sans-serif",
+    textDecoration: 'none',
+    transition: 'all 0.2s ease-in-out',
+  };
+
+  const hoverStyle = {
+    textDecoration: 'underline',
+    color: '#d1e3ff'
+  };
+
   return (
-    <Navbar
-      expand="md"
-      className="Navbar"
-    >
+    <Navbar expand="md" style={{ backgroundColor: '#12229D' }}>
       <Container fluid>
-        <Navbar.Brand as={Link} to={"/home"} className="text-white"><img alt="Logo" className="d-inline-block align-text-top rounded-circle" height="120" src="src/assets/logo_sin_fondo.png"  /></Navbar.Brand>
-        <Navbar.Toggle aria-controls="offcanvasNavbar" className="border-0" style={{ filter: 'invert(1)' }} />
+        <Navbar.Brand as={Link} to="/home" style={{ color: 'white' }}>
+          <img
+            alt="Logo"
+            className="d-inline-block align-text-top rounded-circle"
+            height="120"
+            src="src/assets/logo_sin_fondo.png"
+          />
+        </Navbar.Brand>
+        <Navbar.Toggle
+          aria-controls="offcanvasNavbar"
+          className="border-0"
+          style={{ filter: 'invert(1)' }}
+        />
 
         <Navbar.Offcanvas
           id="offcanvasNavbar"
           aria-labelledby="offcanvasNavbarLabel"
           placement="start"
-          style={{  color: '#12229D' }}
+          style={{ backgroundColor: '#12229D', color: 'white' }}
         >
-          <Offcanvas.Header closeButton>
-            <Offcanvas.Title id="offcanvasNavbarLabel">
+          <Offcanvas.Header closeButton style={{ borderBottom: '1px solid #ffffff33' }}>
+            <Offcanvas.Title id="offcanvasNavbarLabel" style={{ color: 'white' }}>
               Menú
             </Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
             <Nav className="justify-content-end flex-grow-1 pe-3">
-              <Nav.Link className="custom-nav-link sidebar-text" style={{color:'white', fontFamily: "'Bungee Tint', sans-serif;" }} as={Link} to="/home">Inicio</Nav.Link>
-              <Nav.Link className="desktop-white sidebar-text" as={Link} to="/map">Mapa</Nav.Link>
-              <Nav.Link className="desktop-white sidebar-text" as={Link} to="/profile">Perfil</Nav.Link>
-              <Nav.Link className="desktop-white sidebar-text" as={Link} to="/foro">Foro</Nav.Link>
-              <Nav.Link className="desktop-white sidebar-text" as={Link} to="/contact">Contacto</Nav.Link>
+              {['/home', '/map', '/profile', '/foro', '/contact'].map((path, index) => {
+                const labels = ['Inicio', 'Mapa', 'Perfil', 'Foro', 'Contacto'];
+                return (
+                  <Nav.Link
+                    key={path}
+                    as={Link}
+                    to={path}
+                    style={linkStyle}
+                    onMouseEnter={e => {
+                      Object.assign(e.target.style, hoverStyle);
+                    }}
+                    onMouseLeave={e => {
+                      Object.assign(e.target.style, linkStyle);
+                    }}
+                  >
+                    {labels[index]}
+                  </Nav.Link>
+                );
+              })}
             </Nav>
           </Offcanvas.Body>
         </Navbar.Offcanvas>
@@ -40,5 +73,4 @@ function Navigation() {
 }
 
 export default Navigation;
-
 
