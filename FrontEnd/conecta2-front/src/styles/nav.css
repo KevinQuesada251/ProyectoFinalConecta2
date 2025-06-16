@@ -1,13 +1,28 @@
-
-
-/* Por defecto, texto oscuro para sidebar (móvil) */
-.sidebar-text {
-  color: #12229D
+.Navbar{
+  background-color: #1E1E5A;
+  display: flex;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 22px;
 }
 
-/* En pantallas md o más grandes (escritorio), texto blanco */
-@media (min-width: 768px) {
-  .desktop-white {
-    color: white !important;
-  }
+.font-roboto {
+  font-family: 'Roboto', sans-serif;
 }
+
+.nav-link {
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #a0c4ff; /* azul suave */
+}
+
+
+ /*background: '#1E1E5A',
+        minHeight: '100px',
+        
+        alignItems: 'center',
+        fontFamily:'Roboto, sans-serif',
+        fontSize: '22px'

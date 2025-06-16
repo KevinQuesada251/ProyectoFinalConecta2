@@ -12,9 +12,9 @@ const Var = ({ ubicaciones, usuarios, roles, comentarios, respuestas, anuncios }
         </a>
         <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
            <Link to={'/home'} ><li className="nav-item">
-            <a className="nav-link align-middle px-0">
+            <p className="nav-link align-middle px-0">
              <i className="fs-4 bi-house"></i> <span className="ms-1 d-none d-sm-inline">Home</span>
-            </a>
+            </p>
           </li></Link>
 
           <li>
@@ -62,8 +62,8 @@ const Var = ({ ubicaciones, usuarios, roles, comentarios, respuestas, anuncios }
 
         <hr />
         <div className="dropdown pb-4">
-          <a href="#" className="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="" alt="profile" width="30" height="30" className="rounded-circle" />
+          <a  className="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="#" alt="profile" width="30" height="30" className="rounded-circle" />
             <span className="d-none d-sm-inline mx-1">User</span>
           </a>
         </div>

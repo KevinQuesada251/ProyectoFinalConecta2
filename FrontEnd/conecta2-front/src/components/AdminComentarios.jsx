@@ -1,8 +1,60 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useState } from 'react';
+import Llamados from '../services/Llamados';
 
 function AdminComentarios() {
+
+  const [comentarios, setComentarios] = useState([])
+  const [recarga, setRecarga] = useState(false)
+
+  useEffect(()=>{
+    async function getData() {
+      const data = await Llamados.getData("comentarios")
+      setComentarios(data)
+      console.log(data);
+      
+    }
+    getData()
+  },[recarga])
+
+  async function eliminar(id) {
+    const serverResponse = await Llamados.deleteData('comentarios',id)
+    setRecarga(!recarga)
+  }
+ 
+  
+
   return (
-    <div>AdminComentarios</div>
+    <div className='container-users'>
+      <h1 className='tituloAdmin'>Administracion</h1>
+      <h2 className='tituloUsuarios'>Comentarios</h2>
+      <table className="table border border-dark">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope='col'>Comentario</th>
+            <th scope='col'>Editar</th>
+            <th scope='col'>Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+          {comentarios.map((comentario) => {
+            return (
+              <>
+                <tr>
+                  <td>{comentario.id}</td>
+                  <td>{comentario.username}</td>
+                  <td>{comentario.mensaje}</td>
+                  <td><button className="btn btn-primary">Editar</button></td>
+                  <td><button className="btn btn-danger" onClick={()=>eliminar(comentario.id)}>Eliminar</button></td>
+                </tr>
+              </> 
+            )
+          })}
+        </tbody>
+      </table>
+    </div>
   )
 }
 

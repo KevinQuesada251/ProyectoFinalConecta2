@@ -18,7 +18,7 @@ urlpatterns = [
     path('anuncios_eliminar/<int:id>/',AnunciosDeleteView.as_view(), name='anuncios-eliminar-actualizar'),
     path('anuncios_actualizar/<int:id>/',AnunciosUpdateView.as_view(), name='anuncios-eliminar-actualizar'),
     path('comentarios/',ComentariosListCreateView.as_view(), name='comentarios-crear-listar'),
-    path('comentarios/<int:id>/',ComentariosDetailView.as_view(), name='comentarios-eliminar-actualizar'),
+    path('comentarios/<int:pk>/',ComentariosDetailView.as_view(), name='comentarios-eliminar-actualizar'),
     path('respuestas/',RespuestasListCreateView.as_view(), name='resouestas-crear-listar'),
-    path('respuestas/<int:id>/',RespuestasDetailView.as_view(), name='comentarios-eliminar-actualizar'),
+    path('respuestas/<int:pk>/',RespuestasDetailView.as_view(), name='comentarios-eliminar-actualizar'),
 ]

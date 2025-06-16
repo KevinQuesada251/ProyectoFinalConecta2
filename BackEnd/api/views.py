@@ -72,7 +72,7 @@ class ComentariosDetailView(RetrieveUpdateDestroyAPIView):
    
  # Respuestas
 class RespuestasListCreateView(ListCreateAPIView):
-    permission_classes = [Permisos]
+    #permission_classes = [Permisos]
     queryset = Respuestas.objects.all()
     serializer_class = RespuestasSerializer
     

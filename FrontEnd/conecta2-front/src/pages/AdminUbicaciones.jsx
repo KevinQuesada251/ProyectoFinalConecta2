@@ -37,13 +37,13 @@ function AdminUbicaciones() {
           <tbody>
             {ubicaciones.map((ubicacion) => {
               return (
-                <>
+                
                   <tr key={ubicacion.id}>
                     <td>{ubicacion.nombre_ubicacion}</td>
                     <td>{ubicacion.descripcion}</td>
                     <td>{ubicacion.latitud}</td>
                     <td>{ubicacion.longitud}</td>
-                    <td><button className="btn btn-success"
+                    <td><button className="btn btn-primary"
                       onClick={() => {
                         setShowModal(true);
                         localStorage.setItem("ubicacion_id",ubicacion.id)
@@ -59,7 +59,7 @@ function AdminUbicaciones() {
                     <ModalUbicaciones latitud={ubicacion.latitud} longitud={ubicacion.longitud} show={showModal} onClose={() => setShowModal(false)} nombreM={ubicacion.nombre_ubicacion} descripcionM={ubicacion.descripcion} />
                   </tr>
 
-                </>
+                
               )
             })}
           </tbody>

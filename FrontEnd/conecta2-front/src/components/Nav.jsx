@@ -7,17 +7,10 @@ function Navigation() {
   return (
     <Navbar
       expand="md"
-      variant="light"
-      className=""
-      style={{
-        background: '#12229D',
-        minHeight: '100px',
-        display: 'flex',
-        alignItems: 'center'
-      }}
+      className="Navbar"
     >
       <Container fluid>
-        <Navbar.Brand as={Link} to={"/home"} className="text-white">Conectado2</Navbar.Brand>
+        <Navbar.Brand as={Link} to={"/home"} className="text-white"><img alt="Logo" className="d-inline-block align-text-top rounded-circle" height="120" src="src/assets/logo_sin_fondo.png"  /></Navbar.Brand>
         <Navbar.Toggle aria-controls="offcanvasNavbar" className="border-0" style={{ filter: 'invert(1)' }} />
 
         <Navbar.Offcanvas
@@ -33,7 +26,7 @@ function Navigation() {
           </Offcanvas.Header>
           <Offcanvas.Body>
             <Nav className="justify-content-end flex-grow-1 pe-3">
-              <Nav.Link className="desktop-white sidebar-text" as={Link} to="/home">Inicio</Nav.Link>
+              <Nav.Link className="custom-nav-link sidebar-text" style={{color:'white', fontFamily: "'Bungee Tint', sans-serif;" }} as={Link} to="/home">Inicio</Nav.Link>
               <Nav.Link className="desktop-white sidebar-text" as={Link} to="/map">Mapa</Nav.Link>
               <Nav.Link className="desktop-white sidebar-text" as={Link} to="/profile">Perfil</Nav.Link>
               <Nav.Link className="desktop-white sidebar-text" as={Link} to="/foro">Foro</Nav.Link>
