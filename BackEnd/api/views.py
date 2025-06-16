@@ -90,6 +90,7 @@ class RolesView(APIView):
         data = []
         for user in users:
             data.append({
+                "user_id": user.id,
                 "username": user.username,
                 "groups": [group.name for group in user.groups.all()]
 
@@ -100,15 +101,14 @@ class RolesView(APIView):
 
         
 class EditarRolesView(APIView):
-      def patch(self,request,username):
+    def patch(self, request, id):
         rol = request.data.get('name')
-        lookup_field = 'username'
-        
-        if not username or not rol:
-            return Response({'error': 'Se requiere username y name (grupo)'}, status=status.HTTP_400_BAD_REQUEST)
+
+        if not id or not rol:
+            return Response({'error': 'Se requiere id y name (grupo)'}, status=status.HTTP_400_BAD_REQUEST)
 
         try:
-            user = User.objects.get(username=username)
+            user = User.objects.get(id=id)
         except User.DoesNotExist:
             return Response({'error': 'Usuario no encontrado'}, status=status.HTTP_404_NOT_FOUND)
 
@@ -116,15 +116,15 @@ class EditarRolesView(APIView):
             group = Group.objects.get(name=rol)
         except Group.DoesNotExist:
             return Response({'error': 'Grupo no encontrado'}, status=status.HTTP_404_NOT_FOUND)
-     
+
+        user.groups.clear()  # O eliminar solo si ya está en uno
         user.groups.add(group)
         user.save()
 
         return Response({
-            'message': f'Se asignó el grupo "{rol}" al usuario "{username}" correctamente.'
+            'message': f'Se asignó el grupo "{rol}" al usuario con ID {id} correctamente.'
         }, status=status.HTTP_200_OK)
-    
-
+        
 #Usuario
 class UsuariosModeloListView(ListAPIView):
     permission_classes = [Permisos]

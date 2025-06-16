@@ -13,7 +13,7 @@ urlpatterns = [
     path('ubicaciones/<int:pk>/',UbicacionesDetailView.as_view(), name='users-editar-eliminar'),
     path('ubicaciones/unica/<int:id>/',ListarUnicaUbicacion.as_view()),
     path('roles/',RolesView.as_view(), name='roles-crear'),
-    path('roles/editar/<str:username>/',EditarRolesView.as_view()),
+    path('roles_editar/<int:id>/',EditarRolesView.as_view()),
     path('anuncios/',AnunciosListCreateView.as_view(), name='roles-crear'),
     path('anuncios_eliminar/<int:id>/',AnunciosDeleteView.as_view(), name='anuncios-eliminar-actualizar'),
     path('anuncios_actualizar/<int:id>/',AnunciosUpdateView.as_view(), name='anuncios-eliminar-actualizar'),

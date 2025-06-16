@@ -18,7 +18,7 @@
         setUsuarios(lista)
       }
       obtenerInfo()
-    }, [usuarios])
+    }, [])
 
 
     async function eliminar(id) {
