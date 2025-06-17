@@ -20,6 +20,13 @@ function AdminRoles() {
     getData()
   },[])
 
+  async function creaRol() {
+    const obj = {
+      newgroup : nuevoRol
+    }
+    const serverResponse = await Llamados.postData(obj,'roles_crear')
+  }
+
   return (
     <div className='container-users'>
       <h1 className='tituloAdmin'>Administracion</h1>
@@ -63,7 +70,7 @@ function AdminRoles() {
             <input className="form-control" onChange={(e) => setNuevoRol(e.target.value)} type="text" />
           </div>
           <div className='col'>
-            <button className='btn btn-success w-100' >Crear</button>
+            <button className='btn btn-success w-100' onClick={creaRol}>Crear</button>
           </div>
         </div>
       </div>

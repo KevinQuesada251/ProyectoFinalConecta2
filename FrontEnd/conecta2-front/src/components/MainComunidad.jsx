@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import Comentario from './Comentario'
 import Llamados from '../services/Llamados'
+import { Link } from 'react-router-dom'
 
 function MainComunidad() {
   const [todosComentarios, setTodosComentarios] = useState([])
+  const [comentario,setComentario] = useState("")
 
   useEffect(() => {
     async function traerComentarios() {
@@ -23,6 +25,16 @@ function MainComunidad() {
     await Llamados.postData(obj, 'respuestas')
   }
 
+  async function enviar() {
+    const obj = {
+      usuario : parseInt(localStorage.getItem('id_usuario')),
+      mensaje: comentario
+    }
+    console.log(obj);
+    
+     const serverResponse = await Llamados.postData(obj,'comentarios')
+  }
+
   return (
     <div style={{ background: '#CAE8FF' }} className="container-fluid py-5">
       <div className="container">
@@ -34,6 +46,27 @@ function MainComunidad() {
               Comparte tus experiencias, dudas y sugerencias sobre conectividad. Aquí puedes interactuar con otros usuarios.
             </p>
           </div>
+        </div>
+
+           <div className="row mb-4">
+          <div className="col-12 text-center">
+            <Link
+              to="/foro"
+              className="btn btn-outline-dark rounded-pill px-4"
+            >
+              Volver a la principal
+            </Link>
+          </div>
+        </div>
+
+
+        <div className="row justify-content-center mb-4">
+           <div className="col-12 text-center">
+              <h2>Publica tu comentario</h2>
+              <input type="text" onChange={(e)=>setComentario(e.target.value)} />
+              <button onClick={enviar}>Enviar</button>
+          </div>
+
         </div>
 
         <div className="row">
