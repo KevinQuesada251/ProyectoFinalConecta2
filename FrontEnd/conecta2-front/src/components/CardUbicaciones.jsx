@@ -26,9 +26,9 @@ function CardUbicaciones({ nombreUbicacion, descripcion, latitud, longitud, user
       </MapContainer>
 
       <Card.Body>
-        <Card.Title>{username}</Card.Title>
-        <Card.Title>{nombreUbicacion}</Card.Title>
-        <Card.Text>{descripcion}</Card.Text>
+        <Card.Title>Usuario: {username}</Card.Title>
+        <Card.Title>Ubicacion: {nombreUbicacion}</Card.Title>
+        <Card.Text>Descripcion: {descripcion}</Card.Text>
       </Card.Body>
     </Card>
   );

@@ -25,16 +25,11 @@ function MainProfile() {
     traerDatos();
   }, []);
 
-  function cerrar() {
-    localStorage.clear
-    navigate('/')
-  }
 
 return (
   <div className="container-fluid p-0">
     {/* Banner con imagen de perfil */}
     <div className="position-relative">
-      <button onClick={cerrar}>Cerrar Session</button>
       <img
         src={usuario.banner}
         alt="Banner"

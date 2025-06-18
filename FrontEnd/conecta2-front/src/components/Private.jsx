@@ -12,7 +12,7 @@ const validarInicio=()=>{
 
 const Private = ({ element }) => {
   return(
-      validarInicio() ? element : <h1>NO ESTA AUTENTICADO</h1>
+      validarInicio() ? element : <img src="src/assets/401.png" alt="" style={{width:'100%', height:'100vh'}}/>
     )
 }
 
