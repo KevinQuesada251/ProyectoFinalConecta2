@@ -45,8 +45,8 @@ function Navigation() {
           </Offcanvas.Header>
           <Offcanvas.Body>
             <Nav className="justify-content-end flex-grow-1 pe-3">
-              {['/home', '/map', '/profile', '/foro', '/contact'].map((path, index) => {
-                const labels = ['Inicio', 'Mapa', 'Perfil', 'Foro', 'Contacto'];
+              {['/home', '/map', '/profile', '/foro', '/contact', '/ubicaciones '].map((path, index) => {
+                const labels = ['Inicio', 'Mapa', 'Perfil', 'Foro', 'Contacto', 'Ubicaciones'];
                 return (
                   <Nav.Link
                     key={path}

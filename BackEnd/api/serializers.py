@@ -3,9 +3,10 @@ from .models import Ubicaciones,Comentarios,Respuestas,UsuariosModelo,Anuncios
 from django.contrib.auth.models import User, Group
  
 class UbicacionesSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(source = 'usuario.username', read_only = True)
     class Meta:
         model = Ubicaciones
-        fields = '__all__'
+        fields = ['username','id','descripcion','nombre_ubicacion','latitud','longitud']
         
 class ComentariosSerializer(serializers.ModelSerializer):
     username = serializers.CharField(source = 'usuario.username', read_only = True)

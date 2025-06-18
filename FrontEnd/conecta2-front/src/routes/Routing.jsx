@@ -11,6 +11,7 @@ import Foro from '../pages/Foro';
 import MainAnunciosForo from '../components/MainAnunciosForo';
 import Private from '../components/Private';
 import MainComunidad from '../components/MainComunidad';
+import Ubicaciones from '../pages/Ubicaciones';
 
 function Routing() {
   return (
@@ -27,6 +28,7 @@ function Routing() {
                 <Route path='/foro' element={<Foro/>}></Route>
                 <Route path='/anuncios' element={<MainAnunciosForo/>}></Route>
                 <Route path='/comunidad' element={<MainComunidad/>}></Route>
+                <Route path='/ubicaciones' element={<Ubicaciones/>}></Route>
             </Routes>
         </Router>
     </div>
