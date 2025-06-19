@@ -1,9 +1,9 @@
 import React from 'react'
-import FormLogin from '../components/FormLogin'
+import FormLogin2 from '../components/FormLogin2'
 function Login() {
   return (
     <div>
-        <FormLogin/>
+        <FormLogin2/>
         
     </div>
   )

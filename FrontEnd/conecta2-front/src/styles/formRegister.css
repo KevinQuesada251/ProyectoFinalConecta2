@@ -16,7 +16,9 @@ input::-webkit-inner-spin-button {
     flex-direction: column;
     border-radius: 20px;
     background-color: #f4f6fc;
-    align-items: center
+    align-items: center;
+    box-sizing: bo;
+    
 }
 
 .inputRegister{

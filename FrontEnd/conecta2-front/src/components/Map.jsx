@@ -6,15 +6,12 @@ import Swal from 'sweetalert2';
 import ModalMap from './ModalMap';
 import Llamados from '../services/Llamados';
 
-// Arreglar ícono de Leaflet para React
+// Arreglar ícono de Leaflet
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
-  iconRetinaUrl:
-    'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
-  iconUrl:
-    'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
-  shadowUrl:
-    'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+  iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+  iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+  shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
 });
 
 function LocationMarker({ onMapClick }) {
@@ -44,11 +41,13 @@ function Map() {
   };
 
   return (
-    <div className="container py-4" style={{ maxWidth: 900 }}>
-      <h2 className="mb-3 text-center" style={{ color: '#12229D' }}>
-        Mapa de Ubicaciones
-      </h2>
-      <div style={{ borderRadius: 8, overflow: 'hidden', boxShadow: '0 4px 10px rgb(18 34 157 / 0.25)' }}>
+    <div className="d-flex justify-content-center align-items-center flex-column" style={{ minHeight: '100vh', backgroundColor: '#f4f6fc', padding: '2rem' }}>
+      <div className="text-center mb-4">
+        <h2 style={{ color: '#12229D', fontWeight: '700' }}>Mapa de Ubicaciones</h2>
+        <p style={{ color: '#444' }}>Haz clic en el mapa para agregar una nueva ubicación</p>
+      </div>
+
+      <div style={{ width: '100%', maxWidth: '900px', borderRadius: 12, overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.1)', backgroundColor: '#fff' }}>
         <MapContainer
           center={[9.9281, -84.0907]}
           zoom={13}
@@ -79,16 +78,19 @@ function Map() {
         </MapContainer>
       </div>
 
-      <div className="d-flex justify-content-center mt-4">
+      <div className="mt-4">
         <button
-          className="btn btn-primary"
+          className="btn"
           style={{
             backgroundColor: '#12229D',
             borderColor: '#12229D',
             fontWeight: '600',
             padding: '10px 30px',
-            borderRadius: 5,
-            transition: 'background-color 0.3s',
+            borderRadius: '8px',
+            color: '#fff',
+            fontSize: '16px',
+            boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
+            transition: 'all 0.3s',
           }}
           onClick={() => {
             if (!markerPosition) {
@@ -104,7 +106,7 @@ function Map() {
           onMouseEnter={(e) => (e.target.style.backgroundColor = '#0f1e7d')}
           onMouseLeave={(e) => (e.target.style.backgroundColor = '#12229D')}
         >
-          Agregar
+          Agregar Ubicación
         </button>
       </div>
 
@@ -121,4 +123,5 @@ function Map() {
 }
 
 export default Map;
+
 

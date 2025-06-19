@@ -1,38 +1,84 @@
 import React from 'react'
+import '../styles/FormRegister2.css'
+import { Link, useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import Swal from 'sweetalert2'
+import { PostRegister } from '../services/UsersServices'
+
 
 function FormRegister2() {
+     const [NombreUsuario, SetNombreUsuario] = useState("")
+      const [Nombre, SetNombre] = useState("")
+      const [Apellido, SetApellido] = useState("")
+      const [Edad, SetEdad] = useState("")
+      const [Email, SetEmail] = useState("")
+      const [Pass, SetPass] = useState("")
+      const [Nacionalidad, SetNacionalidad] = useState("")
+      const navigate = useNavigate()
+    
+    
+      async function Usuario() {
+        const obj = {
+          "username": NombreUsuario,
+          "first_name": Nombre,
+          "last_name": Apellido,
+          "email": Email,
+          "password": Pass,
+          "edad": Edad,
+          "nacionalidad": Nacionalidad
+        }
+        console.log(obj);
+        
+        const RespuestaServer = await PostRegister(obj)
+        console.log(obj);
+         if (RespuestaServer.mensaje) {
+                    Swal.fire({
+                        title: 'Usuario creado con exitoso',
+                        text: 'Disfruta la aplicacion',
+                        icon: 'success',
+                    })
+                    navigate('/')
+                } else {
+                    Swal.fire({
+                        title: 'Vuelva a intentarlo',
+                        text: 'Inserte los datos de nuevo',
+                        icon: 'Error',
+                    })
+                }
+            }
   return (
-    <div>
+    <div className='fondoRegister'>
         <>
-  <form className="form">
-    <p className="title">Register </p>
-    <p className="message">Signup now and get full access to our app. </p>
-    <div className="flex">
+  <form className="formR">
+    <p className="titleR">Registro</p>
+    <p className="messageR">Registrate para disfrutar del sitio </p>
+    <div className="flexR">
       <label>
-        <input required="" placeholder="" type="text" className="input" />
-        <span>Firstname</span>
+        <input  placeholder='Nombre' onChange={(e) => SetNombre(e.target.value)} type="text" className="input" />
       </label>
       <label>
-        <input required="" placeholder="" type="text" className="input" />
-        <span>Lastname</span>
+        <input  placeholder="Apellido" onChange={(e) => SetApellido(e.target.value)} type="text" className="input" />
       </label>
     </div>
     <label>
-      <input required="" placeholder="" type="email" className="input" />
-      <span>Email</span>
+        <input  placeholder='Nombre de Usuario' onChange={(e) => SetNombreUsuario(e.target.value)} type="text" className="input" />
+      </label>
+    <label>
+      <input  placeholder='Correo' onChange={(e) => SetEmail(e.target.value)} type="email" className="input" />
     </label>
     <label>
-      <input required="" placeholder="" type="password" className="input" />
-      <span>Password</span>
+      <input placeholder='Nacionalidad' onChange={(e) => SetNacionalidad(e.target.value)} type="text" className="input" />
+    </label>
+     <label>
+      <input  placeholder='Edad' onChange={(e) => SetEdad(e.target.value)} type="number" className="input" />
     </label>
     <label>
-      <input required="" placeholder="" type="password" className="input" />
-      <span>Confirm password</span>
+      <input  placeholder='Contraseña' onChange={(e) => SetPass(e.target.value)} type="password" className="input" />
     </label>
-    <button className="submit">Submit</button>
-    <p className="signin">
-      Already have an acount ? <a href="#">Signin</a>{" "}
-    </p>
+    <button type='button' onClick={Usuario} className="submitR">Enviar</button>
+    <Link to={'/'} className="signinR">
+      Tienes cuenta? Inicia Sesion
+    </Link>
   </form>
 </>
 

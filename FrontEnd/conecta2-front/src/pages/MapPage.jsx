@@ -9,9 +9,6 @@ function MapPage() {
       <Nav />
       <div className='row'>
         <div className='col'>
-          <SideBarMap />
-        </div>
-        <div className='col'>
           <Map />
         </div>
       </div>
