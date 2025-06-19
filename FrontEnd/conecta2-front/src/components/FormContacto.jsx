@@ -1,6 +1,6 @@
 function FormContacto() {
   return (
-    <div className="w-75 px-3 rounded mx-auto" style={{ background: '#12229D' }}>
+    <div className="w-75 px-3 rounded mx-auto"  style={{ background: '#12229D' }}>
       <h1 className="text-white">Contacto</h1>
       <form>
         <div className="mb-3">
@@ -19,7 +19,7 @@ function FormContacto() {
             required
           ></textarea>
         </div>
-        <button type="submit" className="btn btn-info w-100 p-2">
+        <button type="submit" className="btn btn-success w-100 mb-3">
           Enviar
         </button>
       </form>

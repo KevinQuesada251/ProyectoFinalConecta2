@@ -3,7 +3,7 @@ import CardHome from './CardHome'
 
 function MainHome() {
   return (
-    <div style={{ background: '#CAE8FF' }} className="container-fluid py-4">
+    <div style={{ background: '#D6ECFF' }} className="container-fluid py-4">
       <div>
         {/* Primera parte */}
         <div className='row align-items-center'>
@@ -19,9 +19,9 @@ function MainHome() {
         </div>
 
         {/* Título del texto fuera del container */}
-        <div className='row m-0 w-100' style={{ background: '#12229D' }}>
+        <div className='row m-0 w-100' style={{ background: '#151C9E' }}>
           <div className='col-12'>
-            <h2 className='text-center text-white py-3 m-0'>BENEFICIOS</h2>
+            <h3 className='text-center text-white py-3 m-0'>BENEFICIOS</h3>
           </div>
         </div>
 

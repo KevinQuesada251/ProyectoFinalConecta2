@@ -22,7 +22,7 @@
 
     const linkStyle = {
       color: 'white',
-      fontFamily: "'Bungee Tint', sans-serif",
+      fontFamily: "'Roboto', sans-serif",
       textDecoration: 'none',
       transition: 'all 0.2s ease-in-out',
     };
@@ -38,13 +38,13 @@
     }
 
     return (
-      <Navbar expand="md" style={{ backgroundColor: '#12229D', height: '105px' }}>
+      <Navbar expand="md" style={{ backgroundColor: '#12229D', height: '90px' }}>
         <Container fluid>
           <Navbar.Brand as={Link} to="/home" style={{ color: 'white' }}>
             <img
               alt="Logo"
               className="d-inline-block align-text-top rounded-circle"
-              height="120"
+              height="90"
               src="src/assets/logo_sin_fondo.png"
             />
           </Navbar.Brand>
