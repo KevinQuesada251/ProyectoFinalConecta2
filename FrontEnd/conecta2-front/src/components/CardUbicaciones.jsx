@@ -2,10 +2,11 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import '../styles/card-ubicacion.css'
 
 function CardUbicaciones({ nombreUbicacion, descripcion, latitud, longitud, username }) {
   return (
-    <Card style={{ width: '100%', marginBottom: '1rem' }}>
+    <Card className='card-ubicacion' style={{ width: '100%', marginBottom: '1rem' }}>
       {/* Mapa dentro de la tarjeta */}
       <MapContainer
         center={[latitud, longitud]}

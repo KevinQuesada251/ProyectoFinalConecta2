@@ -23,7 +23,7 @@ function AdminUbicaciones() {
       <div className='container-users'>
         <h1 className='tituloAdmin'>Administracion</h1>
         <h2 className='tituloUsuarios'>Ubicaciones</h2>
-        <table className="table">
+        <table className="table border border-dark">
           <thead>
             <tr>
               <th scope="col">Nombre</th>

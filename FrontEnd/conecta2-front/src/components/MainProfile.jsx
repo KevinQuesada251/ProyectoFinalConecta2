@@ -70,11 +70,11 @@ return (
     {/* Sección inferior */}
     <div className="row mt-5" style={{ backgroundColor: '#061E8C', color: 'white' }}>
       {/* Columna izquierda: info del usuario */}
-      <div className="col-md-4 p-4">
-        <h4>
+      <div className="col-md-4 p-4 rounded">
+        <h4 className='text-center'>
           <strong>{usuario.first_name}</strong> <strong>{usuario.last_name}</strong>
         </h4>
-        <p><strong>edad :</strong> {usuario.edad}</p>
+        <p><strong>Edad :</strong> {usuario.edad}</p>
         <p className="descripcion">Pequeña descripcion de la persona</p>
       </div>
 

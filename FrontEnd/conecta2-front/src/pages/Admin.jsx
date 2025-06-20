@@ -1,12 +1,14 @@
 import React, { useState } from 'react' 
 import AdminUsuarios from '../components/AdminUsuarios'
 import '../styles/adminPage.css'
-import Var from '../components/var'
+import Var from '../components/SideBarAdmin'
 import AdminUbicaciones from './AdminUbicaciones'
 import AdminRoles from '../components/AdminRoles'
 import AdminComentarios from '../components/AdminComentarios'
 import AdminRespuestas from '../components/AdminRespuestas'
 import AdminAnuncios from '../components/AdminAnuncios'
+import SideBarAdmin from '../components/SideBarAdmin'
+import '../styles/sideBarAdmin.css'
 
 function Admin() {
   const [seccionActiva, setSeccionActiva] = useState('usuarios')
@@ -14,7 +16,7 @@ function Admin() {
   return (
     <>
     <div className='container-admin'>
-      <Var 
+      <SideBarAdmin 
         ubicaciones={() => setSeccionActiva('ubicaciones')} 
         usuarios={() => setSeccionActiva('usuarios')}
         roles={() => setSeccionActiva('roles')}

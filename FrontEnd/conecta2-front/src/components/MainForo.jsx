@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 function MainForo() {
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 mb-5 pb-5">
       <div className="card shadow rounded-4 m-25">
         <div className="card-header text-white text-center rounded-top-4" style={{background:'#12229D'}}>
           <h3 className="mb-0">Foros disponibles</h3>

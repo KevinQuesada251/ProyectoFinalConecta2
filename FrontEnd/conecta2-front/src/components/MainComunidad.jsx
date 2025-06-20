@@ -63,8 +63,8 @@ function MainComunidad() {
         <div className="row justify-content-center mb-4">
            <div className="col-12 text-center">
               <h2>Publica tu comentario</h2>
-              <input type="text" onChange={(e)=>setComentario(e.target.value)} />
-              <button onClick={enviar}>Enviar</button>
+              <input className='input-group mb-3' type="text" onChange={(e)=>setComentario(e.target.value)} />
+              <button className='btn btn-success' onClick={enviar}>Enviar</button>
           </div>
 
         </div>

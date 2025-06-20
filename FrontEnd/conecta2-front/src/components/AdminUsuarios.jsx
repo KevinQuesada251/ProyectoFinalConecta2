@@ -3,6 +3,7 @@
   import { GetUsuarios, DeleteUser, PathData } from '../services/UsersServices'
   import '../styles/adminusers.css'
   import ModalAdmin from './ModalAdmin'
+  import Grafico from './Graficos'
 
 
   function AdminUsuarios() {
@@ -39,7 +40,7 @@
       <div className='container-users'>
         <h1 className='tituloAdmin'>Administracion</h1>
         <h2 className='tituloUsuarios'>USUARIOS</h2>
-        <table className="table">
+        <table className="table border border-dark">
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -84,6 +85,7 @@
             })}
           </tbody>
         </table>
+        <Grafico/>
       </div>
     )
   }
