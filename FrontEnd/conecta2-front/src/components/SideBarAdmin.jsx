@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { Link } from 'react-router-dom';
 
-const SideBarAdmin = ({ ubicaciones, usuarios, roles, comentarios, respuestas, anuncios }) => {
+const SideBarAdmin = ({ ubicaciones, usuarios, roles, comentarios, respuestas, anuncios, dashboard }) => {
   return (
     <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-wit">
       <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
@@ -16,6 +16,12 @@ const SideBarAdmin = ({ ubicaciones, usuarios, roles, comentarios, respuestas, a
              <i className="fs-4 bi-house "></i> <span className="ms-1 d-none d-sm-inline">Home</span>
             </p>
           </li></Link>
+
+             <li>
+            <a  className="nav-link px-0 align-middle" onClick={dashboard}>
+              <i className="bi bi-clipboard-data"></i> <span className="ms-1 d-none d-sm-inline">Dashboard</span>
+            </a>
+          </li>
 
           <li>
             <a  className="nav-link px-0 align-middle" onClick={usuarios}>

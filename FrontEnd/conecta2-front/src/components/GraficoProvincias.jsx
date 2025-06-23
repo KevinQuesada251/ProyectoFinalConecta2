@@ -40,7 +40,7 @@ function GraficoProvincias() {
 
   return (
     <div>
-      <Chart options={options} series={series} type="bar" width="500" />
+      <Chart options={options} series={series} type="bar" width="100%" height="300px" />
     </div>
   );
 }

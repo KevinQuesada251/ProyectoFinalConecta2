@@ -87,9 +87,6 @@ import GraficoProvincias from './GraficoProvincias'
             })}
           </tbody>
         </table>
-        <Grafico/>
-        <GraficoEdad/>
-        <GraficoProvincias/>
       </div>
     )
   }
