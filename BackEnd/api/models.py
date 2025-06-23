@@ -3,12 +3,20 @@ from django.contrib.auth.models import User,Group
     
 #Modelo de los Usuarios
 class UsuariosModelo(models.Model):
+    PROVINCIAS_CHOICES = [
+        ("alajuela","ALAJUELA"),
+        ("cartago","CARTAGO"),
+        ("heredia","HEREDIA"),
+        ("san josé","SAN JOSÉ"),
+        ("limón", "LIMÓN"),
+        ("guanacaste","GUANACASTE"),
+        ("puntarenas","PUNTARENAS")
+    ]
     user = models.OneToOneField(User,on_delete=models.CASCADE)
     edad = models.IntegerField()
-    nacionalidad = models.CharField(max_length=50)
     img = models.CharField(max_length=300, default="")
     banner = models.CharField(max_length=300, default="")
-    
+    provincia = models.CharField(choices=PROVINCIAS_CHOICES,max_length=100)    
     
 #Modelo de las Ubicaciones
 class Ubicaciones(models.Model):

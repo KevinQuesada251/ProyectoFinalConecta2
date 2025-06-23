@@ -92,11 +92,11 @@ function ModalPerfillUsuario({show, onClose}) {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={onClose}>
-            Close
+          <Button variant="danger" onClick={onClose}>
+            Cancelar
           </Button>
-          <Button variant="primary" onClick={()=>cargar(localStorage.getItem('id_usuario'))}>
-            Save Changes
+          <Button variant="success" onClick={()=>cargar(localStorage.getItem('id_usuario'))}>
+            Confirmar
           </Button>
         </Modal.Footer>
       </Modal>

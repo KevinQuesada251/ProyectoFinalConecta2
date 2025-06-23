@@ -4,6 +4,8 @@
   import '../styles/adminusers.css'
   import ModalAdmin from './ModalAdmin'
   import Grafico from './Graficos'
+  import GraficoEdad from './GraficoEdad'
+import GraficoProvincias from './GraficoProvincias'
 
 
   function AdminUsuarios() {
@@ -49,7 +51,7 @@
               <th scope="col">Apellido</th>
               <th scope="col">Edad</th>
               <th scope="col">Correo</th>
-              <th scope="col">Nacionalidad</th>
+              <th scope="col">Provincia</th>
               <th scope="col">Editar</th>
               <th scope="col">Desactivar o Activar</th>
             </tr>
@@ -65,7 +67,7 @@
                     <td>{usuario.last_name}</td>
                     <td>{usuario.edad}</td>
                     <td>{usuario.email}</td>
-                    <td>{usuario.nacionalidad}</td>
+                    <td>{usuario.provincia}</td>
                     <td><button className="btn btn-primary" onClick={() => {
                       setShowModal(true);
                       localStorage.setItem("usuario_id",usuario.user_id)
@@ -86,6 +88,8 @@
           </tbody>
         </table>
         <Grafico/>
+        <GraficoEdad/>
+        <GraficoProvincias/>
       </div>
     )
   }

@@ -35,12 +35,12 @@ function ModalComentarios({show, onClose, id}) {
         </div>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={onClose}>
-          Close
+        <Button variant="danger" onClick={onClose}>
+          Cancelar
         </Button>
         
-            <Button variant="primary" onClick={()=>editar(id)}>
-              Save Changes
+            <Button variant="success" onClick={()=>editar(id)}>
+              Confirmar
             </Button>
           
         

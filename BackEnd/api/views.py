@@ -175,7 +175,7 @@ class CrearUsuarioView(APIView):
         password = request.data.get("password")
         email = request.data.get("email")
         edad = request.data.get("edad")
-        nacionalidad = request.data.get("nacionalidad")
+        provincia = request.data.get("provincia")
         
         #Validaciones
         
@@ -191,7 +191,7 @@ class CrearUsuarioView(APIView):
         if len(password) < 8:
             return Response({'error':'La contraseña debe tener al menos 8 caracteres'},status=400)
         
-        if not edad or not nacionalidad:
+        if not edad or not provincia:
             return Response({'error':'La edad y la nacionalidad son obligatorios'},status=400)
         
         
@@ -208,7 +208,7 @@ class CrearUsuarioView(APIView):
         UsuariosModelo.objects.create(
             user=user,
             edad=edad,
-            nacionalidad=nacionalidad
+            provincia=provincia
         )
         
         return Response({'mensaje':'Usuario creado'},status=201)

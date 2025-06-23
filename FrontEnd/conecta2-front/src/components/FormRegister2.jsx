@@ -13,7 +13,7 @@ function FormRegister2() {
       const [Edad, SetEdad] = useState("")
       const [Email, SetEmail] = useState("")
       const [Pass, SetPass] = useState("")
-      const [Nacionalidad, SetNacionalidad] = useState("")
+      const [Provincia, SetProvincia] = useState("")
       const navigate = useNavigate()
     
     
@@ -25,7 +25,7 @@ function FormRegister2() {
           "email": Email,
           "password": Pass,
           "edad": Edad,
-          "nacionalidad": Nacionalidad
+          "provincia": Provincia
         }
         console.log(obj);
         
@@ -67,7 +67,16 @@ function FormRegister2() {
       <input  placeholder='Correo' onChange={(e) => SetEmail(e.target.value)} type="email" className="input" />
     </label>
     <label>
-      <input placeholder='Nacionalidad' onChange={(e) => SetNacionalidad(e.target.value)} type="text" className="input" />
+      <select name="" id="" onChange={(e) => SetProvincia(e.target.value)}>
+        <option value="">Provincias</option>
+        <option value="san josé">San José</option>
+        <option value="cartago">Cartago</option>
+        <option value="heredia">Heredia</option>
+        <option value="alajuela">Alajuela</option>
+        <option value="guanacaste">Guanacaste</option>
+        <option value="puntarenas">Puntarenas</option>
+        <option value="limón">Limón</option>
+      </select>
     </label>
      <label>
       <input  placeholder='Edad' onChange={(e) => SetEdad(e.target.value)} type="number" className="input" />

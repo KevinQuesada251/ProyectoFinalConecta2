@@ -36,7 +36,7 @@ class UsuarioModeloSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(source='user.email', read_only=True)
     class Meta:
         model = UsuariosModelo
-        fields = ["id",'user_id','username', 'first_name', 'last_name', 'email', 'edad', 'nacionalidad','img','banner']
+        fields = ["id",'user_id','username', 'first_name', 'last_name', 'email', 'edad', 'provincia','img','banner']
         
 class AnunciosSerializer(serializers.ModelSerializer):
     class Meta:

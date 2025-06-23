@@ -54,12 +54,12 @@ function ModalUbicaciones({show, onClose, latitud, longitud,nombreM, descripcion
         </div>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={onClose}>
-          Close
+        <Button variant="danger" onClick={onClose}>
+          Cancelar
         </Button>
         
-            <Button variant="primary" onClick={()=>editar(localStorage.getItem("ubicacion_id"))}>
-              Save Changes
+            <Button variant="success" onClick={()=>editar(localStorage.getItem("ubicacion_id"))}>
+              Confirmar
             </Button>
           
         

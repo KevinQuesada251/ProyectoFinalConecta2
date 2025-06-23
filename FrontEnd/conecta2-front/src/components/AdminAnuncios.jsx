@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react';
 import Llamados from '../services/Llamados';
 import ModalAnuncios from './ModalAnuncios';
+import Swal from 'sweetalert2'
 
 function AdminAnuncios() {
 
@@ -20,7 +21,7 @@ function AdminAnuncios() {
 
     }
     getData()
-  }, [recarga,anuncios])
+  }, [recarga])
 
   async function cargar() {
     const obj = {
@@ -33,12 +34,28 @@ function AdminAnuncios() {
     setRecarga(!recarga)
   }
 
-    async function eliminar(id) {
-      console.log(id);
-      
-        const serverResponse = await Llamados.deleteData('anuncios_eliminar',id)
+     async function eliminar(id) {
+      const result = await Swal.fire({
+        title: "¿Estás seguro de eliminar?",
+        text: "No se pueden recuperar los datos",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Confirmar"
+      });
+    
+      if (result.isConfirmed) {
+        const serverResponse = await Llamados.deleteData('anuncios_eliminar', id);
         setRecarga(!recarga)
+    
+        Swal.fire({
+          title: "¡Eliminado!",
+          text: "Se eliminó con éxito",
+          icon: "success"
+        });
       }
+    }
 
 
   return (

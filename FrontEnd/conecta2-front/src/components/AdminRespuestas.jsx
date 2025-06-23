@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react';
 import Llamados from '../services/Llamados';
 import ModalRespuestas from './ModalRespuestas';
+import Swal from 'sweetalert2'
 
 function AdminRespuestas() {
 
@@ -17,12 +18,30 @@ function AdminRespuestas() {
       
     }
     getData()
-  },[recarga,respuestas])
+  },[recarga])
 
-   async function eliminar(id) {
-      const serverResponse = await Llamados.deleteData('respuestas',id)
-      setRecarga(!recarga)
-    }
+    async function eliminar(id) {
+     const result = await Swal.fire({
+       title: "¿Estás seguro de eliminar?",
+       text: "No se pueden recuperar los datos",
+       icon: "warning",
+       showCancelButton: true,
+       confirmButtonColor: "#3085d6",
+       cancelButtonColor: "#d33",
+       confirmButtonText: "Confirmar"
+     });
+   
+     if (result.isConfirmed) {
+       const serverResponse = await Llamados.deleteData('respuestas', id);
+       setRecarga(!recarga)
+   
+       Swal.fire({
+         title: "¡Eliminado!",
+         text: "Se eliminó con éxito",
+         icon: "success"
+       });
+     }
+   }
   
 
   return (

@@ -98,12 +98,12 @@ function ModalAdmin({ show, onClose,nombreUsuarioM,nombreM, apellidoM, edadM,ema
         </div>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={onClose}>
-          Close
+        <Button variant="danger" onClick={onClose}>
+          Cancelar
         </Button>
         
-            <Button variant="primary" onClick={()=>editar(localStorage.getItem("usuario_id"))}>
-              Save Changes
+            <Button variant="success" onClick={()=>editar(localStorage.getItem("usuario_id"))}>
+              Confirmar
             </Button>
           
         
