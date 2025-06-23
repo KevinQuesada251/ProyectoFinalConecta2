@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import  CrearUsuarioView, DesactivarUsuarioView, EditarUsuarioView, LoginView, ListarUsuariosView,UsuariosDetailView, UbicacionesListCreateView, UbicacionesDetailView,ListarUsuarioUnicoView,ListarUnicaUbicacion,RolesView, EditarRolesView,AnunciosUpdateView,AnunciosDeleteView,AnunciosListCreateView, ComentariosListCreateView, ComentariosDetailView,RespuestasListCreateView, RespuestasDetailView, CrearRolesView
+from .views import  CrearUsuarioView, DesactivarUsuarioView, EditarUsuarioView, LoginView, ListarUsuariosView,UsuariosDetailView, UbicacionesListCreateView, UbicacionesDetailView,ListarUsuarioUnicoView,ListarUnicaUbicacion,RolesView, EditarRolesView,AnunciosUpdateView,AnunciosDeleteView,AnunciosListCreateView, ComentariosListCreateView, ComentariosDetailView,RespuestasListCreateView, RespuestasDetailView, CrearRolesView,BuscarUbicacionPorNombre
 
 urlpatterns = [
     path('users/',CrearUsuarioView.as_view(), name='user-crear'),
@@ -22,4 +22,5 @@ urlpatterns = [
     path('comentarios/<int:pk>/',ComentariosDetailView.as_view(), name='comentarios-eliminar-actualizar'),
     path('respuestas/',RespuestasListCreateView.as_view(), name='resouestas-crear-listar'),
     path('respuestas/<int:pk>/',RespuestasDetailView.as_view(), name='comentarios-eliminar-actualizar'),
+    path("nombre_ubicacion/<str:nombre_ubicacion>/", BuscarUbicacionPorNombre.as_view())
 ]

@@ -164,8 +164,6 @@ class UsuariosDetailView(RetrieveUpdateDestroyAPIView):
     
     
 # Vista con APIView
-        
-
 class CrearUsuarioView(APIView):
     def post(self,request):
         print(request.data)
@@ -306,4 +304,8 @@ class AnunciosDeleteView(DestroyAPIView):
     queryset = Anuncios.objects.all()
     serializer_class = AnunciosSerializer
     
-        
+class BuscarUbicacionPorNombre(APIView):
+    def get(self,request,nombre_ubicacion):
+        ubicaciones_filtradas = Ubicaciones.objects.filter   (nombre_ubicacion__icontains=nombre_ubicacion)
+        ubicaciones_serializer = UbicacionesSerializer(ubicaciones_filtradas, many=True)
+        return Response(ubicaciones_serializer.data, status=status.HTTP_200_OK)
