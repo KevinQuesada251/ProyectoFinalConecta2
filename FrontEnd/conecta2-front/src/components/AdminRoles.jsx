@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react';
 import Llamados from '../services/Llamados';
 import ModalRoles from './ModalRoles';
+import Swal from 'sweetalert2';
 
 function AdminRoles() {
 
@@ -20,20 +21,47 @@ function AdminRoles() {
     getData()
   },[])
 
-  async function creaRol() {
-    const obj = {
-      newgroup : nuevoRol
-    }
-    const serverResponse = await Llamados.postData(obj,'roles_crear')
-  }
+ async function creaRol() {
+       const result = await Swal.fire({
+         title: "¿Quieres crear este rol?",
+         text: "Deseas Continuar",
+         icon: "warning",
+         showCancelButton: true,
+         confirmButtonColor: "#3085d6",
+         cancelButtonColor: "#d33",
+         confirmButtonText: "Confirmar"
+       });
+     
+       if (result.isConfirmed && nuevoRol !== "") {
+         const obj = {
+           newgroup: nuevoRol,
+         }
+         const serverResponse = await Llamados.postData(obj,'roles_crear');
+         setRecarga(!recarga)
+         setNuevoRol("")
+     
+         Swal.fire({
+           title: "¡Creado!",
+           text: "Se creo con éxito",
+           icon: "success"
+         });
+       }else {
+         Swal.fire({
+           title: "¡Error!",
+           text: "Debes completar el campo",
+           icon: "error"
+         });
+       }
+     }
+ 
 
   return (
     <div className='container-users'>
       <h1 className='tituloAdmin'>Administracion</h1>
       <h2 className='tituloUsuarios'>ROLES</h2>
-      <table className="table border border-dark">
+      <table className="table border border-dark table-striped table-hover">
         <thead>
-          <tr>
+          <tr className='table-dark'>
             <th scope="col">ID</th>
             <th scope="col">Usuario</th>
             <th scope="col">Rol</th>
@@ -67,7 +95,7 @@ function AdminRoles() {
             <label className='text-white'>Nuevo Rol</label>
           </div>
           <div className='col'>
-            <input className="form-control" onChange={(e) => setNuevoRol(e.target.value)} type="text" />
+            <input className="form-control" value={nuevoRol} onChange={(e) => setNuevoRol(e.target.value)} type="text" />
           </div>
           <div className='col'>
             <button className='btn btn-success w-100' onClick={creaRol}>Crear</button>

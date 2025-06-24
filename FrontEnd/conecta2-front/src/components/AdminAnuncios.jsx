@@ -23,16 +23,40 @@ function AdminAnuncios() {
     getData()
   }, [recarga])
 
-  async function cargar() {
-    const obj = {
-      texto_anuncio: nuevoAnuncio,
-      gravedad_anuncio: gravedad
-    }
-    console.log(obj);
+   async function cargar() {
+      const result = await Swal.fire({
+        title: "¿Quieres crear este anuncio?",
+        text: "Deseas Continuar",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Confirmar"
+      });
     
-    const serverResponse = await Llamados.postData(obj, 'anuncios')
-    setRecarga(!recarga)
-  }
+      if (result.isConfirmed && nuevoAnuncio !== "") {
+        const obj = {
+          texto_anuncio: nuevoAnuncio,
+          gravedad_anuncio: gravedad
+        }
+        const serverResponse = await Llamados.postData(obj,'anuncios');
+        setRecarga(!recarga)
+        setNuevoAnuncio("")
+    
+        Swal.fire({
+          title: "¡Creado!",
+          text: "Se creo con éxito",
+          icon: "success"
+        });
+      }else {
+        Swal.fire({
+          title: "¡Error!",
+          text: "Debes completar el campo",
+          icon: "error"
+        });
+      }
+    }
+
 
      async function eliminar(id) {
       const result = await Swal.fire({
@@ -62,9 +86,9 @@ function AdminAnuncios() {
     <div className='container-users'>
       <h1 className='tituloAdmin'>Administracion</h1>
       <h2 className='tituloUsuarios'>Anuncios</h2>
-      <table className="table border border-dark">
+      <table className="table border border-dark table-striped table-hover">
         <thead>
-          <tr>
+          <tr className='table-dark'>
             <th scope="col">ID</th>
             <th scope="col">Publicacion</th>
             <th scope='col'>Gravedad</th>
@@ -106,7 +130,7 @@ function AdminAnuncios() {
             </select>
           </div>
           <div className='col'>
-            <input className="form-control" onChange={(e) => setNuevoAnuncio(e.target.value)} type="text" />
+            <input className="form-control" value={nuevoAnuncio} onChange={(e) => setNuevoAnuncio(e.target.value)} type="text" />
           </div>
           <div className='col'>
             <button className='btn btn-success w-100' onClick={cargar}>Crear</button>

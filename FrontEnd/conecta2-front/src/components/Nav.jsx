@@ -98,6 +98,7 @@
 
                   <Dropdown.Menu>
                     <Dropdown.Item as={Link} to="/Profile"><img className='rounded-circle' src={user.img} alt="" style={{height:'25px', width:'25px'}} /> Mi Perfil</Dropdown.Item>
+                    {localStorage.getItem('rol') === 'admin' && <Dropdown.Item as={Link} to={"/admin"} >Panel de Administracion</Dropdown.Item>}
                     <Dropdown.Item onClick={CerrarSesion}>Cerrar Sesion</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>

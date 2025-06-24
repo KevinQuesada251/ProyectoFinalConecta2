@@ -44,9 +44,9 @@ function AdminUbicaciones() {
       <div className='container-users'>
         <h1 className='tituloAdmin'>Administracion</h1>
         <h2 className='tituloUsuarios'>Ubicaciones</h2>
-        <table className="table border border-dark">
+        <table className="table border border-dark table-striped table-hover">
           <thead>
-            <tr>
+            <tr className="table-dark">
               <th scope="col">Nombre</th>
               <th scope="col">Descripcion</th>
               <th scope="col">Latitud</th>

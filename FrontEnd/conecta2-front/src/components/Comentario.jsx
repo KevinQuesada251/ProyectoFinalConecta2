@@ -3,6 +3,7 @@ import Llamados from '../services/Llamados'
 
 function Comentario({ gravedad, anuncio, comentarioId, responder }) {
   const [mostrarInput, setMostrarInput] = useState(false)
+  const [editar, setEditar] = useState(false)
   const [respuestaTexto, setRespuestaTexto] = useState("")
   const [respuestas, setRespuestas] = useState([])
   const [recarga, setRecarga] = useState(false)
@@ -30,6 +31,11 @@ function Comentario({ gravedad, anuncio, comentarioId, responder }) {
   const respuestasFiltradas = respuestas.filter(
     (r) => r.comentario === comentarioId
   )
+
+  async function borrarRespuesta(id_respuesta) {
+       const serverResponse =  await Llamados.deleteData('respuestas',id_respuesta)
+      setRecarga(!recarga)
+  }
 
   return (
     <div className="border rounded-4 p-3 bg-white shadow-sm">
@@ -77,6 +83,42 @@ function Comentario({ gravedad, anuncio, comentarioId, responder }) {
                 <p className="mb-1 fw-semibold">{respuesta.username}</p>
                 <p className="mb-0">{respuesta.mensaje_respuesta}</p>
                 <small className="text-muted">{respuesta.fecha}</small>
+                {parseInt(localStorage.getItem('id_usuario')) === respuesta.usuario && (
+                  <>
+                  <button
+                    className="btn btn-sm btn-danger mt-2"
+                    onClick={() => borrarRespuesta(respuesta.id)}
+                  >
+                    Eliminar
+                  </button>
+                  <button
+                    className="btn btn-sm btn-primary mt-2 ms-2"
+                    onClick={() => {
+                      setRespuestaTexto(respuesta.mensaje_respuesta)
+                      setEditar(true)
+                    }}
+                  >
+                    Editar
+                  </button>
+                </>
+                )}
+                {editar && (<>
+                  <div className="input-group mt-2">
+                    <input
+                      type="text"
+                      className="form-control"
+                      value={respuestaTexto}
+                      onChange={(e) => setRespuestaTexto(e.target.value)}
+                      placeholder="Editar respuesta..."
+                    />
+                    <button
+                      className="btn btn-success"
+                      onClick={enviarRespuesta}
+                    >
+                      Guardar
+                    </button>
+                  </div>
+                </>)}
               </li>
             ))}
           </ul>

@@ -48,9 +48,9 @@ function AdminRespuestas() {
     <div className='container-users'>
       <h1 className='tituloAdmin'>Administracion</h1>
       <h2 className='tituloUsuarios'>Respuestas</h2>
-      <table className="table border border-dark">
+      <table className="table border border-dark table-striped table-hover">
         <thead>
-          <tr>
+          <tr className='table-dark'>
             <th scope="col">ID</th>
             <th scope="col">Nombre</th>
             <th scope='col'>respuesta</th>

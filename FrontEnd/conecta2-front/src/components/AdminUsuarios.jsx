@@ -1,30 +1,42 @@
-  import React, { useState, useEffect } from 'react'
-  import '../styles/adminUsuarios.css'
-  import { GetUsuarios, DeleteUser, PathData } from '../services/UsersServices'
-  import '../styles/adminusers.css'
-  import ModalAdmin from './ModalAdmin'
-  import Grafico from './Graficos'
-  import GraficoEdad from './GraficoEdad'
+import React, { useState, useEffect } from 'react'
+import '../styles/adminUsuarios.css'
+import { GetUsuarios, DeleteUser, PathData } from '../services/UsersServices'
+import '../styles/adminusers.css'
+import ModalAdmin from './ModalAdmin'
+import Grafico from './Graficos'
+import GraficoEdad from './GraficoEdad'
 import GraficoProvincias from './GraficoProvincias'
+import Swal from 'sweetalert2'
 
 
-  function AdminUsuarios() {
-    const [usuarios, setUsuarios] = useState([])
-    const [showModal, setShowModal] = useState(false);
-    const [recarga,setRecarga] = useState(false)
+function AdminUsuarios() {
+  const [usuarios, setUsuarios] = useState([])
+  const [showModal, setShowModal] = useState(false);
+  const [recarga, setRecarga] = useState(false)
 
 
 
-    useEffect(() => {
-      async function obtenerInfo() {
-        const lista = await GetUsuarios()
-        setUsuarios(lista)
-      }
-      obtenerInfo()
-    }, [])
+  useEffect(() => {
+    async function obtenerInfo() {
+      const lista = await GetUsuarios()
+      setUsuarios(lista)
+    }
+    obtenerInfo()
+  }, [])
 
+  async function inhabilitar(id) {
+    const result = await Swal.fire({
+      title: "¿Quieres desactivar o activar?",
+      text: "Deseas Continuar",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Confirmar"
+    });
 
-    async function eliminar(id) {
+    if (result.isConfirmed) {
+
       const objDesactivar = { id };
       const serverResponse = await PathData(objDesactivar);
       console.log(id);
@@ -36,15 +48,23 @@ import GraficoProvincias from './GraficoProvincias'
       );
       setActivar(prev => !prev);
       setRecarga(!recarga)
+
+      Swal.fire({
+        title: "¡Creado!",
+        text: "Se creo con éxito",
+        icon: "success"
+      });
     }
 
+
+  }
     return (
       <div className='container-users'>
         <h1 className='tituloAdmin'>Administracion</h1>
         <h2 className='tituloUsuarios'>USUARIOS</h2>
-        <table className="table border border-dark">
+        <table className="table border border-dark table-striped table-hover table-responsive-scroll">
           <thead>
-            <tr>
+            <tr className='table-dark'>
               <th scope="col">#</th>
               <th scope="col">Usuario</th>
               <th scope="col">Nombre</th>
@@ -70,19 +90,19 @@ import GraficoProvincias from './GraficoProvincias'
                     <td>{usuario.provincia}</td>
                     <td><button className="btn btn-primary" onClick={() => {
                       setShowModal(true);
-                      localStorage.setItem("usuario_id",usuario.user_id)
+                      localStorage.setItem("usuario_id", usuario.user_id)
                     }}>Editar</button></td>
                     <td>
                       <button
-                        onClick={() => eliminar(usuario.user_id)}
-                        className={usuario.activo ? 'btn btn-danger' : 'btn btn-success'}
+                        onClick={() => inhabilitar(usuario.user_id)}
+                        className={usuario.activo ? 'btn btn-success' : 'btn btn-danger'}
                       >
-                        {usuario.activo ? 'Desactivar' : 'Activar'}
+                        {usuario.activo ? 'Activar' : 'Desactivar'}
                       </button>
                     </td>
                   </tr>
                   <ModalAdmin show={showModal} onClose={() => setShowModal(false)} nombreM={usuario.first_name} nombreUsuarioM={usuario.username} apellidoM={usuario.last_name} edadM={usuario.edad} emailM={usuario.email} nacionalidadM={usuario.nacionalidad} />
-                </> 
+                </>
               )
             })}
           </tbody>

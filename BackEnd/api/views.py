@@ -77,7 +77,7 @@ class RespuestasListCreateView(ListCreateAPIView):
     serializer_class = RespuestasSerializer
     
 class RespuestasDetailView(RetrieveUpdateDestroyAPIView):
-    permission_classes = [Permisos]
+    #permission_classes = [Permisos]
     queryset = Respuestas.objects.all()
     serializer_class = RespuestasSerializer
 

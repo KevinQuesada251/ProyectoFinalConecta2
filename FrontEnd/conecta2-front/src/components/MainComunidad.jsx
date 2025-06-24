@@ -16,6 +16,8 @@ function MainComunidad() {
   }, [])
 
   async function responder(id_comentario, textoRespuesta) {
+
+    
     const obj = {
       mensaje_respuesta: textoRespuesta,
       usuario: parseInt(localStorage.getItem('id_usuario')),

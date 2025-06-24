@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { use } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const SideBarAdmin = ({ ubicaciones, usuarios, roles, comentarios, respuestas, anuncios, dashboard }) => {
+  const navigate = useNavigate();
+
+  const cerrar = () => {
+    localStorage.clear()
+    navigate('/')
+  }
+
+
   return (
     <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-wit">
       <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
@@ -59,20 +68,15 @@ const SideBarAdmin = ({ ubicaciones, usuarios, roles, comentarios, respuestas, a
           </li>
 
           <li>
-            <a  className="nav-link px-0 align-middle">
-              <i className=""></i> <span className="bi bi-door-closed-fill">Cerrar Sesión</span>
-            </a>
+            <p  className="nav-link px-0 align-middle">
+              <i className=""></i> <span className="bi bi-door-closed-fill" onClick={cerrar}>Cerrar Sesión</span>
+            </p>
           </li>
           
         </ul>
 
         <hr />
-        <div className="dropdown pb-4">
-          <a  className="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="#" alt="profile" width="30" height="30" className="rounded-circle" />
-            <span className="d-none d-sm-inline mx-1">User</span>
-          </a>
-        </div>
+      
       </div>
     </div>
   );

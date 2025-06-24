@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react';
 import Llamados from '../services/Llamados';
 import ModalComentarios from './ModalComentarios';
+import Swal from 'sweetalert2'
 
 function AdminComentarios() {
 
@@ -20,10 +21,29 @@ function AdminComentarios() {
     getData()
   },[recarga,comentarios])
 
-  async function eliminar(id) {
-    const serverResponse = await Llamados.deleteData('comentarios',id)
-    setRecarga(!recarga)
-  }
+    async function eliminar(id) {
+        const result = await Swal.fire({
+          title: "¿Estás seguro de eliminar?",
+          text: "No se pueden recuperar los datos",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Confirmar"
+        });
+      
+        if (result.isConfirmed) {
+          const serverResponse = await Llamados.deleteData('comentarios', id);
+          setRecarga(!recarga)
+      
+          Swal.fire({
+            title: "¡Eliminado!",
+            text: "Se eliminó con éxito",
+            icon: "success"
+          });
+        }
+      }
+  
  
   
 
@@ -31,9 +51,9 @@ function AdminComentarios() {
     <div className='container-users'>
       <h1 className='tituloAdmin'>Administracion</h1>
       <h2 className='tituloUsuarios'>Comentarios</h2>
-      <table className="table border border-dark">
+      <table className="table border border-dark table-striped table-hover">
         <thead>
-          <tr>
+          <tr className='table-dark'>
             <th scope="col">ID</th>
             <th scope="col">Nombre</th>
             <th scope='col'>Comentario</th>
