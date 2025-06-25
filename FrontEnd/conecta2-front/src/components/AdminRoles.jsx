@@ -3,6 +3,8 @@ import { useState } from 'react';
 import Llamados from '../services/Llamados';
 import ModalRoles from './ModalRoles';
 import Swal from 'sweetalert2';
+import RueditaCarga from './RueditaCarga';
+
 
 function AdminRoles() {
 
@@ -10,16 +12,22 @@ function AdminRoles() {
   const [nuevoRol, setNuevoRol] = useState("")
   const [showModal, setShowModal] = useState(false);
   const [selectedUserId, setSelectedUserId] = useState(null);
+   const [loading, setLoading] = useState(true); 
+  const [recarga, setRecarga] = useState(false);  
   
-  useEffect(()=>{
+ useEffect(() => {
     async function getData() {
-      const data = await Llamados.getData("roles")
-      setRoles(data)
-      console.log(data);
-      
+      try {
+        const data = await Llamados.getData("roles");
+        setRoles(data);
+      } catch (error) {
+        console.error("Error al obtener roles", error);
+      } finally {
+        setLoading(false); // 👈 Finaliza el loading
+      }
     }
-    getData()
-  },[])
+    getData();
+  }, [recarga]);
 
  async function creaRol() {
        const result = await Swal.fire({
@@ -54,6 +62,11 @@ function AdminRoles() {
        }
      }
  
+      if (loading) {
+    return <div className='d-flex justify-content-center align-items-center vh-100'>
+      <RueditaCarga />
+    </div>;
+  }
 
   return (
     <div className='container-users'>
