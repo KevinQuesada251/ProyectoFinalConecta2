@@ -1,13 +1,29 @@
 .container-users{
     background-color: blue;
     width: 100vw;
+    border-radius: 40px;
 }
 .tituloAdmin{
     color: white;
     font-weight: bold;
     text-align: center;
+    font-family: Poppins, sans-serif;
 }
 .tituloUsuarios{
     font-weight: bold;
     text-align: center;
+    font-family: Poppins, sans-serif;
+}
+
+.tabla-scroll {
+  max-height: 500px;   /* altura máxima con scroll vertical */
+  overflow-y: auto;    /* solo scroll vertical */
+  overflow-x: hidden;  /* evita scroll horizontal */
+}
+
+/* Asegura que la tabla use todo el ancho del contenedor */
+.table {
+  width: 100%;
+  table-layout: auto;
+  font-family: 'Roboto', sans-serif !important;
 }

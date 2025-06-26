@@ -37,7 +37,10 @@ function AdminRoles() {
          showCancelButton: true,
          confirmButtonColor: "#3085d6",
          cancelButtonColor: "#d33",
-         confirmButtonText: "Confirmar"
+         confirmButtonText: "Confirmar",
+          customClass: {
+            popup: 'custom-popup'
+          }
        });
      
        if (result.isConfirmed && nuevoRol !== "") {
@@ -51,13 +54,19 @@ function AdminRoles() {
          Swal.fire({
            title: "¡Creado!",
            text: "Se creo con éxito",
-           icon: "success"
+           icon: "success",
+            customClass: {
+              popup: 'custom-popup'
+            }
          });
        }else {
          Swal.fire({
            title: "¡Error!",
            text: "Debes completar el campo",
-           icon: "error"
+           icon: "error",
+            customClass: {
+              popup: 'custom-popup'
+            }
          });
        }
      }

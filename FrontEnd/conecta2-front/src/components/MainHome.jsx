@@ -1,5 +1,7 @@
 import React from 'react'
 import CardHome from './CardHome'
+import CarouselMain from './CarouselMain'
+import SliderCards from './SliderCards'
 
 function MainHome() {
   return (
@@ -29,24 +31,7 @@ function MainHome() {
 
         {/* Cards */}
         <div className='row mt-4'>
-          <div className='col-12 col-md-4 mb-4'>
-            <CardHome
-              tituloCard={"Visibilización de la brecha digital. Permite identificar y mapear las zonas con baja o nula conectividad"}
-              imgCard={"src/assets/img/card1.jpg"}
-            />
-          </div>
-          <div className='col-12 col-md-4 mb-4'>
-            <CardHome
-              tituloCard={"Facilita la toma de decisiones basadas en datos para mejorar la infraestructura digital"}
-              imgCard={"src/assets/img/card 2.jpg"}
-            />
-          </div>
-          <div className='col-12 col-md-4 mb-4'>
-            <CardHome
-              tituloCard={"Fomenta la participación ciudadana en el desarrollo digital del país"}
-              imgCard={"src/assets/img/card3.webp"}
-            />
-          </div>
+          <SliderCards/>
         </div>
       </div>
     </div>

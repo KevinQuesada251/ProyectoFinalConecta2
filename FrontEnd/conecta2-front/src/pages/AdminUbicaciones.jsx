@@ -24,7 +24,10 @@ function AdminUbicaciones() {
     showCancelButton: true,
     confirmButtonColor: "#3085d6",
     cancelButtonColor: "#d33",
-    confirmButtonText: "Confirmar"
+    confirmButtonText: "Confirmar",
+    customClass: {
+      popup: 'custom-popup'
+    }
   });
 
   if (result.isConfirmed) {
@@ -34,7 +37,10 @@ function AdminUbicaciones() {
     Swal.fire({
       title: "¡Eliminado!",
       text: "Se eliminó con éxito",
-      icon: "success"
+      icon: "success",
+      customClass: {
+        popup: 'custom-popup'
+      }
     });
   }
 }

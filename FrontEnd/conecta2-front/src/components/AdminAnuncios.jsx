@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Llamados from '../services/Llamados';
 import ModalAnuncios from './ModalAnuncios';
 import Swal from 'sweetalert2'
+import '../styles/alertas.css'
 
 function AdminAnuncios() {
 
@@ -27,11 +28,13 @@ function AdminAnuncios() {
       const result = await Swal.fire({
         title: "¿Quieres crear este anuncio?",
         text: "Deseas Continuar",
-        icon: "warning",
+        icon: "question",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Confirmar"
+        confirmButtonText: "Confirmar",
+        customClass: {
+          popup: 'custom-popup'}
       });
     
       if (result.isConfirmed && nuevoAnuncio !== "") {
@@ -46,13 +49,20 @@ function AdminAnuncios() {
         Swal.fire({
           title: "¡Creado!",
           text: "Se creo con éxito",
-          icon: "success"
+          icon: "success",
+          customClass: {
+            popup: 'custom-popup'}
+          
+
         });
       }else {
         Swal.fire({
           title: "¡Error!",
           text: "Debes completar el campo",
-          icon: "error"
+          icon: "error",
+          customClass: {
+            popup: 'custom-popup'}
+          
         });
       }
     }
@@ -63,10 +73,13 @@ function AdminAnuncios() {
         title: "¿Estás seguro de eliminar?",
         text: "No se pueden recuperar los datos",
         icon: "warning",
+        iconColor: '#ffc107',
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Confirmar"
+        confirmButtonText: "Confirmar",
+        customClass: {
+          popup: 'custom-popup'}
       });
     
       if (result.isConfirmed) {
@@ -77,6 +90,8 @@ function AdminAnuncios() {
           title: "¡Eliminado!",
           text: "Se eliminó con éxito",
           icon: "success"
+          , customClass: {
+            popup: 'custom-popup'}
         });
       }
     }
