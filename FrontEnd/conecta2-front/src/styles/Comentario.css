@@ -1,0 +1,9 @@
+.icono-alerta {
+  color: red;              /* Cambia el color */
+  font-size: 35px;         /* Cambia el tamaño */
+  padding: 8px;           /* Espaciado interno */
+  border-radius: 40%;      /* Lo hace circular si el padding lo permite */
+  display: inline-block;   /* Para que el fondo se vea bien */
+  position: relative;
+  top: 10px;
+}

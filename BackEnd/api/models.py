@@ -27,10 +27,12 @@ class Ubicaciones(models.Model):
     longitud = models.TextField()
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     
+    
 #Modelo de los Comentarios
 class Comentarios(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comentarios')
     mensaje = models.CharField(max_length=250)
+    reporte = models.IntegerField(default=0)
     
 #Modelo de las Respuestas
 class Respuestas(models.Model):
