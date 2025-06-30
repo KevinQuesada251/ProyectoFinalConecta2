@@ -14,7 +14,7 @@ function AdminAnuncios() {
   const [showModal, setShowModal] = useState(false);
 
 
-  useEffect(() => {
+  useEffect(() => { //funcion para traer los anuncios desde el servidor
     async function getData() {
       const data = await Llamados.getData("anuncios")
       setAnuncios(data)
@@ -24,7 +24,7 @@ function AdminAnuncios() {
     getData()
   }, [recarga])
 
-   async function cargar() {
+   async function cargar() {         //funcion para crear un anuncio
       const result = await Swal.fire({
         title: "¿Quieres crear este anuncio?",
         text: "Deseas Continuar",
@@ -68,7 +68,7 @@ function AdminAnuncios() {
     }
 
 
-     async function eliminar(id) {
+     async function eliminar(id) { //funcion para eliminar un anuncio
       const result = await Swal.fire({
         title: "¿Estás seguro de eliminar?",
         text: "No se pueden recuperar los datos",

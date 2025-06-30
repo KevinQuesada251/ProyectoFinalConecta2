@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from "react-router-dom"
 import { FaFacebookF, FaTwitter, FaInstagram, FaGithub } from 'react-icons/fa';
+import '../styles/footer.css';
 function Footer() {
   return (
    <>
@@ -18,7 +19,7 @@ function Footer() {
           <i className="fab fa-facebook-f" />
         </a>
         <a href="" className="me-4 text-reset">
-          <i className="fab fa-twitter" />
+          <i className="fab fa-twitter icon" />
         </a>
         <a href="" className="me-4 text-reset">
           <i className="fab fa-google" />
@@ -87,7 +88,7 @@ function Footer() {
             {/* Links */}
             <h6 className="text-uppercase fw-bold mb-2">Redes Sociales</h6>
             <p>
-              <i className="fas fa-home me-0" /> <FaFacebookF size={30} /> <FaTwitter  size={30}/> <FaInstagram size={30} /> <FaGithub size={30}/>
+              <i className="fas fa-home me-0" /> <FaFacebookF className='social-icon' size={30} /> <FaTwitter className='social-icon'  size={30}/> <FaInstagram className='social-icon' size={30} /> <FaGithub className='social-icon' size={30}/>
             </p>
           </div>
           {/* Grid column */}

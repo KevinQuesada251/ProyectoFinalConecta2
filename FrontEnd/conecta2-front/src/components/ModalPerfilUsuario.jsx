@@ -2,7 +2,6 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
-import Cloudinary from './Cloudinary';
 import { PatchUser } from '../services/UsersServices';
 
 function ModalPerfillUsuario({show, onClose}) {
@@ -92,7 +91,8 @@ function ModalPerfillUsuario({show, onClose}) {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="danger" onClick={onClose}>
+          <Button variant="danger
+          " onClick={onClose}>
             Cancelar
           </Button>
           <Button variant="success" onClick={()=>cargar(localStorage.getItem('id_usuario'))}>

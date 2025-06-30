@@ -13,7 +13,6 @@ import Dashboard from '../components/Dashboard'
 
 function Admin() {
   const [seccionActiva, setSeccionActiva] = useState('usuarios')
-
   return (
     <>
     <div className='container-admin'>

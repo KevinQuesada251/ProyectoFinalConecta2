@@ -8,14 +8,14 @@ import 'swiper/css/navigation';
 
 import '../styles/sliderCards.css';
 
-import slide1 from '../assets/img/card1.jpg'; // ✅ CORRECTO
+import slide1 from '../assets/img/card1.jpg'; 
 import slide2 from '../assets/img/card 2.jpg';
 import slide3 from '../assets/img/card3.webp';
 
 function SliderCards() {
     return (
         <div className="slider-wrapper">
-            <h1 className="slider-heading">Ideas Principales</h1>
+            <h1 className="slider-heading tituloSlide">Ideas Principales</h1>
             <Swiper
                 effect={'coverflow'}
                 grabCursor={true}

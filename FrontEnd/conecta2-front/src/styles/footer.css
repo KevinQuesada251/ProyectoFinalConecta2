@@ -1,0 +1,11 @@
+.social-icon {
+  color: white;
+  margin-right: 15px;
+  transition: transform 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.social-icon:hover {
+  color: #00bfff; /* Cambia a celeste o el color que quieras */
+  transform: scale(1.2);
+}
