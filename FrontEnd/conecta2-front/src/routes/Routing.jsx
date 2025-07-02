@@ -13,6 +13,7 @@ import Private from '../components/Private';
 import MainComunidad from '../components/MainComunidad';
 import Ubicaciones from '../pages/Ubicaciones';
 import PoliticasPrivacidad from '../pages/PoliticasPrivacidad';
+import TerminosCondiciones from '../pages/TerminosCondiciones';
 
 function Routing() {
   return (
@@ -31,6 +32,7 @@ function Routing() {
                 <Route path='/comunidad' element={<MainComunidad/>}></Route>
                 <Route path='/ubicaciones' element={<Ubicaciones/>}></Route>
                 <Route path='/politicas' element={<PoliticasPrivacidad/>}></Route>
+                <Route path='/condiciones' element={<TerminosCondiciones/>}></Route>
             </Routes>
         </Router>
     </div>

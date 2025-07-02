@@ -70,6 +70,9 @@ function Footer() {
                 Hay un bug?
               </a>
             </p>
+            <p>
+              <Link to={'/condiciones'} className="text-reset">Terminos y Condiciones</Link>
+            </p>
           </div>
           {/* Grid column */}
           {/* Grid column */}

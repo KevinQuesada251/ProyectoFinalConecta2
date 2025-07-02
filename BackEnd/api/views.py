@@ -158,7 +158,7 @@ class ListarUsuarioUnicoView(RetrieveUpdateDestroyAPIView):
     serializer_class = UsuarioModeloSerializer
     
 class UsuariosDetailView(RetrieveUpdateDestroyAPIView):
-    permission_classes = [Permisos]
+    #permission_classes = [Permisos]
     queryset = UsuariosModelo.objects.select_related('user').all()
     serializer_class = UsuarioModeloSerializer
     

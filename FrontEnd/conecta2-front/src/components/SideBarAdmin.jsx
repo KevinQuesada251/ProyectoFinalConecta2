@@ -78,16 +78,17 @@ const SideBarAdmin = ({ ubicaciones, usuarios, roles, comentarios, respuestas, a
           </li>
 
           <li className="nav-item w-100">
-            <button
-              className="nav-link d-flex align-items-center px-3 btn btn-link text-start"
+            <a
+              className="nav-link d-flex align-items-center px-3"
               onClick={cerrar}
-              type="button"
-              style={{ color: 'inherit', textDecoration: 'none' }}
+              role="button"
+              tabIndex={0}
             >
               <i className="bi bi-door-closed-fill"></i>
               <span className="ms-2 d-none d-sm-inline">Cerrar Sesión</span>
-            </button>
+            </a>
           </li>
+
         </ul>
 
         <hr />

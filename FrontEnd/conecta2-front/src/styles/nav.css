@@ -19,6 +19,10 @@
   color: #a0c4ff; /* azul suave */
 }
 
+.sidebar-admin .cerrar-sesion:hover {
+  color: #dc3545 !important; /* rojo de Bootstrap */
+}
+
 
  /*background: '#1E1E5A',
         minHeight: '100px',
