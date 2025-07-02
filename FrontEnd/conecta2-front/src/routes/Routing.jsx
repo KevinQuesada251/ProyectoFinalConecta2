@@ -12,6 +12,7 @@ import MainAnunciosForo from '../components/MainAnunciosForo';
 import Private from '../components/Private';
 import MainComunidad from '../components/MainComunidad';
 import Ubicaciones from '../pages/Ubicaciones';
+import PoliticasPrivacidad from '../pages/PoliticasPrivacidad';
 
 function Routing() {
   return (
@@ -29,6 +30,7 @@ function Routing() {
                 <Route path='/anuncios' element={<MainAnunciosForo/>}></Route>
                 <Route path='/comunidad' element={<MainComunidad/>}></Route>
                 <Route path='/ubicaciones' element={<Ubicaciones/>}></Route>
+                <Route path='/politicas' element={<PoliticasPrivacidad/>}></Route>
             </Routes>
         </Router>
     </div>
