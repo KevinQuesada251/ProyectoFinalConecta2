@@ -41,9 +41,29 @@ class Permisos(BasePermission):
     
 # Ubicaciones 
 class UbicacionesListCreateView(ListCreateAPIView):
-    
-    queryset = Ubicaciones.objects.all()
     serializer_class = UbicacionesSerializer
+
+    def get_queryset(self):
+        queryset = Ubicaciones.objects.all()
+        
+        # Tomar parámetros de la URL
+        velocidad = self.request.query_params.get("velocidad")
+        capacidad_min = self.request.query_params.get("capacidad_min")
+        capacidad_max = self.request.query_params.get("capacidad_max")
+        intensidad = self.request.query_params.get("intensidad")
+        
+        # Aplicar filtros manuales
+        if velocidad:
+            queryset = queryset.filter(velocidad__icontains=velocidad)
+        if capacidad_min:
+            queryset = queryset.filter(capacidad_usuarios__gte=capacidad_min)
+        if capacidad_max:
+            queryset = queryset.filter(capacidad_usuarios__lte=capacidad_max)
+        if intensidad:
+            queryset = queryset.filter(intensidad=intensidad)
+        
+        return queryset
+
     
 class UbicacionesDetailView(RetrieveUpdateDestroyAPIView):
     permission_classes = [Permisos]
@@ -309,3 +329,6 @@ class BuscarUbicacionPorNombre(APIView):
         ubicaciones_filtradas = Ubicaciones.objects.filter   (nombre_ubicacion__icontains=nombre_ubicacion)
         ubicaciones_serializer = UbicacionesSerializer(ubicaciones_filtradas, many=True)
         return Response(ubicaciones_serializer.data, status=status.HTTP_200_OK)
+    
+#Filtros
+
