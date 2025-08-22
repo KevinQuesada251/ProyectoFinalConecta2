@@ -16,17 +16,11 @@
 }
 
 .nav-link:hover {
-  color: #a0c4ff; /* azul suave */
+  color: #a0c4ff; 
 }
 
 .sidebar-admin .cerrar-sesion:hover {
-  color: #dc3545 !important; /* rojo de Bootstrap */
+  color: #dc3545 !important; 
 }
 
 
- /*background: '#1E1E5A',
-        minHeight: '100px',
-        
-        alignItems: 'center',
-        fontFamily:'Roboto, sans-serif',
-        fontSize: '22px'

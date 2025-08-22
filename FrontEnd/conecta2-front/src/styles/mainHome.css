@@ -1,5 +1,288 @@
+/* Variables CSS para consistencia y mantenibilidad */
+:root {
+  --primary-blue: #0B2A59;
+  --secondary-blue: #1A3D7C;
+  --accent-blue: #151C9E;
+  --light-blue: #D6ECFF;
+  --lighter-blue: #A8D8FF;
+  --white: #ffffff;
+  --white-transparent: rgba(255, 255, 255, 0.85);
+  --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 8px 20px rgba(0, 0, 0, 0.15);
+  --shadow-heavy: 0 12px 25px rgba(0, 0, 0, 0.2);
+  --border-radius: 20px;
+  --border-radius-sm: 15px;
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Hover para elementos .vision con mejores transiciones */
 .vision:hover {
-  transform: scale(1.02);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: scale(1.02) translateY(-2px);
+  transition: var(--transition-smooth);
+  box-shadow: var(--shadow-medium);
+}
+
+/* Contenedor principal con gradiente mejorado y backdrop-filter */
+.main-home-dynamic {
+  background: linear-gradient(135deg, var(--light-blue) 0%, var(--lighter-blue) 50%, #7CB9E8 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efecto de partículas de fondo (opcional) */
+.main-home-dynamic::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Caja interior con glassmorphism */
+.home-container {
+  background: var(--white-transparent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--border-radius);
+  padding: 3rem 2rem;
+  box-shadow: var(--shadow-heavy);
+  animation: fadeInScale 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  width: 100%;
+}
+
+/* Sección visión con mejor espaciado */
+.vision-section {
+  text-align: center;
+  animation: slideInUp 0.8s ease-out 0.2s both;
+  margin-bottom: 2rem;
+}
+
+/* Título con gradiente de texto y mejor tipografía */
+.title-vision {
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  position: relative;
+  line-height: 1.2;
+}
+
+/* Línea decorativa mejorada */
+.title-vision::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-blue), var(--secondary-blue));
+  margin: 1rem auto 0;
+  border-radius: 2px;
+  animation: expandWidth 0.6s ease-out 0.8s both;
+}
+
+/* Texto con mejor legibilidad */
+.text-vision {
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  color: var(--secondary-blue);
+  line-height: 1.8;
+  padding: 0 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+  font-weight: 400;
+}
+
+/* Contenedor de imagen con mejor responsive */
+.vision-img {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+  animation: slideInUp 0.8s ease-out 0.4s both;
+}
+
+/* Imagen con efectos avanzados */
+.img-vision {
+  width: 100%;
+  max-width: 500px;
+  max-height: 350px;
+  object-fit: cover;
+  border-radius: var(--border-radius-sm);
+  box-shadow: var(--shadow-medium);
+  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover de imagen más sofisticado */
+.img-vision:hover {
+  transform: scale(1.05) rotate(1deg);
+  box-shadow: var(--shadow-heavy);
+  filter: brightness(1.1) contrast(1.05);
+}
+
+/* Overlay sutil en hover */
+.img-vision::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+  opacity: 0;
+  transition: var(--transition-smooth);
+  z-index: 1;
+}
+
+.img-vision:hover::before {
+  opacity: 1;
+}
+
+/* Barra de beneficios mejorada */
+.benefits-bar {
+  background: linear-gradient(135deg, var(--accent-blue) 0%, var(--primary-blue) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efecto de brillo animado */
+.benefits-bar::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+  animation: shimmer 3s infinite;
+}
+
+.benefits-title {
+  text-align: center;
+  color: var(--white);
+  font-weight: 700;
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  padding: 1.5rem 0;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Animaciones mejoradas y más fluidas */
+@keyframes fadeInScale {
+  from { 
+    opacity: 0; 
+    transform: scale(0.95) translateY(20px);
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from { 
+    transform: translateY(40px); 
+    opacity: 0; 
+  }
+  to { 
+    transform: translateY(0); 
+    opacity: 1; 
+  }
+}
+
+@keyframes expandWidth {
+  from { 
+    width: 0; 
+    opacity: 0;
+  }
+  to { 
+    width: 80px; 
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+/* Clases utilitarias mejoradas */
+.fade-in {
+  animation: fadeInScale 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.fade-in-up {
+  animation: slideInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Responsive mejorado */
+@media (max-width: 768px) {
+  .home-container {
+    padding: 2rem 1.5rem;
+    border-radius: 15px;
+  }
+  
+  .title-vision {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .text-vision {
+    font-size: 1rem;
+    padding: 0 0.5rem;
+  }
+  
+  .img-vision {
+    max-height: 280px;
+  }
+  
+  .benefits-title {
+    font-size: 1.3rem;
+    padding: 1rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-home-dynamic {
+    padding: 1rem 0.5rem;
+  }
+  
+  .home-container {
+    padding: 1.5rem 1rem;
+  }
+  
+  .title-vision::after {
+    width: 60px;
+  }
+}
+
+/* Mejoras de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

@@ -80,9 +80,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'Conecta2',
         'USER': 'root',
-        'PASSWORD': '1234',
-        'HOST': '127.0.0.1',
-        'PORT':'3306'
+        'PASSWORD': 'Betza',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
