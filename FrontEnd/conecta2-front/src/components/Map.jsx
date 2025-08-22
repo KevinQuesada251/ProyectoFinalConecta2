@@ -94,7 +94,7 @@ function Map() {
 
           {markerPosition && (
             <Marker position={markerPosition}>
-              <Popup>¡Hiciste clic aquí!</Popup>
+              <Popup>Tú ubicación actual.</Popup>
             </Marker>
           )}
 
@@ -103,7 +103,31 @@ function Map() {
               key={ubicacion.id}
               position={[ubicacion.latitud, ubicacion.longitud]}
             >
-              <Popup>{ubicacion.nombre_ubicacion}</Popup>
+              <Popup>
+                <ul>
+                  <li>{ubicacion.nombre_ubicacion}.</li>
+                  <li>Velocidad promedio: {ubicacion.velocidad}</li>
+                  <li>Capacidad de usuarios: {ubicacion.capacidad_usuarios}</li>
+                  <li>
+                    Intensidad de señal:{" "}
+                    <span
+                      style={{
+                        color:
+                          ubicacion.intensidad?.toLowerCase() === "alta"
+                            ? "green"
+                            : ubicacion.intensidad?.toLowerCase() === "media"
+                              ? "orange"
+                              : ubicacion.intensidad?.toLowerCase() === "baja"
+                                ? "red"
+                                : "black",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      {ubicacion.intensidad}
+                    </span>
+                  </li>
+                </ul>
+              </Popup>
             </Marker>
           ))}
 
