@@ -20,12 +20,23 @@ class UsuariosModelo(models.Model):
     
 #Modelo de las Ubicaciones
 class Ubicaciones(models.Model):
+    
+    INTENSIDAD_CHOICES = [
+        ("baja","BAJA"),
+        ("media","MEDIA"),
+        ("alta","ALTA")
+    ]
+      
     fecha_creacion = models.DateField(auto_now_add=True)
     nombre_ubicacion = models.CharField(max_length=100)
     descripcion = models.CharField(max_length=150)
     latitud = models.TextField(default="")
     longitud = models.TextField()
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    #cambios recientes del modelo
+    velocidad = models.CharField(max_length=150)
+    capacidad_usuarios = models.IntegerField(default=0)
+    intensidad = models.CharField(choices=INTENSIDAD_CHOICES,max_length=50)
     
     
 #Modelo de los Comentarios
