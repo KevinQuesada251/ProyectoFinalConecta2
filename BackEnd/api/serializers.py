@@ -6,7 +6,7 @@ class UbicacionesSerializer(serializers.ModelSerializer):
     username = serializers.CharField(source = 'usuario.username', read_only = True)
     class Meta:
         model = Ubicaciones
-        fields = ['username','id','descripcion','nombre_ubicacion','latitud','longitud','usuario','velocidad','capacidad_usuario','intensidad']
+        fields = ['username','id','descripcion','nombre_ubicacion','latitud','longitud','usuario','velocidad','capacidad_usuarios','intensidad']
         
 class ComentariosSerializer(serializers.ModelSerializer):
     username = serializers.CharField(source = 'usuario.username', read_only = True)

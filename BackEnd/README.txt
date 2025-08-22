@@ -57,3 +57,5 @@ Este proyecto es una aplicación web que permite a los usuarios registrar ubicac
 ## 📝 Autor
 
 Desarrollado por Kevin Quesada	
+
+En Desarrollo
