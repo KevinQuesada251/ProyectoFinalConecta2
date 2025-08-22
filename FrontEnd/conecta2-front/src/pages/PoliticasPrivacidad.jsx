@@ -1,6 +1,7 @@
 import React from 'react'
 import Navigation from '../components/Nav'
 import '../styles/PoliticasPrivacidad.css'
+import Footer from '../components/Footer'
 
 
 
@@ -8,6 +9,7 @@ function PoliticasPrivacidad() {
     return (
         <div>
             <Navigation />
+            
             <div className='container-politicas'>
                 <h1>Políticas de Privacidad</h1>
                 <ol>
@@ -87,8 +89,10 @@ function PoliticasPrivacidad() {
                     <p>📧 Email: soporte@conecta2.com</p>
                     <p>🌐 Sitio web: www.conecta2.com</p>
                 </section>
+                
 
             </div>
+            <Footer />
         </div>
     )
 }

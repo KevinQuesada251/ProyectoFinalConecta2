@@ -1,288 +1,354 @@
-/* Variables CSS para consistencia y mantenibilidad */
-:root {
-  --primary-blue: #0B2A59;
-  --secondary-blue: #1A3D7C;
-  --accent-blue: #151C9E;
-  --light-blue: #D6ECFF;
-  --lighter-blue: #A8D8FF;
-  --white: #ffffff;
-  --white-transparent: rgba(255, 255, 255, 0.85);
-  --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.1);
-  --shadow-medium: 0 8px 20px rgba(0, 0, 0, 0.15);
-  --shadow-heavy: 0 12px 25px rgba(0, 0, 0, 0.2);
-  --border-radius: 20px;
-  --border-radius-sm: 15px;
-  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-/* Hover para elementos .vision con mejores transiciones */
-.vision:hover {
-  transform: scale(1.02) translateY(-2px);
-  transition: var(--transition-smooth);
-  box-shadow: var(--shadow-medium);
-}
-
-/* Contenedor principal con gradiente mejorado y backdrop-filter */
-.main-home-dynamic {
-  background: linear-gradient(135deg, var(--light-blue) 0%, var(--lighter-blue) 50%, #7CB9E8 100%);
-  min-height: 100vh;
+/* Hero section con imagen de fondo */
+.mainHome-hero {
+   position: relative;
+  background: url('/src/assets/homeh.png') center/cover no-repeat;
+  height: 45vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem 1rem;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Efecto de partículas de fondo (opcional) */
-.main-home-dynamic::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-              radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-  pointer-events: none;
-}
-
-/* Caja interior con glassmorphism */
-.home-container {
-  background: var(--white-transparent);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: var(--border-radius);
-  padding: 3rem 2rem;
-  box-shadow: var(--shadow-heavy);
-  animation: fadeInScale 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  position: relative;
-  z-index: 1;
-  max-width: 1200px;
-  width: 100%;
-}
-
-/* Sección visión con mejor espaciado */
-.vision-section {
+  color: white;
   text-align: center;
-  animation: slideInUp 0.8s ease-out 0.2s both;
-  margin-bottom: 2rem;
 }
 
-/* Título con gradiente de texto y mejor tipografía */
-.title-vision {
-  font-size: clamp(2rem, 5vw, 2.5rem);
-  font-weight: 800;
-  background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 1.5rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  position: relative;
-  line-height: 1.2;
-}
-
-/* Línea decorativa mejorada */
-.title-vision::after {
-  content: '';
-  display: block;
-  width: 80px;
-  height: 4px;
-  background: linear-gradient(90deg, var(--accent-blue), var(--secondary-blue));
-  margin: 1rem auto 0;
-  border-radius: 2px;
-  animation: expandWidth 0.6s ease-out 0.8s both;
-}
-
-/* Texto con mejor legibilidad */
-.text-vision {
-  font-size: clamp(1rem, 2.5vw, 1.15rem);
-  color: var(--secondary-blue);
-  line-height: 1.8;
-  padding: 0 1rem;
-  max-width: 600px;
-  margin: 0 auto;
-  font-weight: 400;
-}
-
-/* Contenedor de imagen con mejor responsive */
-.vision-img {
-  display: flex;
-  justify-content: center;
-  margin: 2rem 0;
-  animation: slideInUp 0.8s ease-out 0.4s both;
-}
-
-/* Imagen con efectos avanzados */
-.img-vision {
+.mainHome-hero-overlay {
+ background: rgba(0, 0, 50, 0.55); /* capa de color */
   width: 100%;
-  max-width: 500px;
-  max-height: 350px;
-  object-fit: cover;
-  border-radius: var(--border-radius-sm);
-  box-shadow: var(--shadow-medium);
-  transition: var(--transition-smooth);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.mainHome-hero-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.mainHome-hero-subtitle {
+  font-size: 1.2rem;
+  font-weight: 300;
+  max-width: 600px;
+  margin: auto;
+}
+
+/* Contenedor principal del flip */
+.mainHome-benefit-flip-container {
+  perspective: 1000px;
+  height: 280px;
+  cursor: pointer;
   position: relative;
-  overflow: hidden;
+  /* Evitar cualquier overflow */
+  overflow: visible;
 }
 
-/* Hover de imagen más sofisticado */
-.img-vision:hover {
-  transform: scale(1.05) rotate(1deg);
-  box-shadow: var(--shadow-heavy);
-  filter: brightness(1.1) contrast(1.05);
+/* Tarjeta con efecto flip */
+.mainHome-benefit-flip-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s ease-in-out;
+  transform-style: preserve-3d;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  /* Fijar posición para evitar desplazamientos */
+  transform-origin: center center;
 }
 
-/* Overlay sutil en hover */
-.img-vision::before {
-  content: '';
+.mainHome-benefit-flip-container.flipped .mainHome-benefit-flip-card {
+  transform: rotateY(180deg);
+}
+
+/* Hover sutil solo en la sombra, sin mover la tarjeta */
+.mainHome-benefit-flip-container:hover .mainHome-benefit-flip-card {
+  box-shadow: 0 12px 40px rgba(21, 28, 158, 0.15);
+}
+
+/* Estilos comunes para ambos lados */
+.mainHome-benefit-card-front,
+.mainHome-benefit-card-back {
   position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 20px;
+  overflow: hidden;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(45deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
-  opacity: 0;
-  transition: var(--transition-smooth);
-  z-index: 1;
 }
 
-.img-vision:hover::before {
+/* Lado frontal - Imagen */
+.mainHome-benefit-card-front {
+  background: #ffffff;
+  position: relative;
+}
+
+.mainHome-benefit-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mainHome-benefit-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(21, 28, 158, 0.9));
+  color: white;
+  padding: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mainHome-benefit-flip-container:hover .mainHome-benefit-overlay {
   opacity: 1;
 }
 
-/* Barra de beneficios mejorada */
-.benefits-bar {
-  background: linear-gradient(135deg, var(--accent-blue) 0%, var(--primary-blue) 100%);
+.mainHome-benefit-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.mainHome-flip-hint {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  margin: 0;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Lado trasero - Información completa */
+.mainHome-benefit-card-back {
+  background: linear-gradient(135deg, #151C9E, #0B2A59);
+  color: white;
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  /* Corregir texto al revés */
+  transform: rotateY(180deg) rotateX(0deg);
+}
+
+.mainHome-benefit-back-content {
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.mainHome-benefit-back-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.mainHome-benefit-back-icon {
+  color: #D6ECFF;
+  opacity: 0.9;
+  margin-bottom: 0.5rem;
+}
+
+.mainHome-benefit-back-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0;
+  color: #D6ECFF;
+  text-align: center;
+}
+
+.mainHome-benefit-definition-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0;
+}
+
+.mainHome-benefit-definition {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+  opacity: 0.95;
+  text-align: center;
+  hyphens: auto;
+}
+
+.mainHome-benefit-back-footer {
+  margin-top: 1rem;
+}
+
+.mainHome-flip-back-hint {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  margin: 0;
+  font-style: italic;
+  color: #D6ECFF;
+}
+
+/* Cards de ideas principales con iconos mejoradas */
+.mainHome-benefit-card {
+  background: linear-gradient(135deg, #ffffff, #f8f9fa);
+  border-radius: 20px;
+  padding: 2.5rem;
+  height: 100%;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+  border: 1px solid rgba(21, 28, 158, 0.08);
   position: relative;
   overflow: hidden;
 }
 
-/* Efecto de brillo animado */
-.benefits-bar::before {
+.mainHome-benefit-card::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
-  animation: shimmer 3s infinite;
-}
-
-.benefits-title {
-  text-align: center;
-  color: var(--white);
-  font-weight: 700;
-  font-size: clamp(1.2rem, 3vw, 1.6rem);
-  padding: 1.5rem 0;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  position: relative;
-  z-index: 1;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-/* Animaciones mejoradas y más fluidas */
-@keyframes fadeInScale {
-  from { 
-    opacity: 0; 
-    transform: scale(0.95) translateY(20px);
-  }
-  to { 
-    opacity: 1; 
-    transform: scale(1) translateY(0);
-  }
-}
-
-@keyframes slideInUp {
-  from { 
-    transform: translateY(40px); 
-    opacity: 0; 
-  }
-  to { 
-    transform: translateY(0); 
-    opacity: 1; 
-  }
-}
-
-@keyframes expandWidth {
-  from { 
-    width: 0; 
-    opacity: 0;
-  }
-  to { 
-    width: 80px; 
-    opacity: 1;
-  }
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #151C9E, #0B2A59, #151C9E);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
 }
 
 @keyframes shimmer {
-  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-  100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+  0%, 100% { background-position: 200% 0; }
+  50% { background-position: -200% 0; }
 }
 
-/* Clases utilitarias mejoradas */
-.fade-in {
-  animation: fadeInScale 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+.mainHome-benefit-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 50px rgba(21, 28, 158, 0.2);
 }
 
-.fade-in-up {
-  animation: slideInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+.mainHome-card-icon {
+  color: #151C9E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #D6ECFF, #E8F4FF);
+  border-radius: 50%;
+  margin: 0 auto 1.5rem auto;
+  box-shadow: 0 8px 20px rgba(21, 28, 158, 0.15);
+  transition: all 0.3s ease;
 }
 
-/* Responsive mejorado */
+.mainHome-benefit-card:hover .mainHome-card-icon {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 12px 30px rgba(21, 28, 158, 0.25);
+}
+
+.mainHome-card-title {
+  color: #0B2A59;
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.mainHome-card-description {
+  color: #1A3D7C;
+  font-size: 1rem;
+  line-height: 1.7;
+  text-align: center;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* Responsive optimizado */
 @media (max-width: 768px) {
-  .home-container {
-    padding: 2rem 1.5rem;
-    border-radius: 15px;
+  .mainHome-hero {
+    min-height: 80vh;
+    background-attachment: scroll;
   }
-  
-  .title-vision {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .text-vision {
-    font-size: 1rem;
-    padding: 0 0.5rem;
-  }
-  
-  .img-vision {
-    max-height: 280px;
-  }
-  
-  .benefits-title {
-    font-size: 1.3rem;
-    padding: 1rem 0;
-  }
-}
 
-@media (max-width: 480px) {
-  .main-home-dynamic {
+  .mainHome-hero-overlay {
+    padding: 2rem 1rem;
+  }
+
+  .mainHome-vision-content {
+    padding: 2rem 1.5rem;
+    max-width: 90%;
+  }
+
+  .mainHome-hero-title {
+    font-size: 2.5rem;
+  }
+
+  .mainHome-hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .mainHome-benefit-flip-container {
+    height: 250px;
+    margin-bottom: 2rem;
+  }
+
+  .mainHome-benefit-back-content {
     padding: 1rem 0.5rem;
   }
-  
-  .home-container {
-    padding: 1.5rem 1rem;
+
+  .mainHome-benefit-definition {
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  .mainHome-benefit-back-title {
+    font-size: 1.2rem;
+  }
+
+  .mainHome-benefit-card {
+    padding: 2rem;
   }
   
-  .title-vision::after {
-    width: 60px;
+  .mainHome-card-icon {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .mainHome-card-title {
+    font-size: 1.2rem;
   }
 }
 
-/* Mejoras de accesibilidad */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+@media (max-width: 576px) {
+  .mainHome-hero-title {
+    font-size: 2rem;
+  }
+  
+  .mainHome-hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .mainHome-vision-content {
+    padding: 1.5rem;
+  }
+
+  .mainHome-benefit-flip-container {
+    height: 220px;
+  }
+
+  .mainHome-benefit-back-content {
+    padding: 1rem 0.5rem;
+  }
+
+  .mainHome-benefit-back-title {
+    font-size: 1.1rem;
+  }
+
+  .mainHome-benefit-definition {
+    font-size: 0.85rem;
   }
 }

@@ -6,7 +6,7 @@ function Footer() {
   return (
    <>
   {/* Footer */}
-  <footer className="text-center text-lg-start text-white" style={{background:"black"}}>
+  <footer className="text-center text-lg-start text-white" style={{background:"black", borderTop:'4px solid #4ce5f0'}}>
     {/* Section: Social media */}
     <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
       {/* Left */}
@@ -105,9 +105,11 @@ function Footer() {
       className="text-center p-4"
       style={{ backgroundColor: "rgba(0, 0, 0, 0.05)" }}
     >
-      © 2025 Copyright:
-      <a className="text-reset fw-bold" href="https://mdbootstrap.com/">
-        Conecta2
+      <p className="text-reset fw-bold">
+        © Hackaton 2025
+      </p>
+      <a className="text-reset fw-bold" href="/home">
+         Conecta2
       </a>
     </div>
     {/* Copyright */}

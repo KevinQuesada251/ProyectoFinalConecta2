@@ -25,47 +25,43 @@ function FormContacto() {
   };
 
   return (
-    <div>
     <div className="contact-form-container">
-      <div className="contact-header">
-        <div className="antenna-container">
-          <div className="satellite-antenna">📡</div>
-          <div className="satellite-antenna">📡</div>
-        </div>
-        <h1 className="contact-title">Contacto</h1>
+  <div className="contact-header">
+    
+    <h1 className="contact-title">Contacto</h1>
+  </div>
+
+  
+  <div className="contact-content">
+    {/* Formulario */}
+    <form ref={form} onSubmit={enviarCorreo} className="contact-form">
+      <div className="form-group-custom">
+        <input
+          type="text"
+          name="user_name"
+          className="input-custom"
+          placeholder="Tu nombre"
+          required
+        />
       </div>
-      <form ref={form} onSubmit={enviarCorreo} className="contact-form">
-        <div className="form-group-custom">
-          <input
-            type="text"
-            name="user_name"
-            className="input-custom"
-            placeholder="Tu nombre"
-            required
-          />
-        </div>
-        <div className="form-group-custom">
-          <textarea
-            name="message"
-            className="textarea-custom"
-            rows="4"
-            placeholder="Tu mensaje"
-            required
-          ></textarea>
-        </div>
-        <button type="submit" className="btn-custom">
-          Enviar
-        </button>
-      </form>
-      
-      <div className="w-75 px-3 h-10  mt-3 rounded mx-auto" style={{ background: '#12229D' }}>
-      <p className="text-center fs-6 fs-md-5 fs-lg-4 text-wrap text-white">
-        ¿Tienes dudas, ideas o quieres unirte a nuestra causa? Estamos aquí para escucharte. Nuestro objetivo es construir una comunidad comprometida con la equidad digital, impulsando el acceso a internet como un derecho esencial para el desarrollo educativo y laboral.
-      </p>
-    </div>
-      
-    </div>
-    </div>
+      <div className="form-group-custom">
+        <textarea
+          name="message"
+          className="textarea-custom"
+          rows="4"
+          placeholder="Tu mensaje es muy importante para nosotros."
+          required
+        ></textarea>
+      </div>
+      <button type="submit" className="btn-custom">
+        Enviar
+      </button>
+    </form>
+
+    
+  </div>
+</div>
+
     
     
   );
