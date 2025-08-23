@@ -6,3 +6,60 @@
 body {
   font-family: 'Roboto', sans-serif;
 }
+
+/* Estilos banners */
+
+.banner-hero{
+  background-position: center;
+  background-attachment: fixed;
+  height: 75vh;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.banner-hero-overlay {
+  background: rgba(0, 0, 50, 0.258);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+
+.banner-hero-content {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
+  text-align: center;
+  max-width: 700px;
+  transition: all 0.3s ease;
+}
+
+.banner-hero-content:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.banner-hero-title {
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 3rem;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.banner-hero-subtitle {
+  font-weight: 400;
+  color: #f8f9fa;
+  font-size: 1.2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  line-height: 1.6;
+  margin: 0;
+}

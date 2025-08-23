@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import Comentario from './Comentario'
 import { Link } from 'react-router-dom'
 import Llamados from '../services/Llamados'
 import '../styles/Anuncios.css'
-import Anuncio from './Anuncio'
-
+import '../styles/Map.css';
 function MainAnunciosForo() {
   const [anuncios, setAnuncios] = useState([])
 
@@ -17,43 +15,27 @@ function MainAnunciosForo() {
   }, [])
 
   return (
-    <div className="container-fluid py-5" style={{ background: '#CAE8FF' }}>
-      <div className="container">
-        {/* Encabezado */}
-        <div className="row mb-4">
-          <div className="col-12 text-center">
-            <h1 className="text-white py-3" style={{ backgroundColor: '#12229D', borderRadius: '1rem' }}>
-              Anuncios Oficiales
-            </h1>
-          </div>
-        </div>
-
-        {/* Botón de regreso */}
-        <div className="row mb-4">
-          <div className="col-12 text-center">
-            <Link
-              to="/foro"
-              className="btn btn-outline-dark rounded-pill px-4"
-            >
-              Volver a la principal
+    <div>
+      {/* Hero section */}
+      <section className="banner-hero anuncio-hero">
+        <div className="banner-hero-overlay">
+          <div className="banner-hero-content">
+            <h1 className='banner-hero-title'>Noticias Oficiales</h1>
+            <p className='banner-hero-subtitle'>
+              Últimas actualizaciones y comunicados importantes de nuestra plataforma
+            </p>
+            <Link to="/foro" className="noticias-back-btn">
+              ← Volver al Foro
             </Link>
           </div>
         </div>
-
-        {/* Anuncios */}
-        <div className="row g-4">
-          {anuncios.map((anuncio) => (
-            <div className="col-12" key={anuncio.id}>
-              <Anuncio
-                hora={anuncio.hora}
-                fecha={anuncio.fecha_anuncio}
-                texto={anuncio.texto_anuncio}
-                gravedad={anuncio.gravedad_anuncio}
-              />
-            </div>
-          ))}
+      </section>
+      {/* Anuncios section */}
+      <section className="anuncios-section">
+        <div className="anuncios-container">
+         <img className='anuncios-imagen' src="/src/assets/anuncios.png" alt="Imagen anuncio" />
         </div>
-      </div>
+      </section>
     </div>
   )
 }

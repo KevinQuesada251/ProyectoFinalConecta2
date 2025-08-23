@@ -66,7 +66,7 @@ function Navigation() {
               alt="Logo"
               className="d-inline-block align-text-top"
               height="70"
-              src="src/assets/conecta2.png"
+              src="src/assets/logome.png"
             />
 
           </div>
@@ -95,7 +95,7 @@ function Navigation() {
             <Nav className="justify-content-end flex-grow-1 pe-3">
               <i class="fa-solid fa-wifi"></i>
               {['/home', '/map', '/foro', '/contact', '/ubicaciones', '/politicas'].map((path, index) => {
-                const labels = ['Inicio', 'Mapa', 'Foro', 'Contacto', 'Ubicaciones', 'Politicas de Privacidad'];
+                const labels = ['Inicio', 'Mapa', 'Foro', 'Contacto', 'Ubicaciones'];
                 
                 return (
                   <Nav.Link

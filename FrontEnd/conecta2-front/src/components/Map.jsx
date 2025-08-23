@@ -75,7 +75,7 @@ function Map() {
     <div>
       {/* Hero section con imagen de fondo */}
       <section className="map-hero">
-        <div className="map-hero-overlay">
+        <div className="banner-hero-overlay">
           <div className="map-hero-content">
             <h1 className='map-hero-title'>Mapa Colaborativo</h1>
             <p className='map-hero-subtitle'>
