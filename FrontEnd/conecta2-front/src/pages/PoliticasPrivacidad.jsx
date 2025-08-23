@@ -11,16 +11,16 @@ function PoliticasPrivacidad() {
             <Navigation />
             
             <div className='container-politicas'>
-                <h1>Políticas de Privacidad</h1>
+                
                 <ol>
-                    <li><a href="#introduccion">Introduccion</a></li>
-                    <li><a href="#informacion">Información que Recopilamos</a></li>
-                    <li><a href="#uso">Uso de la Informacion</a></li>
-                    <li><a href="#seguridad">Seguridad de la informacion</a></li>
-                    <li><a href="#comparticion">Compartición de Datos</a></li>
-                    <li><a href="#derechos">Tus Derechos</a></li>
-                    <li><a href="#cambios">Cambios en esta Política</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="#introduccion">Introduccion.</a></li>
+                    <li><a href="#informacion">Información que Recopilamos.</a></li>
+                    <li><a href="#uso">Uso de la Información.</a></li>
+                    <li><a href="#seguridad">Seguridad de la información.</a></li>
+                    <li><a href="#comparticion">Compartición de Datos.</a></li>
+                    <li><a href="#derechos">Tus Derechos.</a></li>
+                    <li><a href="#cambios">Cambios en esta Política.</a></li>
+                    <li><a href="#contacto">Contacto.</a></li>
                 </ol>
                 <section id='introduccion'>
                     <h2>1. Introducción</h2>
@@ -89,6 +89,7 @@ function PoliticasPrivacidad() {
                     <p>📧 Email: soporte@conecta2.com</p>
                     <p>🌐 Sitio web: www.conecta2.com</p>
                 </section>
+                <h1>Políticas de Privacidad</h1>
                 
 
             </div>

@@ -72,65 +72,80 @@ function Map() {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center flex-column" style={{ minHeight: '100vh', backgroundColor: '#f4f6fc', padding: '2rem' }}>
-      <div className="text-center mb-4">
-        <h2 className="tituloMapa">Mapa de Ubicaciones</h2>
-        <p className="textoMapa">Haz clic en el mapa para agregar una nueva ubicación</p>
-      </div>
+    <div>
+      {/* Hero section con imagen de fondo */}
+      <section className="map-hero">
+        <div className="map-hero-overlay">
+          <div className="map-hero-content">
+            <h1 className='map-hero-title'>Mapa Colaborativo</h1>
+            <p className='map-hero-subtitle'>
+              Explora y contribuye con información sobre conectividad en tu zona
+            </p>
+          </div>
+        </div>
+      </section>
 
-      <div style={{ width: '100%', maxWidth: '900px', borderRadius: 12, overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.1)', backgroundColor: '#fff' }}>
-        <MapContainer
-          center={userPosition}
-          zoom={13}
-          scrollWheelZoom={true}
-          style={{ height: '450px', width: '100%' }}
-        >
-          <TileLayer
-            url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
-            attribution='&copy; <a href="https://www.stadiamaps.com/">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            minZoom={0}
-            maxZoom={20}
-          />
+      {/* Contenido del mapa */}
+      <div className="map-page-container">
+        <div className="map-section">
+          <div className="map-instructions">
+            <h2 className="map-section-title">Agregar Nueva Ubicación</h2>
+            <p className="map-instructions-text">Haz clic en el mapa para seleccionar una ubicación y luego completa la información</p>
+          </div>
 
-          {markerPosition && (
-            <Marker position={markerPosition}>
-              <Popup>¡Hiciste clic aquí!</Popup>
-            </Marker>
-          )}
-
-          {ubicaciones.map((ubicacion) => (
-            <Marker
-              key={ubicacion.id}
-              position={[ubicacion.latitud, ubicacion.longitud]}
+          <div className="map-container-wrapper">
+            <MapContainer
+              center={userPosition}
+              zoom={13}
+              scrollWheelZoom={true}
+              className="map-leaflet-container"
             >
-              <Popup>{ubicacion.nombre_ubicacion}</Popup>
-            </Marker>
-          ))}
+              <TileLayer
+                url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
+                attribution='&copy; <a href="https://www.stadiamaps.com/">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                minZoom={0}
+                maxZoom={20}
+              />
 
-          <LocationMarker onMapClick={handleMapClick} />
-          <SetMapCenter position={userPosition} />
-        </MapContainer>
-      </div>
+              {markerPosition && (
+                <Marker position={markerPosition}>
+                  <Popup>¡Ubicación seleccionada!</Popup>
+                </Marker>
+              )}
 
-      <div className="mt-4">
-        <button
-          className="btn btn-map"
-          onClick={() => {
-            if (!markerPosition) {
-              Swal.fire({
-                title: 'Ubicación Vacía',
-                text: 'Primero debes hacer clic en el mapa',
-                icon: 'error',
-              });
-              return;
-            }
-            setShowModal(true);
-          }}
-          onMouseEnter={(e) => (e.target.style.backgroundColor = '#0f1e7d')}
-          onMouseLeave={(e) => (e.target.style.backgroundColor = '#12229D')}
-        >
-          Agregar Ubicación
-        </button>
+              {ubicaciones.map((ubicacion) => (
+                <Marker
+                  key={ubicacion.id}
+                  position={[ubicacion.latitud, ubicacion.longitud]}
+                >
+                  <Popup>{ubicacion.nombre_ubicacion}</Popup>
+                </Marker>
+              ))}
+
+              <LocationMarker onMapClick={handleMapClick} />
+              <SetMapCenter position={userPosition} />
+            </MapContainer>
+          </div>
+
+          <div className="map-action-section">
+            <button
+              className="map-add-btn"
+              onClick={() => {
+                if (!markerPosition) {
+                  Swal.fire({
+                    title: 'Ubicación Vacía',
+                    text: 'Primero debes hacer clic en el mapa',
+                    icon: 'error',
+                  });
+                  return;
+                }
+                setShowModal(true);
+              }}
+            >
+              Agregar Ubicación
+            </button>
+          </div>
+        </div>
       </div>
 
       {markerPosition && (
@@ -146,6 +161,3 @@ function Map() {
 }
 
 export default Map;
-
-
-

@@ -64,7 +64,7 @@ function MainHome() {
         <div className='row mt-4 px-3 px-md-4'>
           {benefitCards.map((card, index) => (
             <div key={index} className='col-12 col-md-4 mb-4'>
-              <div 
+              <div
                 className={`mainHome-benefit-flip-container ${flippedCards[index] ? 'flipped' : ''}`}
                 onClick={() => toggleCardFlip(index)}
               >
@@ -77,17 +77,17 @@ function MainHome() {
                       <p className="mainHome-flip-hint">Click para más información</p>
                     </div>
                   </div>
-                  
+
                   {/* Lado trasero - Toda la información/definición */}
                   <div className="mainHome-benefit-card-back">
                     <div className="mainHome-benefit-back-content">
                       <div className="mainHome-benefit-back-header">
                         <div className="mainHome-benefit-back-icon">
                           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <path d="M9 11H1l6-6 6 6z"/>
-                            <path d="M23 11h-8l6-6 6 6z"/>
-                            <path d="M12 23v-6"/>
-                            <path d="M8 17h8"/>
+                            <path d="M9 11H1l6-6 6 6z" />
+                            <path d="M23 11h-8l6-6 6 6z" />
+                            <path d="M12 23v-6" />
+                            <path d="M8 17h8" />
                           </svg>
                         </div>
                         <h4 className="mainHome-benefit-back-title">{card.title}</h4>
@@ -115,14 +115,14 @@ function MainHome() {
             <div className="mainHome-benefit-card">
               <div className="mainHome-card-icon">
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                  <path d="M2 17l10 5 10-5"/>
-                  <path d="M2 12l10 5 10-5"/>
+                  <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                  <path d="M2 17l10 5 10-5" />
+                  <path d="M2 12l10 5 10-5" />
                 </svg>
               </div>
               <h4 className="mainHome-card-title">Información Transparente</h4>
               <p className="mainHome-card-description">
-                Acceso a datos reales sobre la calidad de conectividad en cada zona, 
+                Acceso a datos reales sobre la calidad de conectividad en cada zona,
                 proporcionando información valiosa para la toma de decisiones.
               </p>
             </div>
@@ -132,15 +132,15 @@ function MainHome() {
             <div className="mainHome-benefit-card">
               <div className="mainHome-card-icon">
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                  <circle cx="9" cy="7" r="4"/>
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                 </svg>
               </div>
               <h4 className="mainHome-card-title">Colaboración Comunitaria</h4>
               <p className="mainHome-card-description">
-                Permite que los usuarios compartan sus experiencias y contribuyan 
+                Permite que los usuarios compartan sus experiencias y contribuyan
                 al mejoramiento colectivo de la conectividad en sus comunidades.
               </p>
             </div>
@@ -150,15 +150,15 @@ function MainHome() {
             <div className="mainHome-benefit-card">
               <div className="mainHome-card-icon">
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M9 11H1l6-6 6 6z"/>
-                  <path d="M23 11h-8l6-6 6 6z"/>
-                  <path d="M12 23v-6"/>
-                  <path d="M8 17h8"/>
+                  <path d="M9 11H1l6-6 6 6z" />
+                  <path d="M23 11h-8l6-6 6 6z" />
+                  <path d="M12 23v-6" />
+                  <path d="M8 17h8" />
                 </svg>
               </div>
               <h4 className="mainHome-card-title">Mejora Continua</h4>
               <p className="mainHome-card-description">
-                Facilita la identificación de áreas problemáticas y el monitoreo 
+                Facilita la identificación de áreas problemáticas y el monitoreo
                 de mejoras en la infraestructura de conectividad digital.
               </p>
             </div>

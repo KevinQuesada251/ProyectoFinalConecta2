@@ -7,48 +7,15 @@ function Footer() {
    <>
   {/* Footer */}
   <footer className="text-center text-lg-start text-white" style={{background:"black", borderTop:'4px solid #4ce5f0'}}>
-    {/* Section: Social media */}
-    <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-      {/* Left */}
-      <div className="me-5 d-none d-lg-block">
-      </div>
-      {/* Left */}
-      {/* Right */}
-      <div>
-        <a href="" className="me-4 text-reset">
-          <i className="fab fa-facebook-f" />
-        </a>
-        <a href="" className="me-4 text-reset">
-          <i className="fab fa-twitter icon" />
-        </a>
-        <a href="" className="me-4 text-reset">
-          <i className="fab fa-google" />
-        </a>
-        <a href="" className="me-4 text-reset">
-          <i className="fab fa-instagram" />
-        </a>
-        <a href="" className="me-4 text-reset">
-          <i className="fab fa-linkedin" />
-        </a>
-        <a href="" className="me-4 text-reset">
-          <i className="fab fa-github" />
-        </a>
-      </div>
-      {/* Right */}
-    </section>
-    {/* Section: Social media */}
-    {/* Section: Links  */}
+   
     <section className="">
       <div className="container text-center text-md-start mt-5">
         {/* Grid row */}
         <div className="row mt-3 g-0">
-          {/* Grid column */}
           
-          {/* Grid column */}
-          {/* Grid column */}
           <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-1">
             {/* Links */}
-            <h6 className="text-uppercase fw-bold mb-4">Contacto</h6>
+            <h6 className="text-uppercase fw-bold mb-4">Contacto.</h6>
             <p>
               <a href="#!" className="text-reset">
                 ejemplo@ejemplo.com
@@ -67,11 +34,11 @@ function Footer() {
             <h6 className="text-uppercase fw-bold mb-2">Ayuda</h6>
             <p>
               <a href="#!" className="text-reset">
-                Hay un bug?
+                ¿Hay un bug?
               </a>
             </p>
             <p>
-              <Link to={'/condiciones'} className="text-reset">Terminos y Condiciones</Link>
+              <Link to={'/condiciones'} className="text-reset">Términos y Condiciones.</Link>
             </p>
           </div>
           {/* Grid column */}
@@ -84,14 +51,14 @@ function Footer() {
             </p>
             <p>
               <i className="fas fa-envelope me-3" />
-              Kevin Quesada
+              Equipo Conecta2
             </p>
           </div>
            <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
             {/* Links */}
             <h6 className="text-uppercase fw-bold mb-2">Redes Sociales</h6>
             <p>
-              <i className="fas fa-home me-0" /> <FaFacebookF className='social-icon' size={30} /> <FaTwitter className='social-icon'  size={30}/> <FaInstagram className='social-icon' size={30} /> <FaGithub className='social-icon' size={30}/>
+               <FaFacebookF className='social-icon' size={30} /> <FaTwitter className='social-icon'  size={30}/> <FaInstagram className='social-icon' size={30} /> <FaGithub className='social-icon' size={30}/>
             </p>
           </div>
           {/* Grid column */}
