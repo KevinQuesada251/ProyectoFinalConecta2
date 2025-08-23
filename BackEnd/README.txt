@@ -58,4 +58,4 @@ Este proyecto es una aplicación web que permite a los usuarios registrar ubicac
 
 Desarrollado por Kevin Quesada, Betza y Kevin Alpizar
 
-En design2
+En design3 y prueba

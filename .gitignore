@@ -13,6 +13,9 @@ BackEnd/conecta2_back/.env
 FrontEnd/node_modules/
 FrontEnd/conecta2-front/package-lock.json
 
+node_modules/
+
+
 # Python (agregar estas reglas también)
 *.py[cod]
 *$py.class
