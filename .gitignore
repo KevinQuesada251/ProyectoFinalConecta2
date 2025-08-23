@@ -1,0 +1,45 @@
+# Entorno virtual
+BackEnd/env/
+BackEnd/.env
+
+# Archivos compilados de Python
+**/__pycache__/
+**/*.pyc
+
+# Configuración sensible  
+BackEnd/conecta2_back/.env
+
+# Node modules y lock
+FrontEnd/node_modules/
+FrontEnd/conecta2-front/package-lock.json
+
+# Python (agregar estas reglas también)
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
