@@ -3,6 +3,7 @@ import { Navbar, Nav, Container, Offcanvas, Dropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { GetUsuariosUnico } from '../services/UsersServices';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
