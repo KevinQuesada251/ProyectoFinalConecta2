@@ -5,17 +5,19 @@ import Llamados from '../services/Llamados';
 function ModalMap({ show, onClose, latitud, longitud }) {
   const [nombreUbicacion, setNombreUbicacion] = useState("");
   const [descripcion, setDescripcion] = useState("");
+  const [compania, setCompania] = useState("");
 
   useEffect(() => {
     if (!show) {
       // Limpiar campos al cerrar
       setNombreUbicacion("");
       setDescripcion("");
+      setCompania("");
     }
   }, [show]);
 
   async function cargarInfo() {
-    if (!nombreUbicacion.trim() || !descripcion.trim()) {
+    if (!nombreUbicacion.trim() || !descripcion.trim() || !compania.trim()) {
       alert("Por favor completa todos los campos.");
       return;
     }
@@ -28,7 +30,8 @@ function ModalMap({ show, onClose, latitud, longitud }) {
       descripcion: descripcion,
       latitud: latitud,
       longitud: longitud,
-      usuario: id
+      usuario: id,
+      compania: compania
     };
     console.log(obj);
 
@@ -69,6 +72,15 @@ function ModalMap({ show, onClose, latitud, longitud }) {
             className="form-control"
             value={descripcion}
             onChange={(e) => setDescripcion(e.target.value)}
+          />
+        </div>
+        <div className="mb-3">
+          <label>Compañía:</label>
+          <input
+            type="text"
+            className="form-control"
+            value={compania}
+            onChange={(e) => setCompania(e.target.value)}
           />
         </div>
       </Modal.Body>

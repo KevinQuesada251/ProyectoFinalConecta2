@@ -35,9 +35,9 @@ class Ubicaciones(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     #cambios recientes del modelo
     velocidad = models.CharField(max_length=150)
-    capacidad_usuarios = models.IntegerField(default=0)
+    capacidad_usuarios = models.IntegerField(default=0, blank=True)
     intensidad = models.CharField(choices=INTENSIDAD_CHOICES,max_length=50)
-    
+    compania = models.CharField(max_length=100, default="")
     
 #Modelo de los Comentarios
 class Comentarios(models.Model):

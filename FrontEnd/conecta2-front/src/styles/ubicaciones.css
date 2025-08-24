@@ -1,0 +1,185 @@
+/* ubicaciones.css */
+
+.ubicaciones-header {
+  position: relative;
+  height: 400px;
+  background: linear-gradient(135deg, rgba(3, 26, 174, 0.9), rgba(52, 152, 219, 0.8)),
+              url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><filter id="noise"><feTurbulence baseFrequency="0.9" numOctaves="4" type="fractalNoise"/><feColorMatrix values="0 0 0 0 0.1 0 0 0 0 0.3 0 0 0 0 0.1 0 0 0 0.1 0"/></filter></defs><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.3"/></svg>');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.ubicaciones-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, rgba(3, 26, 174, 0.8) 0%, rgba(52, 152, 219, 0.6) 100%);
+  backdrop-filter: blur(1px);
+}
+
+.ubicaciones-header-overlay {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  padding: 3rem 4rem;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.ubicaciones-title {
+  color: white;
+  font-size: 3.5rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.ubicaciones-subtitle {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.3rem;
+  font-weight: 300;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.ubicaciones-container {
+  background: #f8f9fa;
+  min-height: calc(100vh - 400px);
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+}
+
+.ubicaciones-search-section {
+  padding: 2rem 0;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.ubicaciones-search-container {
+  position: relative;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.ubicaciones-search-input {
+  width: 100%;
+  padding: 1rem 3rem 1rem 1.5rem;
+  border: 2px solid #e1e8ed;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  background: white;
+  outline: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.ubicaciones-search-input:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.1), 0 4px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.ubicaciones-search-input::placeholder {
+  color: #95a5a6;
+  font-style: italic;
+}
+
+.ubicaciones-search-icon {
+  position: absolute;
+  right: 3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #7f8c8d;
+  font-size: 1.2rem;
+  pointer-events: none;
+}
+
+.ubicaciones-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .ubicaciones-header {
+    height: 300px;
+  }
+  
+  .ubicaciones-header-overlay {
+    padding: 2rem;
+    margin: 0 1rem;
+  }
+  
+  .ubicaciones-title {
+    font-size: 2.5rem;
+  }
+  
+  .ubicaciones-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .ubicaciones-search-container {
+    padding: 0 1rem;
+  }
+  
+  .ubicaciones-search-input {
+    padding: 0.8rem 2.5rem 0.8rem 1rem;
+    font-size: 1rem;
+  }
+  
+  .ubicaciones-search-icon {
+    right: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ubicaciones-header {
+    height: 250px;
+  }
+  
+  .ubicaciones-header-overlay {
+    padding: 1.5rem;
+  }
+  
+  .ubicaciones-title {
+    font-size: 2rem;
+  }
+  
+  .ubicaciones-subtitle {
+    font-size: 1rem;
+  }
+}

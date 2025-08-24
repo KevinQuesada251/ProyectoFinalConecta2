@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import '../styles/mainHome.css'
 
+
 function MainHome() {
   // Estado para controlar qué tarjetas están volteadas
   const [flippedCards, setFlippedCards] = useState({})
@@ -22,7 +23,7 @@ function MainHome() {
       definition: "Mejoramiento de la conectividad en zonas rurales mediante el mapeo colaborativo de la calidad de internet, identificando áreas con deficiente cobertura para priorizar inversiones en infraestructura."
     },
     {
-      image: "/src/assets/monitoreo.jpeg",
+      image: "/src/assets/red.jpeg",
       alt: "Monitoreo en Tiempo Real",
       title: "Monitoreo en Tiempo Real",
       definition: "Sistema de seguimiento continuo que permite a las comunidades reportar problemas de conectividad instantáneamente, facilitando respuestas rápidas de los proveedores de servicios."
@@ -38,6 +39,7 @@ function MainHome() {
   return (
     <div>
       {/* Hero header con imagen de fondo */}
+      
       <section className="mainHome-hero">
         <div className="mainHome-hero-overlay">
           <div className="mainHome-vision-content">

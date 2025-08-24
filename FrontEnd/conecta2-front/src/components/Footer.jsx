@@ -21,20 +21,20 @@ function Footer() {
             
             <div className="footer-column">
               <h6 className="footer-title">Contacto</h6>
-              <a href="mailto:ejemplo@ejemplo.com" className="footer-link">ejemplo@ejemplo.com</a>
+              <a href="mailto:conecta2@gmail.com" className="footer-link">conecta2@gmail.com</a>
               <a href="tel:888888899" className="footer-link">8888-8899</a>
             </div>
 
             <div className="footer-column">
               <h6 className="footer-title">Ayuda</h6>
-              <Link to="/politicas" className="footer-link">Politicas de Privacidad</Link>
+              <Link to="/politicas" className="footer-link">Políticas de Privacidad</Link>
               <Link to="/condiciones" className="footer-link">Términos y Condiciones</Link>
             </div>
 
             <div className="footer-column">
               <h6 className="footer-title">Desarrolladores</h6>
               <p className="footer-text"><FaHome className="footer-icon" /> FWD Costa Rica</p>
-              <p className="footer-text"><FaEnvelope className="footer-icon" /> Equipo Conecta2</p>
+              <p className="footer-text"><FaEnvelope className="footer-icon" /> Puntos Internet, Conecta2</p>
             </div>
 
             <div className="footer-column">
@@ -54,7 +54,7 @@ function Footer() {
       
       <div className="footer-copyright">
         <div className="footer-copyright-content">
-          <span className="footer-copyright-text">© Hackaton 2025</span>
+          <span className="footer-copyright-text">© Hackatón 2025</span>
           <a className="footer-copyright-link" href="/home">Conecta2</a>
         </div>
       </div>

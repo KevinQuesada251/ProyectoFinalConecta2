@@ -4,6 +4,7 @@ import CardUbicaciones from '../components/CardUbicaciones';
 import Navigation from '../components/Nav';
 import Footer from '../components/Footer';
 import 'leaflet/dist/leaflet.css';
+import '../styles/ubicaciones.css'; // Importar los estilos específicos
 
 function Ubicaciones() {
   const [ubicaciones, setUbicaciones] = useState([]);
@@ -47,51 +48,65 @@ function Ubicaciones() {
     <>
       <Navigation />
 
-      <div className='row'>
-        <div className='col'>
-          <h1 className='text-center bg-black text-white'>Ubicaciones</h1>
+      {/* Header estilizado como el de la imagen */}
+      <div className="ubicaciones-header">
+        <div className="ubicaciones-header-overlay">
+          <div className="ubicaciones-header-content">
+            <h1 className="ubicaciones-title">Mapa Colaborativo</h1>
+            <p className="ubicaciones-subtitle">
+              Explora y contribuye con información sobre conectividad en tu zona
+            </p>
+          </div>
         </div>
       </div>
 
-      {/* Input de búsqueda */}
-      <div className='row'>
-        <div className="input-group mb-3 w-50 mx-auto">
-          <input
-            onChange={(e) => setBusqueda(e.target.value)}
-            type="text"
-            className="form-control border border-dark"
-            placeholder="Busca una ubicación"
-            aria-label="Busca una ubicación"
-          />
+      <div className="ubicaciones-container">
+        {/* Input de búsqueda */}
+        <div className="ubicaciones-search-section">
+          <div className="ubicaciones-search-container">
+            <input
+              onChange={(e) => setBusqueda(e.target.value)}
+              type="text"
+              className="ubicaciones-search-input"
+              placeholder="Busca una ubicación"
+              aria-label="Busca una ubicación"
+              value={busqueda}
+            />
+            <div className="ubicaciones-search-icon">
+              🔍
+            </div>
+          </div>
         </div>
-      </div>
 
-      {/* Resultado de ubicaciones */}
-      <div className='row'>
-        {(ubicacionesBusqueda.length > 0 || busqueda.trim() !== "")
-          ? ubicacionesBusqueda.map((ubicacion) => (
-              <div key={ubicacion.id} className="col-12 col-md-6 col-lg-4 mb-4">
-                <CardUbicaciones
-                  nombreUbicacion={ubicacion.nombre_ubicacion}
-                  descripcion={ubicacion.descripcion}
-                  latitud={ubicacion.latitud}
-                  longitud={ubicacion.longitud}
-                  username={ubicacion.username}
-                />
-              </div>
-            ))
-          : ubicaciones.map((ubicacion) => (
-              <div key={ubicacion.id} className="col-12 col-md-6 col-lg-4 mb-4">
-                <CardUbicaciones
-                  nombreUbicacion={ubicacion.nombre_ubicacion}
-                  descripcion={ubicacion.descripcion}
-                  latitud={ubicacion.latitud}
-                  longitud={ubicacion.longitud}
-                  username={ubicacion.username}
-                />
-              </div>
-            ))
-        }
+        {/* Resultado de ubicaciones */}
+        <div className="ubicaciones-content">
+          <div className='row'>
+            {(ubicacionesBusqueda.length > 0 || busqueda.trim() !== "")
+              ? ubicacionesBusqueda.map((ubicacion) => (
+                  <div key={ubicacion.id} className="col-12 col-md-6 col-lg-4 mb-4">
+                    <CardUbicaciones
+                      nombreUbicacion={ubicacion.nombre_ubicacion}
+                      descripcion={ubicacion.descripcion}
+                      latitud={ubicacion.latitud}
+                      longitud={ubicacion.longitud}
+                      username={ubicacion.username}
+                    />
+                  </div>
+                ))
+              : ubicaciones.map((ubicacion) => (
+                  <div key={ubicacion.id} className="col-12 col-md-6 col-lg-4 mb-4">
+                    <CardUbicaciones
+                      nombreUbicacion={ubicacion.nombre_ubicacion}
+                      descripcion={ubicacion.descripcion}
+                      latitud={ubicacion.latitud}
+                      longitud={ubicacion.longitud}
+                      username={ubicacion.username}
+                    />
+                  </div>
+                ))
+            }
+          </div>
+        </div>
       </div>
 
       <Footer />
