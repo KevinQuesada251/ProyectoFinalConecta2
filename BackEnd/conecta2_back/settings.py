@@ -75,7 +75,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'Conecta2',
         'USER': 'root',
-        'PASSWORD': 'Betza',
+        'PASSWORD': 'PUTOamo1998',
         'HOST': 'localhost',
         'PORT':'3306'
     }
