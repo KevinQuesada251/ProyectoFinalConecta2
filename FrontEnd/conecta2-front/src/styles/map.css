@@ -1,23 +1,211 @@
-.btn-map {
-    background-color: #12229D !important;
-    color: white !important;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
+/* Hero section del mapa */
+.map-hero {
+  background: url('src/assets/mapas2.png') center/cover no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  height: 50vh;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-hero-overlay {
+  background: rgba(0, 0, 50, 0.258);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.map-hero-content {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
+  text-align: center;
+  max-width: 700px;
+  transition: all 0.3s ease;
+}
+
+.map-hero-content:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.map-hero-title {
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 3rem;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.map-hero-subtitle {
+  font-weight: 400;
+  color: #f8f9fa;
+  font-size: 1.2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Contenedor principal del mapa */
+.map-page-container {
+  background: #D6ECFF;
+  padding: 4rem 0;
+  min-height: 70vh;
+}
+
+.map-section {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Instrucciones del mapa */
+.map-instructions {
+  text-align: center;
+  margin-bottom: 3rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(21, 28, 158, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+.map-section-title {
+  color: #0B2A59;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.map-instructions-text {
+  color: #1A3D7C;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Contenedor del mapa */
+.map-container-wrapper { 
+  width: 135%;
+  border-radius: 20px;
+  margin-left: -18%;
+  
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+}
+
+.map-container-wrapper:hover {
+  box-shadow: 0 12px 40px rgba(21, 28, 158, 0.15);
+  transform: translateY(-3px);
+}
+
+.map-leaflet-container {
+  height: 500px !important;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Sección de acción */
+.map-action-section {
+  text-align: center;
+}
+
+.map-add-btn {
+  background: linear-gradient(135deg, #151C9E, #0B2A59);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(21, 28, 158, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.map-add-btn:hover {
+  background: linear-gradient(135deg, #0d1977, #081f47);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(21, 28, 158, 0.4);
+}
+
+.map-add-btn:active {
+  transform: translateY(-1px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .map-hero {
+    height: 50vh;
+    background-attachment: scroll;
+  }
+
+  .map-hero-title {
+    font-size: 2.2rem;
+  }
+
+  .map-hero-subtitle {
     font-size: 1rem;
-    cursor: pointer;
+  }
+
+  .map-hero-content {
+    padding: 2rem 1.5rem;
+    max-width: 90%;
+  }
+
+  .map-page-container {
+    padding: 3rem 0;
+  }
+
+  .map-section {
+    padding: 0 1rem;
+  }
+
+  .map-section-title {
+    font-size: 1.6rem;
+  }
+
+  .map-instructions {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .map-leaflet-container {
+    height: 400px !important;
+  }
+
+  .map-add-btn {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+  }
 }
 
-.tituloMapa {
-    width: 100vw;
-    background-color: #12229D;
-    color: white;
-    font-weight: 700;
-    margin-bottom: 1rem;
-}
+@media (max-width: 576px) {
+  .map-hero-title {
+    font-size: 1.8rem;
+  }
 
-.textoMapa {
-    color: #444;
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
+  .map-hero-content {
+    padding: 1.5rem;
+  }
+
+  .map-section-title {
+    font-size: 1.4rem;
+  }
+
+  .map-leaflet-container {
+    height: 350px !important;
+  }
 }

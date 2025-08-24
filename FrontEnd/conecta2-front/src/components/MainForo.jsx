@@ -1,42 +1,38 @@
 import React from 'react'
-import Comentario from './Comentario'
 import { Link } from 'react-router-dom'
+import '../styles/MainForo.css'
 
 function MainForo() {
   return (
-    <div className="container mt-5 mb-5 pb-5">
-      <div className="card shadow rounded-4 m-25">
-        <div className="card-header text-white text-center rounded-top-4" style={{background:'#12229D'}}>
-          <h3 className="mb-0">Foros disponibles</h3>
+    <div className="foro-page">
+      {/* Hero superior */}
+      <section className="foro-hero">
+        <div className="foro-hero-overlay">
+          <h1 className="foro-hero-title">Foros disponibles</h1>
+          <p className="foro-hero-subtitle">Explora, comparte y conecta con nuestra comunidad</p>
         </div>
-        <div className="card-body p-0">
-          <table className="table table-hover mb-0">
-            <thead className="table-dark">
-              <tr>
-                <th scope="col" className="w-50">Foro</th>
-                <th scope="col">Publicaciones</th>
-                <th scope="col">Última Publicación</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row" className="py-3 px-3">Anuncios Oficiales</th>
-                <td className="py-3 px-3">
-                  <Link to={'/anuncios'} className="btn btn-outline-primary btn-sm">Entrar</Link>
-                </td>
-                <td className="py-3 px-3 text-muted">-</td>
-              </tr>
-              <tr>
-                <th scope="row" className="py-3 px-3">Comunidad</th>
-                <td className="py-3 px-3">
-                  <Link to={'/comunidad'} className="btn btn-outline-primary btn-sm">Entrar</Link>
-                </td>
-                <td className="py-3 px-3 text-muted">-</td>
-              </tr>
-            </tbody>
-          </table>
+      </section>
+
+      {/* Contenido de foros */}
+      <section className="foro-section">
+        <div className="foro-grid">
+          <div className="foro-card">
+            <h4>Anuncios Oficiales</h4>
+            <p className="foro-desc">
+              Entérate de las últimas novedades, actualizaciones y comunicados importantes.
+            </p>
+            <Link to={'/anuncios'} className="foro-btn">Entrar</Link>
+          </div>
+
+          <div className="foro-card">
+            <h4>Comunidad</h4>
+            <p className="foro-desc">
+              Comparte ideas, haz preguntas y conecta con otros miembros de la comunidad.
+            </p>
+            <Link to={'/comunidad'} className="foro-btn">Entrar</Link>
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import Map from '../components/Map'
 import Nav from '../components/Nav'
+import Footer from '../components/Footer'
 import SideBarMap from '../components/SideBarMap'
 import '../styles/mapaPage.css'
 function MapPage() {
@@ -10,7 +11,9 @@ function MapPage() {
       <div className='row'>
         <div className='col'>
           <Map />
+          <Footer />
         </div>
+
       </div>
     </div>
   )

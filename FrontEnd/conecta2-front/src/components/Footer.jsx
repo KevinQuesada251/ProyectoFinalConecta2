@@ -1,121 +1,64 @@
 import React from 'react'
 import {Link} from "react-router-dom"
-import { FaFacebookF, FaTwitter, FaInstagram, FaGithub } from 'react-icons/fa';
+import { FaFacebookF, FaTwitter, FaInstagram, FaGithub, FaEnvelope, FaHome, FaLinkedin, FaTiktok } from 'react-icons/fa';
 import '../styles/footer.css';
+
 function Footer() {
+  const socialLinks = [
+    { icon: FaFacebookF, label: "Facebook" },
+    { icon: FaTwitter, label: "Twitter" },
+    { icon: FaInstagram, label: "Instagram" },
+    { icon: FaGithub, label: "GitHub" },
+    { icon: FaLinkedin, label: "LinkedIn" },
+    { icon: FaTiktok, label: "TikTok" }
+  ];
+
   return (
-   <>
-  {/* Footer */}
-  <footer className="text-center text-lg-start text-white" style={{background:"black"}}>
-    {/* Section: Social media */}
-    <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-      {/* Left */}
-      <div className="me-5 d-none d-lg-block">
-      </div>
-      {/* Left */}
-      {/* Right */}
-      <div>
-        <a href="" className="me-4 text-reset">
-          <i className="fab fa-facebook-f" />
-        </a>
-        <a href="" className="me-4 text-reset">
-          <i className="fab fa-twitter icon" />
-        </a>
-        <a href="" className="me-4 text-reset">
-          <i className="fab fa-google" />
-        </a>
-        <a href="" className="me-4 text-reset">
-          <i className="fab fa-instagram" />
-        </a>
-        <a href="" className="me-4 text-reset">
-          <i className="fab fa-linkedin" />
-        </a>
-        <a href="" className="me-4 text-reset">
-          <i className="fab fa-github" />
-        </a>
-      </div>
-      {/* Right */}
-    </section>
-    {/* Section: Social media */}
-    {/* Section: Links  */}
-    <section className="">
-      <div className="container text-center text-md-start mt-5">
-        {/* Grid row */}
-        <div className="row mt-3 g-0">
-          {/* Grid column */}
-          
-          {/* Grid column */}
-          {/* Grid column */}
-          <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-1">
-            {/* Links */}
-            <h6 className="text-uppercase fw-bold mb-4">Contacto</h6>
-            <p>
-              <a href="#!" className="text-reset">
-                ejemplo@ejemplo.com
-              </a>
-            </p>
-            <p>
-              <a href="#!" className="text-reset">
-                8707-8899
-              </a>
-            </p>
+    <footer className="footer-container">
+      <section className="footer-content">
+        <div className="container">
+          <div className="footer-grid">
+            
+            <div className="footer-column">
+              <h6 className="footer-title">Contacto</h6>
+              <a href="mailto:ejemplo@ejemplo.com" className="footer-link">ejemplo@ejemplo.com</a>
+              <a href="tel:888888899" className="footer-link">8888-8899</a>
+            </div>
+
+            <div className="footer-column">
+              <h6 className="footer-title">Ayuda</h6>
+              <Link to="/politicas" className="footer-link">Politicas de Privacidad</Link>
+              <Link to="/condiciones" className="footer-link">Términos y Condiciones</Link>
+            </div>
+
+            <div className="footer-column">
+              <h6 className="footer-title">Desarrolladores</h6>
+              <p className="footer-text"><FaHome className="footer-icon" /> FWD Costa Rica</p>
+              <p className="footer-text"><FaEnvelope className="footer-icon" /> Equipo Conecta2</p>
+            </div>
+
+            <div className="footer-column">
+              <h6 className="footer-title">Redes Sociales</h6>
+              <div className="footer-social">
+                {socialLinks.map(({ icon: Icon, label }) => (
+                  <a key={label} href="#!" aria-label={label}>
+                    <Icon className="footer-social-icon" size={18} />
+                  </a>
+                ))}
+              </div>
+            </div>
+
           </div>
-          {/* Grid column */}
-          {/* Grid column */}
-          <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-            {/* Links */}
-            <h6 className="text-uppercase fw-bold mb-2">Ayuda</h6>
-            <p>
-              <a href="#!" className="text-reset">
-                Hay un bug?
-              </a>
-            </p>
-            <p>
-              <Link to={'/condiciones'} className="text-reset">Terminos y Condiciones</Link>
-            </p>
-          </div>
-          {/* Grid column */}
-          {/* Grid column */}
-          <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-            {/* Links */}
-            <h6 className="text-uppercase fw-bold mb-2">Desarrolladores</h6>
-            <p>
-              <i className="fas fa-home me-3" /> FWD Costa Rica
-            </p>
-            <p>
-              <i className="fas fa-envelope me-3" />
-              Kevin Quesada
-            </p>
-          </div>
-           <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-            {/* Links */}
-            <h6 className="text-uppercase fw-bold mb-2">Redes Sociales</h6>
-            <p>
-              <i className="fas fa-home me-0" /> <FaFacebookF className='social-icon' size={30} /> <FaTwitter className='social-icon'  size={30}/> <FaInstagram className='social-icon' size={30} /> <FaGithub className='social-icon' size={30}/>
-            </p>
-          </div>
-          {/* Grid column */}
         </div>
-        {/* Grid row */}
+      </section>
+      
+      <div className="footer-copyright">
+        <div className="footer-copyright-content">
+          <span className="footer-copyright-text">© Hackaton 2025</span>
+          <a className="footer-copyright-link" href="/home">Conecta2</a>
+        </div>
       </div>
-    </section>
-    {/* Section: Links  */}
-    {/* Copyright */}
-    <div
-      className="text-center p-4"
-      style={{ backgroundColor: "rgba(0, 0, 0, 0.05)" }}
-    >
-      © 2025 Copyright:
-      <a className="text-reset fw-bold" href="https://mdbootstrap.com/">
-        Conecta2
-      </a>
-    </div>
-    {/* Copyright */}
-  </footer>
-  {/* Footer */}
-
-</>
-
+    </footer>
   )
 }
 

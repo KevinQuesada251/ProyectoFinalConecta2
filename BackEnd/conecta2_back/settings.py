@@ -3,9 +3,14 @@ from datetime import timedelta
 
 import os  # necesario para os.getenv
 
+
+
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Carga las variables del .env
+
+
 
 
 SECRET_KEY = 'django-insecure-l5ej55go^zph5yz$v=6(_+&%cvcb0%)p9-m6!e=s$kevjla$ns'
@@ -63,7 +68,7 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=600),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1)
 }
 
@@ -73,8 +78,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'Conecta2',
         'USER': 'root',
-        'PASSWORD': 'contraseña',
-        'HOST': '127.0.0.1',
+        'PASSWORD': 'PUTOamo1998',
+        'HOST': 'localhost',
         'PORT':'3306'
     }
 }
